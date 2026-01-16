@@ -1,45 +1,58 @@
 import React, { useState } from "react";
+import Card from "../components/ui/Card";
+import Button from "../components/ui/Button";
 import "./Contact.css";
 
 const Contact = () => {
-  // Form State
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
+  const [copyStatus, setCopyStatus] = useState(null); // 'address', 'phone', 'email1', 'email2'
 
-  // Copy Feedback State
-  const [copyStatus, setCopyStatus] = useState(null);
+  // Form Submission States
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState(null);
 
-  // Handle Input Change
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
-  // 1. SMART FORM: Handles "No Backend" by opening Email Client
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus(null);
 
-    // Construct the mailto link
-    const recipient = "nalinbharti@iitp.ac.in";
-    const subject = encodeURIComponent(
-      formData.subject || "Inquiry via Website"
-    );
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
+    const FORM_ENDPOINT = "https://formspree.io/f/mreeegza";
 
-    // Open default mail client
-    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setFormStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setFormStatus("error");
+      }
+    } catch (error) {
+      setFormStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  // 2. EXTRA: Copy to Clipboard Feature
   const copyToClipboard = (text, type) => {
     navigator.clipboard.writeText(text).then(() => {
-      setCopyStatus(type); // 'email' or 'phone' or 'address'
-      setTimeout(() => setCopyStatus(null), 2000); // Reset after 2 seconds
+      setCopyStatus(type);
+      setTimeout(() => setCopyStatus(null), 2000);
     });
   };
 
@@ -55,107 +68,172 @@ const Contact = () => {
 
       <div className="container contact-section fade-in-item is-visible">
         <div className="contact-grid">
-          {/* --- LEFT COLUMN: CONTACT INFO --- */}
+          {/* --- LEFT: INFO CARDS --- */}
           <div className="contact-info-wrapper">
             {/* Address Card */}
-            <div
+            <Card
               className="contact-card"
               onClick={() =>
                 copyToClipboard(
-                  "IIT Patna, Bihta, Patna – 801106, India",
+                  "Room No –210, 2nd Floor, Block 1, Dept. of HSS, IIT Patna, Bihta – 801106",
                   "address"
                 )
               }
               style={{ cursor: "pointer" }}
-              title="Click to copy address"
             >
               <div className="contact-icon">
-                <i className="fa-solid fa-map-location-dot"></i>
+                <i className="fa-solid fa-location-dot"></i>
               </div>
               <div className="contact-details">
-                <h4>Office Location</h4>
-                <p>
-                  Dept. of Humanities & Social Sciences,
+                <h4>Office Address</h4>
+                <p style={{ fontSize: "0.9rem", lineHeight: "1.6" }}>
+                  Room No –210, 2nd Floor, Block 1<br />
+                  Department of Humanities and Social Sciences
                   <br />
-                  <strong>Indian Institute of Technology Patna</strong>,<br />
+                  <strong>Indian Institute of Technology Patna</strong>
+                  <br />
                   Bihta, Patna – 801106, India
                 </p>
                 {copyStatus === "address" && (
                   <span
                     className="sub-text"
-                    style={{ color: "var(--color-accent)", fontWeight: "bold" }}
+                    style={{ color: "var(--color-accent)" }}
                   >
-                    Address Copied! <i className="fa-solid fa-check"></i>
+                    Address Copied!
                   </span>
                 )}
               </div>
-            </div>
+            </Card>
 
-            {/* Email Card */}
-            <div
-              className="contact-card"
-              onClick={() => copyToClipboard("nalinbharti@iitp.ac.in", "email")}
-              style={{ cursor: "pointer" }}
-              title="Click to copy email"
-            >
+            {/* Email Card (With Individual Copy Buttons) */}
+            <Card className="contact-card" style={{ cursor: "default" }}>
               <div className="contact-icon">
-                <i className="fa-solid fa-envelope-open-text"></i>
+                <i className="fa-solid fa-envelope"></i>
               </div>
-              <div className="contact-details">
-                <h4>Email Address</h4>
-                <span className="contact-link">nalinbharti@iitp.ac.in</span>
-                {copyStatus === "email" ? (
-                  <span
-                    className="sub-text"
-                    style={{ color: "var(--color-accent)", fontWeight: "bold" }}
+              <div className="contact-details" style={{ width: "100%" }}>
+                <h4>Email</h4>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "8px",
+                  }}
+                >
+                  {/* Email 1 */}
+                  <div
+                    className="email-row"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
                   >
-                    Copied! <i className="fa-solid fa-check"></i>
-                  </span>
-                ) : (
-                  <span className="sub-text">Click to copy</span>
-                )}
+                    <a
+                      href="mailto:nalinbharti@iitp.ac.in"
+                      className="contact-link"
+                    >
+                      nalinbharti@iitp.ac.in
+                    </a>
+                    <button
+                      className="btn-icon-only"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        copyToClipboard("nalinbharti@iitp.ac.in", "email1");
+                      }}
+                      title="Copy Email"
+                      style={{
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        color: copyStatus === "email1" ? "green" : "#999",
+                      }}
+                    >
+                      <i
+                        className={`fa-solid ${
+                          copyStatus === "email1" ? "fa-check" : "fa-copy"
+                        }`}
+                      ></i>
+                    </button>
+                  </div>
+
+                  {/* Email 2 */}
+                  <div
+                    className="email-row"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <a
+                      href="mailto:nalinbharti@gmail.com"
+                      className="contact-link"
+                    >
+                      nalinbharti@gmail.com
+                    </a>
+                    <button
+                      className="btn-icon-only"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        copyToClipboard("nalinbharti@gmail.com", "email2");
+                      }}
+                      title="Copy Email"
+                      style={{
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        color: copyStatus === "email2" ? "green" : "#999",
+                      }}
+                    >
+                      <i
+                        className={`fa-solid ${
+                          copyStatus === "email2" ? "fa-check" : "fa-copy"
+                        }`}
+                      ></i>
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
+            </Card>
 
             {/* Phone Card */}
-            <div
+            <Card
               className="contact-card"
-              onClick={() => copyToClipboard("+91-6115-233017", "phone")}
+              onClick={() => copyToClipboard("+916115233017", "phone")}
               style={{ cursor: "pointer" }}
-              title="Click to copy phone"
             >
               <div className="contact-icon">
-                <i className="fa-solid fa-phone-volume"></i>
+                <i className="fa-solid fa-phone"></i>
               </div>
               <div className="contact-details">
                 <h4>Phone</h4>
                 <span className="contact-link">+91-6115-233 017</span>
-                {copyStatus === "phone" ? (
+                <span className="sub-text">
+                  Office Hours: Mon-Fri, 9AM - 5PM
+                </span>
+                {copyStatus === "phone" && (
                   <span
                     className="sub-text"
-                    style={{ color: "var(--color-accent)", fontWeight: "bold" }}
+                    style={{ color: "var(--color-accent)" }}
                   >
-                    Copied! <i className="fa-solid fa-check"></i>
+                    Copied!
                   </span>
-                ) : (
-                  <span className="sub-text">Mon-Fri, 9am - 5pm IST</span>
                 )}
               </div>
-            </div>
+            </Card>
 
-            {/* Social Connect */}
-            <div
+            {/* Socials */}
+            <Card
               className="contact-card"
               style={{ borderLeft: "4px solid var(--color-accent)" }}
             >
               <div className="contact-details" style={{ width: "100%" }}>
-                <h4>Connect on Social Media</h4>
+                <h4>Social Profiles</h4>
                 <div className="social-row">
                   <a
                     href="https://www.linkedin.com/in/nalin-bharti-439b3815/"
                     target="_blank"
                     rel="noreferrer"
-                    aria-label="LinkedIn"
                   >
                     <i className="fa-brands fa-linkedin-in"></i>
                   </a>
@@ -163,7 +241,6 @@ const Contact = () => {
                     href="https://x.com/nalinbharti"
                     target="_blank"
                     rel="noreferrer"
-                    aria-label="Twitter"
                   >
                     <i className="fa-brands fa-x-twitter"></i>
                   </a>
@@ -171,7 +248,6 @@ const Contact = () => {
                     href="https://www.facebook.com/nalin.bharti"
                     target="_blank"
                     rel="noreferrer"
-                    aria-label="Facebook"
                   >
                     <i className="fa-brands fa-facebook-f"></i>
                   </a>
@@ -179,17 +255,16 @@ const Contact = () => {
                     href="https://www.researchgate.net/profile/Nalin-Bharti"
                     target="_blank"
                     rel="noreferrer"
-                    aria-label="ResearchGate"
                   >
                     <i className="fa-brands fa-researchgate"></i>
                   </a>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
 
-          {/* --- RIGHT COLUMN: CONTACT FORM --- */}
-          <div className="contact-form-wrapper fade-in-item is-visible">
+          {/* --- RIGHT: FORM CARD --- */}
+          <Card className="contact-form-wrapper">
             <h3>Send a Message</h3>
             <p
               style={{
@@ -198,8 +273,7 @@ const Contact = () => {
                 color: "var(--color-text-muted)",
               }}
             >
-              This form will open your default email client with the details
-              pre-filled.
+              Send a direct message via the website.
             </p>
 
             <form className="modern-form" onSubmit={handleSubmit}>
@@ -215,7 +289,6 @@ const Contact = () => {
                 />
                 <label htmlFor="name">Your Name</label>
               </div>
-
               <div className="form-group">
                 <input
                   type="email"
@@ -226,9 +299,8 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                 />
-                <label htmlFor="email">Your Email</label>
+                <label htmlFor="email">Email Address</label>
               </div>
-
               <div className="form-group">
                 <input
                   type="text"
@@ -241,7 +313,6 @@ const Contact = () => {
                 />
                 <label htmlFor="subject">Subject</label>
               </div>
-
               <div className="form-group">
                 <textarea
                   name="message"
@@ -255,29 +326,87 @@ const Contact = () => {
                 <label htmlFor="message">Message</label>
               </div>
 
-              <button type="submit" className="btn btn-accent submit-btn">
-                <i className="fa-regular fa-paper-plane"></i> Send via Email App
-              </button>
+              <div style={{ marginTop: "1rem" }}>
+                {formStatus === "success" ? (
+                  <div
+                    className="alert success"
+                    style={{
+                      color: "green",
+                      fontWeight: "bold",
+                      padding: "10px",
+                      background: "#f0fff4",
+                      borderRadius: "4px",
+                    }}
+                  >
+                    <i className="fa-solid fa-check-circle"></i> Message sent
+                    successfully!
+                  </div>
+                ) : formStatus === "error" ? (
+                  <div
+                    className="alert error"
+                    style={{
+                      color: "#c53030",
+                      fontWeight: "bold",
+                      padding: "10px",
+                      background: "#fff5f5",
+                      borderRadius: "4px",
+                    }}
+                  >
+                    <i className="fa-solid fa-circle-exclamation"></i> Error
+                    sending message. Please try again.
+                  </div>
+                ) : (
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    className="submit-btn"
+                    disabled={isSubmitting}
+                    style={{ opacity: isSubmitting ? 0.7 : 1, width: "100%" }}
+                  >
+                    {isSubmitting ? (
+                      <span>
+                        <i className="fa-solid fa-spinner fa-spin"></i>{" "}
+                        Sending...
+                      </span>
+                    ) : (
+                      <span>
+                        Send Message <i className="fa-solid fa-paper-plane"></i>
+                      </span>
+                    )}
+                  </Button>
+                )}
+              </div>
             </form>
-          </div>
+          </Card>
         </div>
       </div>
 
       {/* --- MAP SECTION --- */}
+      {/* Removed Card wrapper to eliminate the "box" look. Now it's a clean, full-width container. */}
       <div
-        className="map-section fade-in-item is-visible"
-        style={{ marginTop: "4rem" }}
+        className="container fade-in-item is-visible"
+        style={{ marginTop: "4rem", marginBottom: "4rem" }}
       >
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3600.3277762692225!2d84.84906931501254!3d25.53578798373981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed577f6954af4b%3A0x133d3c73400e947d!2sIndian%20Institute%20of%20Technology%20Patna!5e0!3m2!1sen!2sin!4v1625227743210!5m2!1sen!2sin"
-          width="100%"
-          height="450"
-          style={{ border: 0 }}
-          allowFullScreen=""
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="IIT Patna Map"
-        ></iframe>
+        <div
+          style={{
+            width: "100%",
+            height: "450px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            border: "1px solid var(--color-border)",
+          }}
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7200.187795165745!2d84.849425!3d25.535249!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed577f6954a4ab%3A0x6ce8f1b9fc2aa02a!2sIndian%20Institute%20of%20Technology%2C%20Patna!5e0!3m2!1sen!2sin!4v1768570338455!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="IIT Patna Map"
+          ></iframe>
+        </div>
       </div>
     </>
   );

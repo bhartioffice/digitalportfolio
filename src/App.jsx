@@ -15,7 +15,6 @@ const Publications = lazy(() => import("./pages/Publications"));
 const People = lazy(() => import("./pages/People"));
 const Awards = lazy(() => import("./pages/Awards"));
 const Contact = lazy(() => import("./pages/Contact"));
-const NotFound = lazy(() => import("./pages/NotFound"));
 
 // --- LOADING SPINNER COMPONENT ---
 const PageLoader = () => (
@@ -48,7 +47,6 @@ function App() {
             <Route path="/people" element={<People />} />
             <Route path="/awards" element={<Awards />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>

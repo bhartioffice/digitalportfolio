@@ -7,9 +7,8 @@ import { awardsData, mediaData, galleryImages } from "../data/awardsData";
 
 const Awards = () => {
   const [activeTab, setActiveTab] = useState("awards-honors");
-  const [lightboxImage, setLightboxImage] = useState(null); // State for the full-screen image
+  const [lightboxImage, setLightboxImage] = useState(null);
 
-  // Helper function to close lightbox
   const closeLightbox = () => setLightboxImage(null);
 
   return (
@@ -62,7 +61,7 @@ const Awards = () => {
               <Card
                 key={award.id}
                 className="award-item"
-                style={{ padding: "2rem" }} // Ensure consistent padding
+                style={{ padding: "2rem", opacity: 1, transform: "none" }} // Force visible
               >
                 <div className="award-icon">
                   <i className={`fa-solid ${award.icon}`}></i>
@@ -82,7 +81,7 @@ const Awards = () => {
       )}
 
       {/* =========================================================
-          TAB 2: MEDIA COVERAGE
+          TAB 2: MEDIA COVERAGE (UPDATED WITH VIDEO SUPPORT)
       ========================================================= */}
       {activeTab === "media-coverage" && (
         <section className="tab-content container active">
@@ -91,27 +90,55 @@ const Awards = () => {
               <Card
                 key={media.id}
                 className="media-card"
-                style={{ padding: 0 }} // Remove padding for full-bleed image
+                style={{ padding: 0, opacity: 1, transform: "none" }} // Force visible & remove padding
               >
-                <div className="media-img-wrapper">
-                  <img
-                    src={media.img}
-                    alt={media.title}
-                    loading="lazy"
-                    onError={(e) =>
-                      (e.target.src =
-                        "https://placehold.co/600x400?text=News+Clip")
-                    }
-                  />
-                  <div className="media-overlay">
-                    <i className="fa-solid fa-newspaper"></i>
-                  </div>
+                <div
+                  className="media-img-wrapper"
+                  style={{ height: "225px", overflow: "hidden" }}
+                >
+                  {media.type === "video" ? (
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${media.videoId}`}
+                      title={media.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      style={{ border: "none" }}
+                    ></iframe>
+                  ) : (
+                    <>
+                      <img
+                        src={media.img}
+                        alt={media.title}
+                        loading="lazy"
+                        onError={(e) =>
+                          (e.target.src =
+                            "https://placehold.co/600x400?text=News+Clip")
+                        }
+                      />
+                      <div className="media-overlay">
+                        <i className="fa-solid fa-newspaper"></i>
+                      </div>
+                    </>
+                  )}
                 </div>
                 <div className="media-content">
-                  <span className="media-date">
+                  <span
+                    className={`media-date ${
+                      media.type === "video" ? "video-tag" : ""
+                    }`}
+                  >
+                    {media.type === "video" && (
+                      <i
+                        className="fa-brands fa-youtube"
+                        style={{ color: "#ff0000", marginRight: "5px" }}
+                      ></i>
+                    )}
                     {media.date} | {media.outlet}
                   </span>
-                  <h4>{media.title}</h4>
+                  <h4 style={{ marginTop: "0.5rem" }}>{media.title}</h4>
                   <p>{media.desc}</p>
                 </div>
               </Card>
@@ -130,6 +157,7 @@ const Awards = () => {
               <div
                 key={index}
                 className="gallery-item"
+                style={{ opacity: 1, transform: "none" }} // Force visible
                 onClick={() => setLightboxImage(photo)}
               >
                 <div className="g-img-container">
