@@ -7,7 +7,8 @@ import "./assets/styles.css";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  // 👇 THIS IS THE FIX. It automatically reads the path from your vite.config.js
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
     <App />
   </BrowserRouter>
 );

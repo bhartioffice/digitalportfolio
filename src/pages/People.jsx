@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button"; // Kept for consistency if needed later
 import "./People.css";
+import Img from "../components/Img";
 
 // Import extracted data
 import {
@@ -85,7 +86,7 @@ const People = () => {
 
                 <div className="person-header">
                   <div className="person-img">
-                    <img
+                    <Img
                       src={student.img}
                       alt={student.name}
                       loading="lazy"
@@ -153,7 +154,7 @@ const People = () => {
 
                 <div className="person-header">
                   <div className="person-img">
-                    <img
+                    <Img
                       src={alum.img}
                       alt={alum.name}
                       loading="lazy"
@@ -228,7 +229,7 @@ const People = () => {
 
                 <div className="person-header">
                   <div className="person-img">
-                    <img
+                    <Img
                       src={staff.img}
                       alt={staff.name}
                       loading="lazy"
@@ -285,7 +286,7 @@ const People = () => {
                     className="person-img"
                     style={{ width: "100px", height: "100px" }}
                   >
-                    <img
+                    <Img
                       src={intern.img}
                       alt={intern.name}
                       loading="lazy"

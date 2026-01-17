@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
 import "./Research.css";
+import Img from "../components/Img";
 
 // Import extracted data
 import {
@@ -190,7 +191,7 @@ const Research = () => {
             {/* REMOVED fade-in classes */}
             {collaborations.map((collab, index) => (
               <div className="collab-item" key={index}>
-                <img
+                <Img
                   src={`https://flagcdn.com/${
                     collab.country === "United Kingdom"
                       ? "gb"
@@ -259,7 +260,7 @@ const Research = () => {
                 key={course.id}
               >
                 <div className="nc-img">
-                  <img src={course.image} alt={course.title} />
+                  <Img src={course.image} alt={course.title} />
                   <span className="nc-badge">{course.duration}</span>
                 </div>
                 <div className="nc-content">

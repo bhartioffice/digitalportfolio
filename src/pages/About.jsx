@@ -1,5 +1,6 @@
 import React from "react";
 import "./About.css";
+import Img from "../components/Img";
 
 const About = () => {
   return (
@@ -35,7 +36,7 @@ const About = () => {
           <div className="about-image-wrapper">
             <div className="image-frame">
               {/* FIXED IMAGE PATH */}
-              <img
+              <Img
                 src="/Photos/photos%20of%20nalin%20sir/profile-photo.webp"
                 alt="Professor Nalin Bharti"
                 className="profile-img"

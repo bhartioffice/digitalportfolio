@@ -5,7 +5,6 @@ import "./Home.css";
 import Hero from "../components/Hero";
 import Stats from "../components/Stats";
 import Highlights from "../components/Highlights";
-import ImmersiveBanner from "../components/ImmersiveBanner";
 import Reviewers from "../components/Reviewers";
 import Updates from "../components/Updates";
 
@@ -19,11 +18,6 @@ const Home = () => {
       <Hero />
       <Stats />
       <Highlights />
-
-      {/* --- Immersive Photo Section --- */}
-      <ImmersiveBanner imagePath={bannerImage} altText="IIT Patna Campus" />
-      {/* ------------------------------- */}
-
       <Reviewers />
       <Updates />
     </>

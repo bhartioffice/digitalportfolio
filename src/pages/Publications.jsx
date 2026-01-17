@@ -2,7 +2,9 @@ import React, { useState, useMemo } from "react";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
 import "./Publications.css";
+import Img from "../components/Img";
 
+// Import extracted data
 import {
   booksData,
   chaptersData,
@@ -16,6 +18,7 @@ const Publications = () => {
   const [activeFilters, setActiveFilters] = useState([]);
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
 
+  // --- SEARCH LOGIC ---
   const allData = useMemo(() => {
     return [
       ...booksData.map((d) => ({ ...d, category: "Book" })),
@@ -140,7 +143,7 @@ const Publications = () => {
         </div>
       </div>
 
-      {/* --- RESULTS OR TABS --- */}
+      {/* --- CONTENT AREA (Search Results OR Tabs) --- */}
       {searchQuery || activeFilters.length > 0 ? (
         <div className="container" style={{ display: "block" }}>
           <div
@@ -155,7 +158,7 @@ const Publications = () => {
               Search Results ({filteredResults.length})
             </h3>
 
-            {/* "Clear All" logic vs "Back" */}
+            {/* "Reset All" logic */}
             <Button variant="text" onClick={resetAll} className="text-sm">
               <i className="fa-solid fa-rotate-left"></i> Reset All
             </Button>
@@ -166,7 +169,7 @@ const Publications = () => {
               <Card
                 key={item.id}
                 className={`is-search-result search-result-${item.category}`}
-                style={{ opacity: 1, transform: "none" }}
+                style={{ opacity: 1, transform: "none" }} // FORCE VISIBILITY
               >
                 <span className="source-tag">{item.category}</span>
                 <h5>{item.title}</h5>
@@ -200,7 +203,7 @@ const Publications = () => {
           )}
         </div>
       ) : (
-        /* --- NORMAL TABS VIEW (Keep content exactly as before) --- */
+        /* --- NORMAL TABS VIEW --- */
         <>
           <div className="container fade-in-item is-visible">
             <div className="tabs-wrapper">
@@ -220,7 +223,6 @@ const Publications = () => {
             </div>
           </div>
 
-          {/* ... (Keep Tabs Content: Books, Chapters, etc. - Use the exact forced-visibility code from previous step) ... */}
           {/* TAB 1: BOOKS */}
           {activeTab === "books" && (
             <section className="tab-content container active">
@@ -237,9 +239,10 @@ const Publications = () => {
                   >
                     <div className="book-cover-container">
                       <div className="book-cover-3d">
-                        <img
+                        <Img
                           src={book.img}
                           alt={book.title}
+                          loading="lazy"
                           onError={(e) =>
                             (e.target.src =
                               "https://placehold.co/300x450?text=Cover")
@@ -260,7 +263,8 @@ const Publications = () => {
                             href={book.link}
                             target="_blank"
                           >
-                            View Book
+                            View Book{" "}
+                            <i className="fa-solid fa-arrow-right"></i>
                           </Button>
                         ) : null}
                       </div>
@@ -270,8 +274,52 @@ const Publications = () => {
               </div>
             </section>
           )}
-          {/* Include other tabs (Chapters, Articles, Conferences) similarly... */}
-          {/* For brevity, assume the remaining tabs are included as per previous fix */}
+
+          {/* TAB 2: CHAPTERS */}
+          {activeTab === "chapters" && (
+            <section className="tab-content container active">
+              <div className="chapter-grid">
+                {chaptersData.map((chap) => (
+                  <Card
+                    key={chap.id}
+                    className="chapter-card"
+                    style={{ opacity: 1, transform: "none" }}
+                  >
+                    <div className="chapter-img">
+                      <Img
+                        src={chap.img}
+                        alt="Cover"
+                        loading="lazy"
+                        onError={(e) =>
+                          (e.target.src =
+                            "https://placehold.co/150x220?text=Chapter")
+                        }
+                      />
+                    </div>
+                    <div className="chapter-content">
+                      <span className="pub-year-badge">{chap.year}</span>
+                      <h5>{chap.title}</h5>
+                      <p>
+                        In <em>"{chap.book}"</em>
+                      </p>
+                      {chap.link && chap.link !== "#" && (
+                        <Button
+                          variant="text"
+                          href={chap.link}
+                          target="_blank"
+                          className="journal-link"
+                        >
+                          View Chapter{" "}
+                          <i className="fa-solid fa-arrow-right"></i>
+                        </Button>
+                      )}
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* TAB 3: ARTICLES */}
           {activeTab === "articles" && (
             <section className="tab-content container active">
@@ -292,7 +340,15 @@ const Publications = () => {
                       <h5>{art.title}</h5>
                       <p dangerouslySetInnerHTML={{ __html: art.journal }}></p>
                       <span className="pub-authors">{art.authors}</span>
-                      <div style={{ marginTop: "auto", paddingTop: "1rem" }}>
+                      <div
+                        style={{
+                          marginTop: "auto",
+                          paddingTop: "1rem",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}
+                      >
                         {art.link && art.link !== "#" ? (
                           <Button
                             variant="text"
@@ -300,12 +356,13 @@ const Publications = () => {
                             target="_blank"
                             className="journal-link"
                           >
-                            View Publication
+                            View Publication{" "}
+                            <i className="fa-solid fa-arrow-right"></i>
                           </Button>
                         ) : (
                           <span
                             className="journal-link"
-                            style={{ color: "#999" }}
+                            style={{ color: "#999", cursor: "default" }}
                           >
                             Link N/A
                           </span>
@@ -317,6 +374,7 @@ const Publications = () => {
               </div>
             </section>
           )}
+
           {/* TAB 4: CONFERENCES */}
           {activeTab === "conferences" && (
             <section className="tab-content container active">
@@ -328,7 +386,9 @@ const Publications = () => {
                   return (
                     <React.Fragment key={conf.id}>
                       {showYear && (
-                        <div className="timeline-year-marker">{conf.year}</div>
+                        <div className="timeline-year-marker fade-in-item is-visible">
+                          {conf.year}
+                        </div>
                       )}
                       <div
                         className="timeline-item"
@@ -348,16 +408,38 @@ const Publications = () => {
                             >
                               {conf.tag}
                             </span>
+                            {conf.extraTag && (
+                              <span
+                                className={`tag ${
+                                  conf.extraTag.includes("Poster")
+                                    ? "poster"
+                                    : conf.extraTag.includes("Plenary")
+                                    ? "plenary"
+                                    : "vc"
+                                }`}
+                                style={{ marginLeft: "5px" }}
+                              >
+                                {conf.extraTag}
+                              </span>
+                            )}
                           </div>
                           <h5>{conf.title}</h5>
                           <p className="tl-venue">
                             <i className="fa-solid fa-landmark"></i>{" "}
                             {conf.venue}
                           </p>
+                          {conf.assoc && (
+                            <div className="tl-assoc">
+                              <strong>Note:</strong> {conf.assoc}
+                            </div>
+                          )}
                           <p className="tl-meta">
                             <i className="fa-regular fa-calendar"></i>{" "}
-                            {conf.date}
+                            {conf.date} &nbsp;|&nbsp;
+                            <i className="fa-solid fa-location-dot"></i>{" "}
+                            {conf.location}
                           </p>
+                          <p className="tl-authors">{conf.authors}</p>
                         </Card>
                       </div>
                     </React.Fragment>

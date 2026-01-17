@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "../components/ui/Card";
 import "./Awards.css";
+import Img from "../components/Img";
 
 // Import extracted data
 import { awardsData, mediaData, galleryImages } from "../data/awardsData";
@@ -109,7 +110,7 @@ const Awards = () => {
                     ></iframe>
                   ) : (
                     <>
-                      <img
+                      <Img
                         src={media.img}
                         alt={media.title}
                         loading="lazy"
@@ -161,7 +162,7 @@ const Awards = () => {
                 onClick={() => setLightboxImage(photo)}
               >
                 <div className="g-img-container">
-                  <img
+                  <Img
                     src={photo.src}
                     alt={photo.alt}
                     loading="lazy"
@@ -191,7 +192,7 @@ const Awards = () => {
             <button className="lightbox-close" onClick={closeLightbox}>
               <i className="fa-solid fa-xmark"></i>
             </button>
-            <img src={lightboxImage.src} alt={lightboxImage.alt} />
+            <Img src={lightboxImage.src} alt={lightboxImage.alt} />
             {lightboxImage.alt && (
               <div className="lightbox-caption">{lightboxImage.alt}</div>
             )}

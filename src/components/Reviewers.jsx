@@ -1,4 +1,5 @@
 import React from "react";
+import Img from "../components/Img";
 
 const Reviewers = () => {
   // List of logos (filenames based on your folder structure)
@@ -20,7 +21,7 @@ const Reviewers = () => {
           <div className="logo-track">
             {/* Render logos once */}
             {logos.map((logo, index) => (
-              <img
+              <Img
                 key={`logo-${index}`}
                 src={`/Photos/logos/${logo}`}
                 alt="Journal Logo"
@@ -29,7 +30,7 @@ const Reviewers = () => {
             ))}
             {/* Render logos again to create the seamless loop effect */}
             {logos.map((logo, index) => (
-              <img
+              <Img
                 key={`logo-dup-${index}`}
                 src={`/Photos/logos/${logo}`}
                 alt="Journal Logo"
