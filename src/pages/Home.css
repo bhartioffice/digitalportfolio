@@ -285,7 +285,7 @@
 }
 
 .metric-card {
-  background: var(--color-bg);
+  background: var(--color-bg-card); /* NOT var(--color-bg) */
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: var(--shadow-lg);
@@ -313,7 +313,7 @@
 /* --- HIGHLIGHTS SECTION --- */
 .highlights-section {
   padding: 8rem 0;
-  background: var(--color-bg);
+  background: var(--color-bg-card); /* NOT var(--color-bg) */
 }
 
 .highlights-grid {
@@ -340,7 +340,7 @@
 .highlight-icon-box {
   width: 50px;
   height: 50px;
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-card); /* NOT var(--color-bg) */
   color: var(--color-primary);
   border-radius: 8px;
   font-size: 1.5rem;

@@ -72,7 +72,14 @@
   transform: rotateY(180deg);
 }
 
-.flip-front,
+.flip-front {
+  /* CHANGE THIS to White */
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+
+  /* Add shadow for depth */
+  box-shadow: var(--shadow-card);
+}
 .flip-back {
   position: absolute;
   width: 100%;
@@ -124,13 +131,18 @@
 }
 
 .project-card {
-  background: var(--color-bg);
+  /* CHANGE THIS to White */
+  background: var(--color-bg-card);
+
   border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 1.5rem;
   transition: 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
+
+  /* Add consistent shadow */
+  box-shadow: var(--shadow-card);
 }
 
 .project-card.featured {
@@ -196,12 +208,16 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: var(--color-bg);
+
+  /* CHANGE THIS to White */
+  background: var(--color-bg-card);
+
   padding: 1.2rem;
   border-radius: 10px;
   border: 1px solid var(--color-border);
   border-left: 4px solid var(--color-bg-secondary);
   transition: 0.3s;
+  box-shadow: var(--shadow-card);
 }
 
 .review-card:hover {
@@ -233,11 +249,15 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: var(--color-bg);
+
+  /* CHANGE THIS to White */
+  background: var(--color-bg-card);
+
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid var(--color-border);
   transition: 0.3s;
+  box-shadow: var(--shadow-card);
 }
 
 .collab-item:hover {
@@ -300,11 +320,12 @@
 
 .nptel-compact {
   display: flex;
-  background: var(--color-bg);
+  background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: 12px;
   overflow: hidden;
   transition: 0.5s;
+  box-shadow: var(--shadow-card);
 }
 
 .nptel-compact:hover {
@@ -550,13 +571,14 @@
 .service-card {
   display: flex;
   gap: 1.5rem;
-  background: var(--color-bg);
+  background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 1.5rem;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
 .service-card:hover {
