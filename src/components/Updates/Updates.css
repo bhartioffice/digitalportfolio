@@ -1,0 +1,107 @@
+/* =============================================================
+   UPDATES COMPONENT CSS – Mobile First
+============================================================= */
+
+/* -------- SECTION WRAPPER -------- */
+.updates-section {
+  padding: 3rem 1rem;
+  background: var(--color-bg);
+}
+
+/* -------- GRID LAYOUT -------- */
+.updates-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+/* -------- CARD LIST -------- */
+.card-list {
+  display: grid;
+  gap: 1rem;
+}
+
+/* -------- CARD STYLE -------- */
+.update-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.3s ease;
+}
+
+.update-card:hover {
+  transform: translateY(-3px);
+}
+
+/* -------- HEADER AREA -------- */
+.update-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.update-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.update-date {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* -------- BODY -------- */
+.update-body {
+  font-size: 0.9rem;
+  color: var(--color-text-main);
+  line-height: 1.6;
+}
+
+/* =============================================================
+   RESPONSIVE BREAKPOINTS
+============================================================= */
+
+/* ---- TABLETS ---- */
+@media (min-width: 768px) {
+  .updates-section {
+    padding: 4rem 2rem;
+  }
+
+  .updates-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .update-card {
+    padding: 1.75rem;
+  }
+}
+
+/* ---- LAPTOPS ---- */
+@media (min-width: 1024px) {
+  .updates-section {
+    padding: 5rem 3rem;
+  }
+
+  .updates-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+
+  .update-title {
+    font-size: 1.05rem;
+  }
+}
+
+/* ---- LARGE SCREENS ---- */
+@media (min-width: 1280px) {
+  .updates-section {
+    padding: 6rem 4rem;
+  }
+
+  .update-card {
+    padding: 2rem;
+  }
+}

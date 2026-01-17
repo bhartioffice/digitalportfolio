@@ -1,0 +1,101 @@
+/* =============================================================
+   STATS COMPONENT CSS – Mobile First
+============================================================= */
+
+/* -------- SECTION WRAPPER -------- */
+.metrics-section {
+  padding: 3rem 1rem;
+  background: var(--color-bg-secondary);
+}
+
+/* -------- GRID LAYOUT -------- */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* -------- CARD STYLE -------- */
+.metric-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.3s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+}
+
+/* -------- ICON -------- */
+.metric-icon {
+  font-size: 2rem;
+  color: var(--color-primary);
+  opacity: 0.9;
+}
+
+/* -------- TEXT -------- */
+.metric-data {
+  text-align: left;
+}
+
+.metric-data h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.2rem;
+}
+
+.metric-data p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* =============================================================
+   RESPONSIVE BREAKPOINTS
+============================================================= */
+
+/* ---- TABLETS ---- */
+@media (min-width: 768px) {
+  .metrics-section {
+    padding: 4rem 2rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .metric-card {
+    padding: 1.75rem;
+  }
+}
+
+/* ---- LAPTOPS ---- */
+@media (min-width: 1024px) {
+  .metrics-section {
+    padding: 5rem 3rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .metric-data h3 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ---- LARGE SCREENS ---- */
+@media (min-width: 1280px) {
+  .metrics-section {
+    padding: 6rem 4rem;
+  }
+
+  .metric-card {
+    padding: 2rem;
+  }
+}

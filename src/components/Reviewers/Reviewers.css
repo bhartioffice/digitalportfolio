@@ -1,0 +1,101 @@
+/* =============================================================
+   REVIEWERS COMPONENT CSS – Mobile First
+============================================================= */
+
+/* -------- SECTION WRAPPER -------- */
+.reviewers-section {
+  padding: 3rem 1rem;
+  background: var(--color-bg-secondary);
+}
+
+/* -------- GRID LAYOUT -------- */
+.reviewers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+/* -------- CARD STYLE -------- */
+.reviewer-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.3s ease;
+}
+
+.reviewer-card:hover {
+  transform: translateY(-3px);
+}
+
+/* -------- HEADER AREA -------- */
+.reviewer-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.reviewer-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.reviewer-affiliation {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* -------- META INFO -------- */
+.reviewer-meta {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* =============================================================
+   RESPONSIVE BREAKPOINTS
+============================================================= */
+
+/* ---- TABLETS ---- */
+@media (min-width: 768px) {
+  .reviewers-section {
+    padding: 4rem 2rem;
+  }
+
+  .reviewers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .reviewer-card {
+    padding: 1.75rem;
+  }
+}
+
+/* ---- LAPTOPS ---- */
+@media (min-width: 1024px) {
+  .reviewers-section {
+    padding: 5rem 3rem;
+  }
+
+  .reviewers-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+
+  .reviewer-name {
+    font-size: 1.05rem;
+  }
+}
+
+/* ---- LARGE SCREENS ---- */
+@media (min-width: 1280px) {
+  .reviewers-section {
+    padding: 6rem 4rem;
+  }
+
+  .reviewer-card {
+    padding: 2rem;
+  }
+}

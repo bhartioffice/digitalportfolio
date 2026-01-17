@@ -1,6 +1,7 @@
+import "./Hero.css";
 import React from "react";
 import { Link } from "react-router-dom";
-import Typewriter from "./Typewriter";
+import Typewriter from "../Typewriter";
 
 const Hero = () => {
   return (

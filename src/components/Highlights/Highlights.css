@@ -1,0 +1,98 @@
+/* =============================================================
+   HIGHLIGHTS COMPONENT CSS – Mobile First
+============================================================= */
+
+/* -------- SECTION WRAPPER -------- */
+.highlights-section {
+  padding: 3rem 1rem;
+  background: var(--color-bg);
+}
+
+/* -------- GRID LAYOUT -------- */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+/* -------- CARD STYLE -------- */
+.highlight-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-3px);
+}
+
+/* -------- ICON -------- */
+.highlight-icon {
+  font-size: 1.8rem;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* -------- TEXT CONTENT -------- */
+.highlight-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.highlight-content p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* =============================================================
+   RESPONSIVE BREAKPOINTS
+============================================================= */
+
+/* ---- TABLETS ---- */
+@media (min-width: 768px) {
+  .highlights-section {
+    padding: 4rem 2rem;
+  }
+
+  .highlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .highlight-card {
+    padding: 1.75rem;
+  }
+}
+
+/* ---- LAPTOPS ---- */
+@media (min-width: 1024px) {
+  .highlights-section {
+    padding: 5rem 3rem;
+  }
+
+  .highlights-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+
+  .highlight-content h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* ---- LARGE SCREENS ---- */
+@media (min-width: 1280px) {
+  .highlights-section {
+    padding: 6rem 4rem;
+  }
+
+  .highlight-card {
+    padding: 2rem;
+  }
+}

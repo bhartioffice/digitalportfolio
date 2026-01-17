@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      var segmentCount = 1;
+      var l = window.location;
+      var repo = "/v1profile";
+      var path = l.pathname.slice(repo.length);
+      l.replace(repo + "/?p=" + path + l.search + l.hash);
+    </script>
+  </head>
+  <body></body>
+</html>

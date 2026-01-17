@@ -1,5 +1,6 @@
+import "./Reviewers.css";
 import React from "react";
-import Img from "../components/Img";
+import Img from "../Img";
 
 const Reviewers = () => {
   // List of logos (filenames based on your folder structure)

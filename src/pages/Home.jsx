@@ -1,26 +1,21 @@
 import React from "react";
 import "./Home.css";
 
-// Import all your components
-import Hero from "../components/Hero";
-import Stats from "../components/Stats";
-import Highlights from "../components/Highlights";
-import Reviewers from "../components/Reviewers";
-import Updates from "../components/Updates";
+import Hero from "../components/Hero/Hero";
+import Stats from "../components/Stats/Stats";
+import Highlights from "../components/Highlights/Highlights";
+import Reviewers from "../components/Reviewers/Reviewers";
+import Updates from "../components/Updates/Updates";
 
 const Home = () => {
-  // CORRECT PATH: Points to public/Photos/gallery/iit patna.jpg
-  // Note: We use '%20' to represent the space in the filename safely
-  const bannerImage = "/Photos/gallery/iit%20patna.jpg";
-
   return (
-    <>
+    <div className="home-page">
       <Hero />
       <Stats />
       <Highlights />
       <Reviewers />
       <Updates />
-    </>
+    </div>
   );
 };
 

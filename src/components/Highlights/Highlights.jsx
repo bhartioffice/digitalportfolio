@@ -1,3 +1,4 @@
+import "./Highlights.css";
 import React from "react";
 
 const Highlights = () => {
