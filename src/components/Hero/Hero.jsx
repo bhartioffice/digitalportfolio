@@ -1,12 +1,14 @@
+// src/components/Hero/Hero.jsx
 import "./Hero.css";
 import React from "react";
-import { Link } from "react-router-dom";
 import Typewriter from "../Typewriter";
+import Img from "../Img";
 
 const Hero = () => {
   return (
     <section className="hero-banner" id="home">
       <div className="container hero-container-flex">
+        {/* TEXT CONTENT */}
         <div className="hero-text fade-in-item is-visible">
           <h1 className="hero-name spacer-bottom-sm">Prof. Nalin Bharti</h1>
           <p className="hero-tagline">
@@ -38,8 +40,15 @@ const Hero = () => {
             </p>
           </div>
 
-          <Typewriter />
+          {/* --- EXPERT BOX (ONLY ONE INSTANCE) --- */}
+          <div className="expert-box-container fade-in-item is-visible">
+            <div className="expert-box">
+              <span className="expert-label">Expert in:</span>
+              <Typewriter />
+            </div>
+          </div>
 
+          {/* RESEARCHER IDs */}
           <div className="researcher-ids spacer-bottom-md">
             <a
               href="https://www.researchgate.net/profile/Nalin-Bharti"
@@ -96,11 +105,11 @@ const Hero = () => {
           </div>
         </div>
 
+        {/* IMAGE */}
         <div className="hero-image fade-in-item is-visible">
           <div className="image-frame">
-            {/* Note: Ensure this path matches where you put the image in public/ */}
-            <img
-              src=".\Photos\photos of nalin sir"
+            <Img
+              src="/Photos/photos of nalin sir/sirphoto.jpg"
               alt="Prof. Nalin Bharti"
               className="hero-profile-img"
               loading="lazy"

@@ -1,3 +1,4 @@
+// src/components/Typewriter.jsx
 import React, { useState, useEffect } from "react";
 
 const Typewriter = () => {
@@ -16,20 +17,17 @@ const Typewriter = () => {
 
   // Typing Logic
   useEffect(() => {
-    // If finished typing the word
     if (subIndex === words[index].length + 1 && !reverse) {
-      const timeout = setTimeout(() => setReverse(true), 2000); // Wait 2s before deleting
+      const timeout = setTimeout(() => setReverse(true), 2000);
       return () => clearTimeout(timeout);
     }
 
-    // If finished deleting the word
     if (subIndex === 0 && reverse) {
       setReverse(false);
-      setIndex((prev) => (prev + 1) % words.length); // Move to next word
+      setIndex((prev) => (prev + 1) % words.length);
       return;
     }
 
-    // Typing speed (100ms) vs Deleting speed (50ms)
     const timeout = setTimeout(
       () => {
         setSubIndex((prev) => prev + (reverse ? -1 : 1));
@@ -40,15 +38,12 @@ const Typewriter = () => {
     return () => clearTimeout(timeout);
   }, [subIndex, index, reverse, words]);
 
+  // RETURN ONLY THE TEXT SPAN, NO WRAPPER DIVS
   return (
-    <div
-      className="expert-box fade-in-item is-visible"
-      style={{ marginTop: "2.5rem", display: "inline-block" }}
-    >
-      <span className="expert-label">EXPERT IN:</span>
-      <span className="typewriter">{words[index].substring(0, subIndex)}</span>
+    <span className="typewriter">
+      {words[index].substring(0, subIndex)}
       <span className="cursor">|</span>
-    </div>
+    </span>
   );
 };
 

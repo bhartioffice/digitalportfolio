@@ -1,0 +1,46 @@
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+  background: var(--color-accent); /* Ensure this color variable exists! */
+  color: var(--color-primary);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  /* Hiding/Showing States */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: 0.3s ease;
+
+  /* Make sure this is higher than your Navbar/Footer */
+  z-index: 9999;
+}
+
+#back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#back-to-top:hover {
+  background: var(--color-primary);
+  color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+/* Mobile Specific Adjustments */
+@media (max-width: 768px) {
+  #back-to-top {
+    width: 45px;
+    height: 45px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1rem;
+  }
+}

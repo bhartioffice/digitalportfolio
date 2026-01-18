@@ -1,101 +1,67 @@
-/* =============================================================
-   STATS COMPONENT CSS – Mobile First
-============================================================= */
+/* src/components/Stats/Stats.css */
 
-/* -------- SECTION WRAPPER -------- */
 .metrics-section {
-  padding: 3rem 1rem;
-  background: var(--color-bg-secondary);
+  padding: 5rem 0;
+  background: var(--color-bg);
+  position: relative;
+  z-index: 10;
+  margin-top: -3rem; /* Overlap effect if desired, otherwise 0 */
 }
 
-/* -------- GRID LAYOUT -------- */
 .metrics-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
 }
 
-/* -------- CARD STYLE -------- */
 .metric-card {
   background: #ffffff;
+  padding: 2rem;
   border-radius: 12px;
-  padding: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  box-shadow: var(--shadow-lg);
-  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  border: 1px solid var(--color-border);
+  transition: 0.3s ease;
 }
 
 .metric-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-accent);
 }
 
-/* -------- ICON -------- */
 .metric-icon {
   font-size: 2rem;
   color: var(--color-primary);
-  opacity: 0.9;
+  background: var(--color-accent-bg);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  transition: 0.3s;
 }
 
-/* -------- TEXT -------- */
-.metric-data {
-  text-align: left;
+.metric-card:hover .metric-icon {
+  background: var(--color-primary);
+  color: var(--color-accent);
 }
 
 .metric-data h3 {
-  font-size: 1.6rem;
-  margin-bottom: 0.2rem;
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  font-family: var(--font-body); /* Numbers usually look better in sans-serif */
 }
 
 .metric-data p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--color-text-muted);
-}
-
-/* =============================================================
-   RESPONSIVE BREAKPOINTS
-============================================================= */
-
-/* ---- TABLETS ---- */
-@media (min-width: 768px) {
-  .metrics-section {
-    padding: 4rem 2rem;
-  }
-
-  .metrics-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
-  .metric-card {
-    padding: 1.75rem;
-  }
-}
-
-/* ---- LAPTOPS ---- */
-@media (min-width: 1024px) {
-  .metrics-section {
-    padding: 5rem 3rem;
-  }
-
-  .metrics-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-  }
-
-  .metric-data h3 {
-    font-size: 1.8rem;
-  }
-}
-
-/* ---- LARGE SCREENS ---- */
-@media (min-width: 1280px) {
-  .metrics-section {
-    padding: 6rem 4rem;
-  }
-
-  .metric-card {
-    padding: 2rem;
-  }
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
 }

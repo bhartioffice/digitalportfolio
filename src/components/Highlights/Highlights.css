@@ -1,98 +1,86 @@
-/* =============================================================
-   HIGHLIGHTS COMPONENT CSS – Mobile First
-============================================================= */
+/* src/components/Highlights/Highlights.css */
 
-/* -------- SECTION WRAPPER -------- */
 .highlights-section {
-  padding: 3rem 1rem;
+  padding: 6rem 0;
   background: var(--color-bg);
 }
 
-/* -------- GRID LAYOUT -------- */
-.highlights-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
+.highlights-section h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: var(--h2-size);
 }
 
-/* -------- CARD STYLE -------- */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
 .highlight-card {
   background: #ffffff;
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2.5rem;
+  transition: 0.4s ease;
+  position: relative;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
   align-items: flex-start;
-  box-shadow: var(--shadow-lg);
-  transition: transform 0.3s ease;
+  height: 100%;
 }
 
 .highlight-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-accent);
+  border-left: 6px solid var(--color-accent); /* The signature accent border */
 }
 
-/* -------- ICON -------- */
-.highlight-icon {
-  font-size: 1.8rem;
+.highlight-icon-box {
+  width: 60px;
+  height: 60px;
+  background: var(--color-accent-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
   color: var(--color-accent);
-  flex-shrink: 0;
-  margin-top: 4px;
+  font-size: 1.5rem;
+  transition: 0.3s;
 }
 
-/* -------- TEXT CONTENT -------- */
-.highlight-content h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
+.highlight-card:hover .highlight-icon-box {
+  background: var(--color-primary);
+  color: #fff;
 }
 
-.highlight-content p {
-  font-size: 0.9rem;
+.highlight-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+}
+
+.highlight-card p {
   color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
-/* =============================================================
-   RESPONSIVE BREAKPOINTS
-============================================================= */
-
-/* ---- TABLETS ---- */
-@media (min-width: 768px) {
-  .highlights-section {
-    padding: 4rem 2rem;
-  }
-
-  .highlights-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .highlight-card {
-    padding: 1.75rem;
-  }
+.highlight-link {
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+  font-size: 0.9rem;
 }
 
-/* ---- LAPTOPS ---- */
-@media (min-width: 1024px) {
-  .highlights-section {
-    padding: 5rem 3rem;
-  }
-
-  .highlights-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.75rem;
-  }
-
-  .highlight-content h3 {
-    font-size: 1.2rem;
-  }
-}
-
-/* ---- LARGE SCREENS ---- */
-@media (min-width: 1280px) {
-  .highlights-section {
-    padding: 6rem 4rem;
-  }
-
-  .highlight-card {
-    padding: 2rem;
-  }
+.highlight-link:hover {
+  color: var(--color-accent);
+  gap: 12px; /* Slight arrow movement */
 }
