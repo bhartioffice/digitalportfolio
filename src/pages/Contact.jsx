@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
 import "./Contact.css";
+import SEO from "../components/SEO";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -58,6 +59,11 @@ const Contact = () => {
 
   return (
     <>
+      <SEO
+        title="Contact"
+        description="Get in touch with Prof. Nalin Bharti for research collaborations, speaking engagements, or academic inquiries."
+        url="/contact"
+      />
       <section className="page-header container fade-in-item is-visible">
         <h1 className="page-title">Get in Touch</h1>
         <p className="center-text-sm">

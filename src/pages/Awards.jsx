@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Card from "../components/ui/Card";
 import "./Awards.css";
 import Img from "../components/Img";
+import SEO from "../components/SEO";
 
 // Import extracted data
 import { awardsData, mediaData, galleryImages } from "../data/awardsData";
@@ -10,10 +12,39 @@ const Awards = () => {
   const [activeTab, setActiveTab] = useState("awards-honors");
   const [lightboxImage, setLightboxImage] = useState(null);
 
+  // --- 1. HASH LISTENER LOGIC ---
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      let tab = location.hash.replace("#", "");
+
+      // FIX: Map the simple hash "#gallery" to the state name "gallery-photos"
+      if (tab === "gallery") {
+        tab = "gallery-photos";
+      }
+
+      if (["awards-honors", "media-coverage", "gallery-photos"].includes(tab)) {
+        setActiveTab(tab);
+
+        // Scroll to content
+        const element = document.querySelector(".tab-content");
+        if (element) {
+          setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 100);
+        }
+      }
+    }
+  }, [location]);
+
   const closeLightbox = () => setLightboxImage(null);
 
   return (
     <>
+      <SEO
+        title="Awards & Media"
+        description="Awards, honors, and media coverage regarding Prof. Nalin Bharti's contributions to economics and policy."
+        url="/awards"
+      />
       {/* --- PAGE HEADER --- */}
       <section className="page-header container fade-in-item is-visible">
         <h1 className="page-title">Awards & Media</h1>

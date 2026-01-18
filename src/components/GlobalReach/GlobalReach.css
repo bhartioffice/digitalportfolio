@@ -1,0 +1,165 @@
+/* src/components/GlobalReach/GlobalReach.css */
+
+.global-reach-section {
+  padding: 6rem 0;
+  position: relative;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+  overflow: hidden;
+}
+
+/* Background Map Decoration */
+.map-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  /* Generic SVG world map pattern */
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 110%;
+  opacity: 0.04; /* Very subtle watermark */
+  pointer-events: none;
+  z-index: 0;
+  filter: grayscale(100%);
+}
+
+.relative-z {
+  position: relative;
+  z-index: 2;
+}
+
+.section-header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.title-gradient {
+  background: linear-gradient(135deg, var(--color-primary), #00509e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Grid Layout */
+.reach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Cards */
+.reach-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+  position: relative;
+}
+
+/* Hover Lift */
+.reach-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 51, 102, 0.1);
+  border-color: var(--color-accent);
+  background: #fff;
+}
+
+.flag-wrapper {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 3px solid #fff;
+}
+
+.country-flag {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reach-content h3 {
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  margin-bottom: 0.2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  min-height: 2.8em; /* Ensures alignment even with long names */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.country-name {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+.divider-line {
+  width: 40px;
+  height: 3px;
+  background: var(--color-accent);
+  margin: 1rem auto;
+  border-radius: 2px;
+}
+
+.collab-topic {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* Stats Row */
+.reach-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.stat-pill {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 5px 20px rgba(0, 51, 102, 0.2);
+}
+
+.stat-pill i {
+  color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .title-gradient {
+    font-size: 2rem;
+  }
+}

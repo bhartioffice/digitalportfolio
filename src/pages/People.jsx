@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Card from "../components/ui/Card";
-import Button from "../components/ui/Button"; // Kept for consistency if needed later
+import Button from "../components/ui/Button";
 import "./People.css";
 import Img from "../components/Img";
+import SEO from "../components/SEO";
 
 // Import extracted data
 import {
@@ -15,8 +17,34 @@ import {
 const People = () => {
   const [activeTab, setActiveTab] = useState("phd-students");
 
+  // --- 1. HASH LISTENER LOGIC ---
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const tab = location.hash.replace("#", "");
+      // Check if hash matches one of our valid tabs
+      if (
+        ["phd-students", "alumni", "research-staff", "interns"].includes(tab)
+      ) {
+        setActiveTab(tab);
+
+        // Scroll to content
+        const element = document.querySelector(".tab-content");
+        if (element) {
+          setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 100);
+        }
+      }
+    }
+  }, [location]);
+
   return (
     <>
+      <SEO
+        title="People & Team"
+        description="Meet the PhD scholars, Research Staff, and Alumni working with Prof. Nalin Bharti at IIT Patna."
+        url="/people"
+      />
       {/* --- PAGE HEADER --- */}
       <section className="page-header container fade-in-item is-visible">
         <h1 className="page-title">People & Team</h1>

@@ -1,8 +1,10 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
 import "./Publications.css";
 import Img from "../components/Img";
+import SEO from "../components/SEO";
 
 // Import extracted data
 import {
@@ -17,6 +19,27 @@ const Publications = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilters, setActiveFilters] = useState([]);
   const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
+
+  // --- LISTENER LOGIC ADDED HERE ---
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const tab = location.hash.replace("#", "");
+      if (["books", "chapters", "articles", "conferences"].includes(tab)) {
+        setActiveTab(tab);
+        // Clear search so the user sees the tab content
+        setSearchQuery("");
+        setActiveFilters([]);
+
+        // Optional: Scroll to content
+        const element = document.querySelector(".tab-content");
+        if (element) {
+          setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 100);
+        }
+      }
+    }
+  }, [location]);
 
   // --- SEARCH LOGIC ---
   const allData = useMemo(() => {
@@ -63,6 +86,11 @@ const Publications = () => {
 
   return (
     <>
+      <SEO
+        title="Publications"
+        description="List of books, journal articles, and conference papers authored by Prof. Nalin Bharti on International Trade and Economics."
+        url="/publications"
+      />
       <section className="page-header container fade-in-item is-visible">
         <h1 className="page-title">Scholarly Contributions</h1>
         <p className="center-text-sm">

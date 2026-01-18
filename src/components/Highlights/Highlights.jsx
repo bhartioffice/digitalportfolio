@@ -1,5 +1,7 @@
+// src/components/Highlights/Highlights.jsx
 import "./Highlights.css";
 import React from "react";
+import { Link } from "react-router-dom"; // <--- IMPORT LINK
 
 const Highlights = () => {
   return (
@@ -16,9 +18,10 @@ const Highlights = () => {
               Exploring trade policies, WTO negotiations, and economic
               partnerships in South Asia.
             </p>
-            <a href="#research" className="highlight-link">
+            {/* FIXED LINK */}
+            <Link to="/research" className="highlight-link">
               Explore Research <i className="fa-solid fa-arrow-right"></i>
-            </a>
+            </Link>
           </div>
 
           <div className="highlight-card fade-in-item is-visible">
@@ -30,9 +33,10 @@ const Highlights = () => {
               Spearheading IPR pedagogy and research under the Ministry of
               Commerce & Industry.
             </p>
-            <a href="#dpiit" className="highlight-link">
+            {/* FIXED LINK: Points to the DPIIT Tab */}
+            <Link to="/research#dpiit" className="highlight-link">
               View Initiatives <i className="fa-solid fa-arrow-right"></i>
-            </a>
+            </Link>
           </div>
 
           <div className="highlight-card fade-in-item is-visible">
@@ -44,9 +48,10 @@ const Highlights = () => {
               Mentoring a vibrant group of doctoral scholars in economics and
               policy.
             </p>
-            <a href="#people" className="highlight-link">
+            {/* FIXED LINK */}
+            <Link to="/people" className="highlight-link">
               Meet the Team <i className="fa-solid fa-arrow-right"></i>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

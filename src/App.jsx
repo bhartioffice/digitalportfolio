@@ -1,16 +1,16 @@
-// src/App.jsx
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
 // Layout Components
-import Navbar from "./components/Navbar";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 // Feature Components
 import BackToTop from "./components/BackToTop";
 import AccessibilityTool from "./components/AccessibilityTool";
 import SmoothScroll from "./components/SmoothScroll";
+import ScrollProgress from "./components/ScrollProgress";
 
 // Pages
 import Home from "./pages/Home";
@@ -22,33 +22,15 @@ import Awards from "./pages/Awards";
 import Contact from "./pages/Contact";
 
 function App() {
-  // Scroll Progress Logic
-  const [scrollWidth, setScrollWidth] = useState(0);
-
-  const handleScroll = () => {
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
-    const height =
-      document.documentElement.scrollHeight -
-      document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    setScrollWidth(scrolled);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <SmoothScroll>
-      {" "}
-      {/* Wraps the entire app for smooth scrolling */}
-      {/* Scroll Progress Bar */}
-      <div id="scroll-progress-bar" style={{ width: `${scrollWidth}%` }}></div>
-      <Navbar />
+      <ScrollProgress />
+
+      <Header />
+
       <ScrollToTop />
       <AccessibilityTool />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -58,6 +40,7 @@ function App() {
         <Route path="/awards" element={<Awards />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+
       <Footer />
       <BackToTop />
     </SmoothScroll>

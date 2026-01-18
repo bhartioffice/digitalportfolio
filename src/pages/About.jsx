@@ -1,10 +1,16 @@
 import React from "react";
 import "./About.css";
 import Img from "../components/Img";
+import SEO from "../components/SEO";
 
 const About = () => {
   return (
     <>
+      <SEO
+        title="About Prof. Nalin Bharti"
+        description="Biography of Prof. Nalin Bharti, Professor of Economics and DPIIT IPR Chair at IIT Patna. Learn about his academic journey and policy impact."
+        url="/about"
+      />
       {/* --- SECTION 1: HEADER & BIO --- */}
       <section className="container spacer-top-lg spacer-bottom-md fade-in-item is-visible">
         <div

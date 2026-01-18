@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
 import "./Research.css";
 import Img from "../components/Img";
+import SEO from "../components/SEO";
 
 // Import extracted data
 import {
@@ -20,6 +22,26 @@ import {
 
 const Research = () => {
   const [activeTab, setActiveTab] = useState("research");
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      // Remove the '#' to get the tab name (e.g., "teaching")
+      const tab = location.hash.replace("#", "");
+
+      // Check if it matches one of your tabs
+      if (["research", "teaching", "dpiit", "talks"].includes(tab)) {
+        setActiveTab(tab);
+
+        // Optional: Scroll to the content so it's not hidden behind the header
+        const element = document.querySelector(".tab-content");
+        if (element) {
+          setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 100);
+        }
+      }
+    }
+  }, [location]);
 
   // UX FIX: Track which card is flipped on mobile
   const [flippedIndex, setFlippedIndex] = useState(null);
@@ -82,6 +104,11 @@ const Research = () => {
 
   return (
     <>
+      <SEO
+        title="Research & Teaching"
+        description="Explore research in International Trade, DPIIT IPR Chair initiatives, and courses taught by Prof. Nalin Bharti."
+        url="/research"
+      />
       <section className="page-header container fade-in-item is-visible">
         <h1 className="page-title">Research & Teaching</h1>
       </section>

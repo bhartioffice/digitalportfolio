@@ -1,6 +1,7 @@
 // src/components/Hero/Hero.jsx
 import "./Hero.css";
 import React from "react";
+import { Link } from "react-router-dom"; // <--- IMPORT LINK
 import Typewriter from "../Typewriter";
 import Img from "../Img";
 
@@ -17,19 +18,25 @@ const Hero = () => {
           </p>
 
           <div className="cta-buttons">
-            <a href="#research" className="cta-primary">
+            {/* FIXED LINK */}
+            <Link to="/research" className="cta-primary">
               Explore Research
-            </a>
-            <a href="#contact" className="cta-secondary">
+            </Link>
+            {/* FIXED LINK */}
+            <Link to="/contact" className="cta-secondary">
               Contact
-            </a>
+            </Link>
           </div>
 
           <div className="designation-box spacer-bottom-md">
             <h2>Professor (Economics)</h2>
             <span className="ampersand">&</span>
-            <h2>DPIIT IPR Chair Professor</h2>
-            <p className="additional-charge">(Additional Charge)</p>
+
+            {/* GROUPED FOR BETTER ALIGNMENT */}
+            <div className="title-group">
+              <h2>DPIIT IPR Chair Professor</h2>
+              <span className="additional-charge">(Additional Charge)</span>
+            </div>
           </div>
 
           <div className="affiliation-box spacer-bottom-md">
@@ -40,7 +47,6 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* --- EXPERT BOX (ONLY ONE INSTANCE) --- */}
           <div className="expert-box-container fade-in-item is-visible">
             <div className="expert-box">
               <span className="expert-label">Expert in:</span>
@@ -48,7 +54,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* RESEARCHER IDs */}
+          {/* RESEARCHER IDs (Colors handled in CSS now) */}
           <div className="researcher-ids spacer-bottom-md">
             <a
               href="https://www.researchgate.net/profile/Nalin-Bharti"
@@ -85,13 +91,14 @@ const Hero = () => {
           </div>
 
           <div className="secondary-links">
-            <a href="#about" className="text-link">
+            {/* FIXED LINKS */}
+            <Link to="/about" className="text-link">
               Full Biography
-            </a>
+            </Link>
             <span className="link-separator">|</span>
-            <a href="#publications" className="text-link">
+            <Link to="/publications" className="text-link">
               Publications List
-            </a>
+            </Link>
             <span className="link-separator">|</span>
             <a
               href="https://icgetei.in/Brief%20CV.pdf"
