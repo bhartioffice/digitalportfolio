@@ -102,6 +102,10 @@ ul {
   list-style: none;
 }
 
+section {
+  padding: 5rem 0; /* 80px Top/Bottom */
+}
+
 /* ===========================
    3. TYPOGRAPHY SYSTEM (Restored)
 =========================== */
@@ -158,13 +162,13 @@ strong {
 
 /* Spacing Helpers */
 .spacer-bottom-sm {
-  margin-bottom: 2rem !important;
+  margin-bottom: 1.5rem !important;
 }
 .spacer-bottom-md {
-  margin-bottom: 4rem !important;
-}
+  margin-bottom: 2.5rem !important;
+} /* Reduced from 4rem */
 .spacer-bottom-lg {
-  margin-bottom: 3.5rem !important;
+  margin-bottom: 4rem !important;
 }
 .spacer-top-sm {
   margin-top: 2rem !important;
@@ -206,7 +210,7 @@ strong {
   position: sticky;
   top: 0;
   z-index: 1200;
-  height: 80px;
+  height: 90px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -235,12 +239,12 @@ strong {
 
 /* The Monogram Circle */
 .logo-monogram {
-  width: 42px;
-  height: 42px;
+  width: 54px;
+  height: 54px;
   background: var(--color-primary);
   color: #fff;
   font-family: "Playfair Display", serif; /* Or your heading font */
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   border-radius: 50%;
   display: flex;
@@ -259,17 +263,18 @@ strong {
 .logo-name {
   font-family: "Playfair Display", serif; /* Ensures academic look */
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.4rem;
   color: var(--color-primary);
   letter-spacing: -0.5px;
 }
 
 .logo-tag {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--color-text-muted);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  margin-top: 2px;
 }
 /* Nav Menu */
 .nav-menu {
@@ -291,21 +296,24 @@ strong {
   align-items: center;
   gap: 5px;
   position: relative;
+  transition: color 0.3s ease;
 }
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--color-primary);
-}
-
-.nav-link.active::after {
+.nav-link::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: -2px;
   left: 0;
-  width: 100%;
+  width: 0%; /* Hidden by default */
   height: 2px;
   background: var(--color-accent);
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth Ease */
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+.nav-link:hover {
+  color: var(--color-primary);
 }
 
 /* Dropdown Styles */
@@ -479,9 +487,10 @@ strong {
 
   .nav-link {
     width: 100%;
-    padding: 1rem 0;
+    padding: 1rem 0.5rem;
     border-bottom: 1px solid var(--color-border);
     justify-content: space-between;
+    font-size: 1.05rem;
   }
 
   /* Mobile Dropdowns */
@@ -644,4 +653,12 @@ strong {
 .cta-primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+}
+
+/* Visible Focus State for Accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 4px;
 }

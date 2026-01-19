@@ -1,12 +1,17 @@
-import React from "react";
+// src/components/Footer.jsx
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const date = new Date();
+  const lastUpdated = `${date.toLocaleString("default", {
+    month: "short",
+  })} ${date.getFullYear()}`;
 
   return (
-    <footer className="footer">
+    <footer className="footer fade-in-section is-visible">
       <div className="footer-grid container">
         {/* Column 1: Identity */}
         <div className="footer-col">
@@ -44,10 +49,19 @@ const Footer = () => {
             >
               <i className="fa-brands fa-facebook-f"></i>
             </a>
+            <a
+              href="https://www.researchgate.net/profile/Nalin-Bharti"
+              target="_blank"
+              rel="noreferrer"
+              className="social-link"
+              aria-label="ResearchGate"
+            >
+              <i className="fa-brands fa-researchgate"></i>
+            </a>
           </div>
         </div>
 
-        {/* Column 2: Quick Links (Now using React Router) */}
+        {/* Column 2: Quick Links */}
         <div className="footer-col">
           <h4>Quick Links</h4>
           <ul>
@@ -72,7 +86,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 3: External Related Links */}
+        {/* Column 3: Related Links */}
         <div className="footer-col">
           <h4>Related Links</h4>
           <ul>
@@ -111,7 +125,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 4: Contact Info */}
+        {/* Column 4: Contact */}
         <div className="footer-col">
           <h4>Contact</h4>
           <ul>
@@ -137,14 +151,15 @@ const Footer = () => {
             &copy; <span className="current-year">{currentYear}</span>{" "}
             nalinbharti.in | All rights reserved.
           </p>
-          <div className="visitor-counter-wrapper">
-            <a
-              href="https://www.free-counters.org/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              powered by Free-Counters.org
-            </a>
+
+          {/* REPLACED COUNTER WITH 'LAST UPDATED' BADGE */}
+          <div className="visitor-badge" style={{ cursor: "default" }}>
+            <span className="vb-icon">
+              <i className="fa-regular fa-clock"></i>
+            </span>
+            <span className="vb-text">
+              Last Updated: <strong>{lastUpdated}</strong>
+            </span>
           </div>
         </div>
       </div>

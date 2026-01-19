@@ -1,12 +1,11 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import ReactGA from "react-ga4";
 
 // Layout Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
-// Feature Components
 import BackToTop from "./components/BackToTop";
 import AccessibilityTool from "./components/AccessibilityTool";
 import SmoothScroll from "./components/SmoothScroll";
@@ -21,13 +20,21 @@ import People from "./pages/People";
 import Awards from "./pages/Awards";
 import Contact from "./pages/Contact";
 
+ReactGA.initialize("G-TYL4FY2KGP");
+
 function App() {
+  const location = useLocation();
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: location.pathname + location.search,
+    });
+  }, [location]);
+
   return (
     <SmoothScroll>
       <ScrollProgress />
-
       <Header />
-
       <ScrollToTop />
       <AccessibilityTool />
 
@@ -39,6 +46,7 @@ function App() {
         <Route path="/people" element={<People />} />
         <Route path="/awards" element={<Awards />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
       <Footer />

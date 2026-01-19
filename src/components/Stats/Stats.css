@@ -1,39 +1,63 @@
 /* src/components/Stats/Stats.css */
 
 .metrics-section {
-  padding: 5rem 0;
-  background: var(--color-bg);
   position: relative;
-  z-index: 10;
-  margin-top: -3rem; /* Overlap effect if desired, otherwise 0 */
+  /* PREMIUM DARK GRADIENT BACKGROUND */
+  background: linear-gradient(135deg, var(--color-primary) 0%, #002a5c 100%);
+  padding: 6rem 0;
+  color: #fff;
+  overflow: hidden;
+  /* Remove negative margins so waves fit perfectly */
+  margin: 0;
+}
+
+/* THE "NOTES" TEXTURE EFFECT (Subtle Dot Grid) */
+.metrics-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* This creates the "Security Paper" / Certificate texture look */
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .metrics-grid {
+  position: relative;
+  z-index: 2; /* Content sits ABOVE the texture */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-}
-
-.metric-card {
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: var(--shadow-md);
   text-align: center;
-  border: 1px solid var(--color-border);
-  transition: 0.3s ease;
 }
 
-.metric-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-accent);
+/* REMOVED: White card background & shadows */
+.metric-card {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 1rem;
+  /* Add a subtle separator line instead */
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+.metric-card:last-child {
+  border-right: none;
+}
+
+/* Updated Icon Styling */
 .metric-icon {
-  font-size: 2rem;
-  color: var(--color-primary);
-  background: var(--color-accent-bg);
+  font-size: 2.2rem;
+  color: var(--color-accent); /* Gold Icons */
+  background: rgba(255, 255, 255, 0.1); /* Glassy Background */
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -41,27 +65,34 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
-  transition: 0.3s;
-}
-
-.metric-card:hover .metric-icon {
-  background: var(--color-primary);
-  color: var(--color-accent);
+  /* Glow Effect */
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
 .metric-data h3 {
-  font-size: 2.5rem;
-  color: var(--color-primary);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: #fff; /* White Numbers */
   margin-bottom: 0.5rem;
   font-weight: 800;
-  font-family: var(--font-body); /* Numbers usually look better in sans-serif */
+  font-family: var(--font-heading);
+  white-space: nowrap;
 }
 
 .metric-data p {
-  font-size: 1rem;
-  color: var(--color-text-muted);
-  font-weight: 500;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7); /* Muted White Text */
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 Grid */
+    gap: 3rem 1rem;
+  }
+  .metric-card {
+    border-right: none; /* Remove borders on mobile */
+  }
 }

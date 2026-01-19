@@ -16,11 +16,12 @@
 .footer-col h4 {
   color: #fff;
   margin-bottom: 1.5rem;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-family: var(--font-heading);
+  letter-spacing: 0.02em;
 }
 .footer-col p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.7;
   margin-bottom: 1.5rem;
   color: #cbd5e0;
@@ -34,7 +35,7 @@
   text-decoration: none;
   transition: 0.3s;
   display: inline-block;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 .footer-col ul li a:hover {
   color: var(--color-accent);
@@ -107,4 +108,66 @@
   font-size: 0.75rem;
   color: #ccc;
   text-decoration: none;
+}
+.footer-bottom {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 3rem; /* Added spacing */
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #cbd5e0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* --- NEW VISITOR COUNTER STYLE --- */
+.visitor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05); /* Subtle Glass Effect */
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.visitor-badge:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--color-accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.vb-icon {
+  color: var(--color-accent); /* Gold Icon */
+  font-size: 0.9rem;
+}
+
+.vb-text strong {
+  color: #fff;
+  font-weight: 600;
+  margin-left: 4px;
+}
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
 }

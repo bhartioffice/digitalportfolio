@@ -13,8 +13,9 @@
 
 .highlights-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Forces 3 equal columns */
   gap: 2rem;
+  width: 100%;
 }
 
 .highlight-card {
@@ -83,4 +84,18 @@
 .highlight-link:hover {
   color: var(--color-accent);
   gap: 12px; /* Slight arrow movement */
+}
+
+@media (max-width: 1024px) {
+  .highlights-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* This fixes the "Left Align" issue */
+  }
+
+  .highlight-card {
+    /* Sets a nice width but allows shrinking */
+    flex: 0 1 340px;
+    width: 100%;
+  }
 }
