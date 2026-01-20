@@ -1,40 +1,42 @@
+// src/pages/Research.jsx
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom"; // Keep this
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
+import { Link } from "react-router-dom"; // Ensure Link is imported
 import "./Research.css";
 import Img from "../components/Img";
 import SEO from "../components/SEO";
 
-// Import extracted data
 import {
   researchAreas,
   researchProjects,
   peerReviews,
-  collaborations,
-  professionalAffiliations,
   onlineCourses,
   coursesIITP,
   externalCourses,
+  dpiitHeroData,
+  policyGovernance,
+  giOdyssey,
+  outreachEvents,
+  institutionalLeadership,
   dpiitFieldVisits,
   invitedTalks,
+  organizedEvents,
+  policyImpact,
 } from "../data/researchData";
 
 const Research = () => {
+  // Default tab "research"
   const [activeTab, setActiveTab] = useState("research");
-
   const location = useLocation();
 
+  // Handle URL hashes
   useEffect(() => {
     if (location.hash) {
-      // Remove the '#' to get the tab name (e.g., "teaching")
       const tab = location.hash.replace("#", "");
-
-      // Check if it matches one of your tabs
       if (["research", "teaching", "dpiit", "talks"].includes(tab)) {
         setActiveTab(tab);
-
-        // Optional: Scroll to the content so it's not hidden behind the header
         const element = document.querySelector(".tab-content");
         if (element) {
           setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 100);
@@ -43,55 +45,49 @@ const Research = () => {
     }
   }, [location]);
 
-  // UX FIX: Track which card is flipped on mobile
-  const [flippedIndex, setFlippedIndex] = useState(null);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [activeTab]);
 
+  // Mobile Flip Card Logic
+  const [flippedIndex, setFlippedIndex] = useState(null);
   const handleCardClick = (index) => {
-    // Toggle: if clicking the same one, close it. If new one, open it.
     setFlippedIndex(flippedIndex === index ? null : index);
   };
 
-  // Local data for DPIIT & Mentorship
-  const dpiitTimeline = [
-    {
-      date: "30 Sep 2024 - 22 Oct 2024",
-      title: "Handicraft Awareness Seminars (CHCDS)",
-      description:
-        "Participated as GI Expert in seminars organized by the Ministry of Textiles in Hajipur, Muzaffarpur, and Gaya.",
-    },
-    {
-      date: "21 March 2025",
-      title: 'Workshop on "GI and Bihar"',
-      description:
-        "Organized at IIT Patna. Chief Guest: Shri Arjun Mandal (President Awardee).",
-    },
-    {
-      date: "13 August 2024",
-      title: "National Policy on GI",
-      description:
-        "Provided expert suggestions to the DPIIT for formulating the National Policy on Geographical Indications.",
-    },
-  ];
-
+  // --- UPDATED STATS DATA WITH LINKS ---
   const mentorshipStats = [
-    { label: "PhD Scholars Graduated", value: "13", highlight: false },
-    { label: "Ongoing PhD Scholars", value: "6", highlight: false },
-    { label: "NPTEL Pre-Doc Fellows", value: "2", highlight: true },
-    { label: "Interns Mentored", value: "30+", highlight: false },
+    {
+      label: "PhD Scholars Graduated",
+      value: "13",
+      link: "/people#alumni",
+    },
+    {
+      label: "Ongoing PhD Scholars",
+      value: "6",
+      link: "/people#phd-students",
+    },
+    {
+      label: "NPTEL Sponsored Pre-Doc Fellows",
+      value: "2",
+      highlight: true,
+      link: "/people#interns",
+    },
+    {
+      label: "Interns Mentored",
+      value: "30+",
+      link: "/people#interns",
+    },
   ];
 
+  // Helper for Icons (Keep existing helpers)
   const getServiceIcon = (type) => {
     const t = type.toLowerCase();
-    if (
-      t.includes("chair") ||
-      t.includes("moderator") ||
-      t.includes("discussant")
-    )
-      return "fa-gavel";
-    if (t.includes("fdp") || t.includes("refresher") || t.includes("workshop"))
+    if (t.includes("chair") || t.includes("moderator")) return "fa-gavel";
+    if (t.includes("fdp") || t.includes("refresher"))
       return "fa-chalkboard-user";
-    if (t.includes("organizer")) return "fa-users-gear";
-    return "fa-microphone-lines";
+    if (t.includes("keynote")) return "fa-microphone";
+    return "fa-lectern";
   };
 
   const getServiceClass = (type) => {
@@ -105,44 +101,57 @@ const Research = () => {
   return (
     <>
       <SEO
-        title="Research & Teaching"
-        description="Explore research in International Trade, DPIIT IPR Chair initiatives, and courses taught by Prof. Nalin Bharti."
+        title="Research & Teaching | Prof. Nalin Bharti"
+        description="Research portfolio, teaching philosophy, and policy outreach of Prof. Nalin Bharti."
         url="/research"
       />
+
       <section className="page-header container fade-in-item is-visible">
         <h1 className="page-title">Research & Teaching</h1>
       </section>
 
+      {/* --- PREMIUM NAVIGATION TABS --- */}
       <div className="container fade-in-item is-visible">
         <div className="tabs-wrapper">
-          {["research", "teaching", "dpiit", "talks"].map((tab) => (
-            <button
-              key={tab}
-              className={`tab-btn ${activeTab === tab ? "active" : ""}`}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab === "dpiit"
-                ? "DPIIT IPR Chair"
-                : tab === "talks"
-                ? "Invited Talks"
-                : tab.charAt(0).toUpperCase() + tab.slice(1)}
-            </button>
-          ))}
+          <button
+            className={`tab-btn ${activeTab === "research" ? "active" : ""}`}
+            onClick={() => setActiveTab("research")}
+          >
+            Research Areas
+          </button>
+          <button
+            className={`tab-btn ${activeTab === "teaching" ? "active" : ""}`}
+            onClick={() => setActiveTab("teaching")}
+          >
+            Teaching
+          </button>
+          <button
+            className={`tab-btn ${activeTab === "dpiit" ? "active" : ""}`}
+            onClick={() => setActiveTab("dpiit")}
+          >
+            Policy & Outreach
+          </button>
+          <button
+            className={`tab-btn ${activeTab === "talks" ? "active" : ""}`}
+            onClick={() => setActiveTab("talks")}
+          >
+            Leadership & Talks
+          </button>
         </div>
       </div>
 
-      {/* --- RESEARCH TAB --- */}
+      {/* ==================== TAB 1: RESEARCH AREAS ==================== */}
       {activeTab === "research" && (
         <section className="tab-content container active">
-          <h3 className="section-subtitle">Fields of Inquiry & Impact</h3>
+          {/* ... (Keep existing Flip Cards code) ... */}
+          <h3 className="section-subtitle">Fields of Inquiry</h3>
           <div className="flip-grid">
             {researchAreas.map((area, index) => (
               <div
                 className="flip-card"
                 key={area.id}
-                onClick={() => handleCardClick(index)} // Add Click Handler
+                onClick={() => handleCardClick(index)}
               >
-                {/* Add 'flipped' class conditionally */}
                 <div
                   className={`flip-inner ${
                     flippedIndex === index ? "flipped" : ""
@@ -151,7 +160,6 @@ const Research = () => {
                   <div className="flip-front">
                     <i className={`fa-solid ${area.icon}`}></i>
                     <h4>{area.title}</h4>
-                    {/* Visual cue for mobile */}
                     <span className="mobile-tap-hint">
                       <i className="fa-solid fa-arrow-rotate-right"></i> Tap to
                       flip
@@ -165,8 +173,8 @@ const Research = () => {
               </div>
             ))}
           </div>
-          <h3 className="section-subtitle spacer-top-lg">Research in Action</h3>
-          {/* FIX: Removed 'fade-in-item is-visible' here */}
+
+          <h3 className="section-subtitle spacer-top-lg">Research Projects</h3>
           <div className="projects-grid">
             {researchProjects.map((project) => (
               <Card
@@ -197,78 +205,45 @@ const Research = () => {
               </Card>
             ))}
           </div>
+
           <h3 className="section-subtitle spacer-top-lg">
-            Peer Review & Editorial Contributions
+            Peer Review & Editorial
           </h3>
           <div className="review-two-sided">
-            {" "}
-            {/* REMOVED fade-in classes */}
             {peerReviews.map((review) => (
               <Card key={review.id} className="review-card">
-                <div className="rc-logo">{review.publisher}</div>
-                <div className="rc-name">{review.journal}</div>
+                <Img
+                  src={review.img}
+                  alt={review.publisher}
+                  className="rc-logo-img"
+                />
+                <div
+                  className="rc-name"
+                  style={{ fontWeight: 600, color: "var(--color-text-main)" }}
+                >
+                  {review.journal}
+                </div>
               </Card>
             ))}
           </div>
-          <h3 className="section-subtitle spacer-top-lg">
-            International Collaborations
-          </h3>
-          <div className="collab-grid">
-            {" "}
-            {/* REMOVED fade-in classes */}
-            {collaborations.map((collab, index) => (
-              <div className="collab-item" key={index}>
-                <Img
-                  src={`https://flagcdn.com/${
-                    collab.country === "United Kingdom"
-                      ? "gb"
-                      : collab.country === "Japan"
-                      ? "jp"
-                      : collab.country === "Hungary"
-                      ? "hu"
-                      : "sg"
-                  }.svg`}
-                  alt={collab.country}
-                  className="flag"
-                />
-                <div className="collab-info">
-                  <h4>{collab.country}</h4>
-                  <p>
-                    {collab.collaborators.map((person, i) => (
-                      <React.Fragment key={i}>
-                        {person}
-                        <br />
-                      </React.Fragment>
-                    ))}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <h3 className="section-subtitle spacer-top-lg">
-            Professional Affiliations
-          </h3>
-          <div className="affiliations-grid">
-            {" "}
-            {/* REMOVED fade-in classes */}
-            {professionalAffiliations.map((affil, index) => (
-              <div className="affil-item" key={index}>
-                <i className="fa-solid fa-check-circle"></i>
-                <span>{affil}</span>
-              </div>
-            ))}
+          <div className="center-btn spacer-top-md">
+            <Link to="/people#research-staff" className="btn-premium-cta">
+              Meet the Research Team{" "}
+              <i className="fa-solid fa-users-viewfinder"></i>
+            </Link>
           </div>
         </section>
       )}
 
-      {/* --- TEACHING TAB --- */}
+      {/* ==================== TAB 2: TEACHING ==================== */}
       {activeTab === "teaching" && (
         <section className="tab-content container active">
+          {/* ... (Keep existing Teaching Intro & NPTEL code) ... */}
           <div className="teaching-intro">
             <h3>Knowledge Sharing Philosophy</h3>
             <p>
-              Making complex economic concepts accessible through rigorous
-              academic courses and digital initiatives.
+              Democratizing economic knowledge through classroom rigor and
+              massive open online courses (MOOCs).
             </p>
           </div>
 
@@ -276,8 +251,6 @@ const Research = () => {
             Online Courses (NPTEL / SWAYAM)
           </h3>
           <div className="nptel-compact-grid">
-            {" "}
-            {/* REMOVED fade-in classes */}
             {onlineCourses.map((course) => (
               <a
                 href={course.link}
@@ -299,7 +272,7 @@ const Research = () => {
                       Enrolled
                     </span>
                     <span className="nc-btn">
-                      View Course <i className="fa-solid fa-arrow-right"></i>
+                      View <i className="fa-solid fa-arrow-right"></i>
                     </span>
                   </div>
                 </div>
@@ -308,19 +281,17 @@ const Research = () => {
           </div>
 
           <h3 className="section-subtitle spacer-top-lg">
-            Courses Taught at IIT Patna
+            Courses at IIT Patna
           </h3>
           <div className="course-legend">
             <span className="legend-item">
-              <span className="dot btech"></span> B.Tech Course
+              <span className="dot btech"></span> B.Tech / M.Tech
             </span>
             <span className="legend-item">
-              <span className="dot phd"></span> PhD Course
+              <span className="dot phd"></span> PhD Level
             </span>
           </div>
           <div className="courses-tags-grid">
-            {" "}
-            {/* REMOVED fade-in classes */}
             {coursesIITP.map((course, index) => {
               const isPhD =
                 course.includes("701") ||
@@ -342,8 +313,6 @@ const Research = () => {
             Courses at Other Institutions
           </h3>
           <div className="courses-tags-grid">
-            {" "}
-            {/* REMOVED fade-in classes */}
             {externalCourses.map((course, index) => (
               <span key={index} className="course-tag external">
                 <i className="fa-solid fa-building-columns"></i> {course}
@@ -351,118 +320,214 @@ const Research = () => {
             ))}
           </div>
 
+          {/* --- UPDATED: CLICKABLE MENTORSHIP STATS --- */}
           <h3 className="section-subtitle spacer-top-lg">
             Nurturing the Next Generation
           </h3>
           <div className="mentorship-stats">
-            {" "}
-            {/* REMOVED fade-in classes */}
             {mentorshipStats.map((stat, index) => (
-              <div
+              // Changed div to Link to make the whole card clickable
+              <Link
+                to={stat.link}
                 key={index}
                 className={`m-stat ${stat.highlight ? "highlight" : ""}`}
+                aria-label={`View details for ${stat.label}`}
               >
                 <span className="m-num">{stat.value}</span>
-                <span className="m-label">{stat.label}</span>
-              </div>
+                <span className="m-label">
+                  {stat.label}{" "}
+                  <i className="fa-solid fa-arrow-right m-arrow"></i>
+                </span>
+              </Link>
             ))}
-          </div>
-          <div className="center-btn spacer-top-md">
-            <Button variant="outline" href="/people">
-              Meet the Research Team
-            </Button>
           </div>
         </section>
       )}
 
-      {/* --- DPIIT TAB --- */}
+      {/* ==================== TAB 3: POLICY & OUTREACH ==================== */}
       {activeTab === "dpiit" && (
         <section className="tab-content container active">
-          <div className="dpiit-hero">
-            <div className="dpiit-text">
-              <h3>DPIIT IPR Chair Activities</h3>
-              <p>
-                Spearheading a robust IPR ecosystem under the SPRIHA scheme.
-              </p>
+          {/* ... (Keep existing Policy code same as before) ... */}
+          <div className="policy-hero fade-in-item">
+            <div className="ph-content">
+              <span className="ph-badge">SPRIHA SCHEME</span>
+              <h3 className="ph-title">{dpiitHeroData.title}</h3>
+              <div className="ph-subtitle">{dpiitHeroData.subtitle}</div>
+              <p className="ph-desc">{dpiitHeroData.mandate}</p>
             </div>
-            <div className="dpiit-icon">
-              <i className="fa-solid fa-award"></i>
+            <div className="ph-icon">
+              <i className="fa-solid fa-map-location-dot"></i>
             </div>
           </div>
 
-          <h3 className="section-subtitle">
-            Key Achievement: Field Research & Impact
-          </h3>
-          <div className="field-visit-grid">
-            {" "}
-            {/* REMOVED fade-in classes */}
-            {dpiitFieldVisits.map((visit, index) => (
-              <Card key={index} className="visit-card">
-                <div className="visit-img">
-                  <i className="fa-solid fa-map-location-dot"></i>
+          <h3 className="section-subtitle">Policy & Governance Impact</h3>
+          <div className="gov-grid fade-in-item">
+            {policyGovernance.map((item, index) => (
+              <div key={item.id} className="gov-card">
+                <div className="gov-header">
+                  <div className="gov-icon-box">
+                    <i className={`fa-solid ${item.icon}`}></i>
+                  </div>
+                  <div className="gov-number">0{index + 1}</div>
                 </div>
-                <div className="visit-content">
-                  <h4>{visit.title}</h4>
-                  <span className="visit-loc">
-                    <i className="fa-solid fa-location-dot"></i>{" "}
-                    {visit.location} ({visit.date})
-                  </span>
-                  <p>{visit.description}</p>
-                </div>
-              </Card>
+                <span className="gov-role">{item.role}</span>
+                <h4 className="gov-org">{item.org}</h4>
+                <p className="gov-desc">{item.desc}</p>
+              </div>
             ))}
           </div>
 
           <h3 className="section-subtitle spacer-top-lg">
-            Workshops & Outreach
+            The GI Odyssey: Field Research
           </h3>
-          <div className="timeline-vertical">
-            {dpiitTimeline.map((item, index) => (
-              <div className="v-item" key={index}>
-                <div className="v-date">{item.date}</div>
-                <div className="v-content">
-                  <h4>{item.title}</h4>
-                  <p>{item.description}</p>
+          <p
+            className="text-center"
+            style={{ maxWidth: "700px", margin: "0 auto 3rem", color: "#666" }}
+          >
+            Documenting the journey from soil to shelf. Grassroots interaction
+            with artisans, farmers, and weavers to secure Geographical
+            Indication tags for Bihar's heritage.
+          </p>
+          <div className="gi-grid fade-in-item">
+            {giOdyssey.map((item) => (
+              <div key={item.id} className="gi-card">
+                <Img
+                  src={item.img}
+                  alt={item.title}
+                  className="gi-bg"
+                  onError={(e) =>
+                    (e.target.src =
+                      "https://placehold.co/600x800?text=Field+Visit")
+                  }
+                />
+                <div className="gi-overlay">
+                  <span className="gi-cat">{item.category}</span>
+                  <h4 className="gi-title">{item.title}</h4>
+                  <span className="gi-loc">
+                    <i className="fa-solid fa-location-dot"></i> {item.location}
+                  </span>
+                  <p className="gi-desc">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
-          <div className="center-btn spacer-top-md">
-            <Button variant="primary" href="/people#research-staff">
-              Meet the Research Staff
-            </Button>
+
+          <h3 className="section-subtitle spacer-top-lg">
+            Advocacy & Outreach
+          </h3>
+          <div className="timeline-vertical fade-in-item">
+            {outreachEvents.map((evt) => (
+              <div className="v-item" key={evt.id}>
+                <div className="v-date">{evt.date}</div>
+                <div className="v-content">
+                  <h4>{evt.title}</h4>
+                  <p>
+                    <strong>{evt.role}:</strong> {evt.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="section-subtitle spacer-top-lg">
+            Institutional Leadership
+          </h3>
+          <div className="leadership-grid fade-in-item">
+            {institutionalLeadership.map((item, index) => (
+              <div key={index} className="lead-card">
+                <div className="lead-icon">
+                  <i className={`fa-solid ${item.icon}`}></i>
+                </div>
+                <div className="lead-info">
+                  <h4>{item.role}</h4>
+                  <span>{item.org}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="center-btn spacer-top-lg">
+            <Link to="/people#research-staff" className="btn-premium-cta">
+              Meet the Policy Research Team{" "}
+              <i className="fa-solid fa-users-viewfinder"></i>
+            </Link>
           </div>
         </section>
       )}
 
-      {/* --- TALKS TAB --- */}
+      {/* ==================== TAB 4: LEADERSHIP & TALKS ==================== */}
       {activeTab === "talks" && (
         <section className="tab-content container active">
-          <div className="teaching-intro">
-            <h3>Academic Leadership & Outreach</h3>
-            <p>
-              Invited lectures, session chairs, and faculty development programs
-              that foster academic dialogue.
-            </p>
+          {/* 1. ACADEMIC EVENTS ORGANIZED */}
+          <h3 className="section-subtitle">Academic Events Organized</h3>
+          <p
+            className="text-center"
+            style={{
+              color: "var(--color-text-secondary)",
+              marginBottom: "3rem",
+              maxWidth: "700px",
+              marginInline: "auto",
+            }}
+          >
+            Conferences, GIAN Courses, and Symposia convened to foster global
+            academic dialogue and regional development.
+          </p>
+
+          <div className="events-grid fade-in-item">
+            {organizedEvents.map((event) => (
+              <div key={event.id} className="event-card">
+                <div className="event-header">
+                  <span className="event-role">{event.role}</span>
+                  <span className="event-date">
+                    <i className="fa-regular fa-calendar"></i> {event.date}
+                  </span>
+                </div>
+                <div className="event-body">
+                  <h4>{event.title}</h4>
+                  <p>{event.desc}</p>
+                  <div className="event-loc">
+                    <i
+                      className="fa-solid fa-location-dot"
+                      style={{ color: "var(--color-accent)" }}
+                    ></i>{" "}
+                    {event.location}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
-          <div className="service-grid">
-            {" "}
-            {/* REMOVED fade-in classes */}
+          {/* 2. INVITED TALKS (High Worth Only) */}
+          <h3 className="section-subtitle spacer-top-lg">
+            Keynote & Invited Lectures
+          </h3>
+          <p
+            className="text-center"
+            style={{
+              color: "var(--color-text-secondary)",
+              marginBottom: "3rem",
+            }}
+          >
+            Selected high-impact talks at premier international universities and
+            national policy forums.
+          </p>
+
+          <div className="service-grid fade-in-item">
             {invitedTalks.map((talk) => (
               <Card key={talk.id} className="service-card">
-                <div className={`service-icon ${getServiceClass(talk.type)}`}>
-                  <i className={`fa-solid ${getServiceIcon(talk.type)}`}></i>
+                <div className="service-icon">
+                  <i className={`fa-solid ${talk.icon || "fa-microphone"}`}></i>
                 </div>
                 <div className="service-content">
                   <span className="service-type">{talk.type}</span>
                   <h4>{talk.title}</h4>
-                  <p className="service-event">
-                    <i className="fa-solid fa-landmark"></i> {talk.venue}
-                  </p>
                   <div className="service-meta">
                     <span>
-                      <i className="fa-regular fa-calendar"></i> {talk.date}
+                      <i className="fa-solid fa-landmark"></i> {talk.venue}
+                    </span>
+                    <span>
+                      <i className="fa-regular fa-calendar-check"></i>{" "}
+                      {talk.date}
                     </span>
                   </div>
                 </div>

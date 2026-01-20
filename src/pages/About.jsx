@@ -49,6 +49,7 @@ const About = () => {
               Professor of Economics <span className="dot">·</span> DPIIT IPR
               Chair <span className="dot">·</span> IIT Patna
             </div>
+
             <p
               style={{
                 fontSize: "1.1rem",
@@ -56,12 +57,18 @@ const About = () => {
                 marginBottom: "1.2rem",
               }}
             >
-              Prof. Nalin Bharti is a distinguished economist and policy
-              scholar, currently serving as{" "}
-              <strong>Professor of Economics</strong> and{" "}
-              <strong>DPIIT IPR Chair Professor</strong> at the Indian Institute
-              of Technology (IIT) Patna.
+              Prof. Nalin Bharti stands at the distinct intersection of{" "}
+              <strong>Economics, Law, and Public Policy</strong>. With a
+              doctoral foundation from JNU, New Delhi, and early academic roots
+              in India’s premier law universities (NALSAR & HNLU), he brings a
+              rare interdisciplinary lens to the study of{" "}
+              <strong>
+                Macroeconomic Reforms, International Trade, and Intellectual
+                Property Rights
+              </strong>
+              .
             </p>
+
             <p
               style={{
                 fontSize: "1.1rem",
@@ -69,74 +76,94 @@ const About = () => {
                 marginBottom: "1.5rem",
               }}
             >
-              His academic work lies at the intersection of international trade,
-              macroeconomic reform, and IPR, translating rigorous research into
-              practical policy solutions.
+              With <strong>over 20 years of teaching experience</strong>
+              -including <strong>17 years at IIT Patna</strong> - he currently
+              serves as <strong>Professor of Economics</strong> and the{" "}
+              <strong>DPIIT IPR Chair Professor</strong>. He is not just an
+              academic but a policy strategist working to strengthen India’s
+              intellectual property ecosystem. From serving as a Research
+              Associate for the <strong>12th Finance Commission</strong> to
+              shaping digital education for over{" "}
+              <strong>12,000+ learners</strong> via NPTEL, his career is defined
+              by a commitment to taking economic theory out of the classroom and
+              into the corridors of real-world impact.
             </p>
+
             <div className="human-story-quote">
-              "His work is driven by a commitment to using economic research as
-              a tool for societal progress and inclusive development."
+              "Economics is not just about data; it is the blueprint for
+              inclusive growth. My work strives to bridge the gap between global
+              trade dynamics and the livelihoods of the marginalized."
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- SECTION 2: NARRATIVE CARDS --- */}
+      {/* --- SECTION 2: COLORFUL NARRATIVE GRID --- */}
       <section className="container spacer-bottom-lg">
         <div className="bio-narrative-container">
+          {/* CARD 1 (Blue Theme) */}
           <div className="narrative-card fade-in-item is-visible">
-            <div className="nc-header">
-              <div className="nc-icon">
-                <i className="fa-solid fa-graduation-cap"></i>
-              </div>
-              <h3 className="nc-title">Academic Foundations</h3>
+            <div className="nc-icon">
+              <i className="fa-solid fa-graduation-cap"></i>
             </div>
-            <div className="nc-content">
-              <p>
-                Developing deep expertise in international economics and trade
-                negotiations.
+            <div>
+              <h3 className="nc-title">Interdisciplinary Roots</h3>
+              <p className="nc-desc">
+                Educated at the prestigious{" "}
+                <strong>Jawaharlal Nehru University (JNU)</strong>, Prof. Bharti
+                honed his expertise in privatization and South Asian studies.
+                His unique tenure at <strong>NALSAR</strong> and{" "}
+                <strong>HNLU</strong> fused legal frameworks with economic
+                analysis.
               </p>
             </div>
           </div>
+
+          {/* CARD 2 (Gold Theme) */}
           <div className="narrative-card fade-in-item is-visible">
-            <div className="nc-header">
-              <div className="nc-icon">
-                <i className="fa-solid fa-globe"></i>
-              </div>
-              <h3 className="nc-title">Research & Policy</h3>
+            <div className="nc-icon">
+              <i className="fa-solid fa-globe"></i>
             </div>
-            <div className="nc-content">
-              <p>
-                Focusing on the real-world impacts of trade agreements,
-                privatization, and IPR regimes.
+            <div>
+              <h3 className="nc-title">Global Trade & Policy</h3>
+              <p className="nc-desc">
+                A vocal advocate for trade facilitation, researching the{" "}
+                <strong>WTO's impact on India</strong>. He actively advises on
+                policy frameworks and contributes to high-level dialogues on{" "}
+                <strong>India-Japan trade</strong>.
               </p>
             </div>
           </div>
+
+          {/* CARD 3 (Gold Theme) */}
           <div className="narrative-card fade-in-item is-visible">
-            <div className="nc-header">
-              <div className="nc-icon">
-                <i className="fa-solid fa-landmark"></i>
-              </div>
-              <h3 className="nc-title">Institutional Leadership</h3>
+            <div className="nc-icon">
+              <i className="fa-solid fa-landmark"></i>
             </div>
-            <div className="nc-content">
-              <p>
-                As DPIIT IPR Chair, strengthening India’s intellectual property
-                ecosystem through research.
+            <div>
+              <h3 className="nc-title">Architect of the IPR Ecosystem</h3>
+              <p className="nc-desc">
+                As the <strong>DPIIT IPR Chair</strong>, he spearheads the
+                movement to democratize intellectual property knowledge,
+                establishing the IPR Cell at IIT Patna to nurture the next
+                generation of innovators.
               </p>
             </div>
           </div>
+
+          {/* CARD 4 (Blue Theme) */}
           <div className="narrative-card fade-in-item is-visible">
-            <div className="nc-header">
-              <div className="nc-icon">
-                <i className="fa-solid fa-lightbulb"></i>
-              </div>
-              <h3 className="nc-title">Vision & Impact</h3>
+            <div className="nc-icon">
+              <i className="fa-solid fa-lightbulb"></i>
             </div>
-            <div className="nc-content">
-              <p>
-                Viewing economic research as a catalyst for sustainable
-                development and social inclusion.
+            <div>
+              <h3 className="nc-title">Vision: Local to Global</h3>
+              <p className="nc-desc">
+                Grounded in <strong>"TRIE"</strong>—Teaching, Research,
+                Innovation, and Entrepreneurship. Whether addressing{" "}
+                <strong>Bihar’s regional challenges</strong> or engaging in
+                global forums, he views research as a catalyst for societal
+                transformation.
               </p>
             </div>
           </div>
@@ -152,11 +179,11 @@ const About = () => {
             <div className="tree-trunk"></div>
 
             {/* 1. VISITING PROF (IMPRI) */}
-            <div className="tree-leaf left current">
+            <div className="tree-leaf current">
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="/Photos/IPR/logos/impri-logo.webp"
+                  src="\Photos\logos\impri-logo.webp"
                   alt="IMPRI Logo"
                   className="leaf-logo"
                 />
@@ -170,11 +197,11 @@ const About = () => {
             </div>
 
             {/* 2. IPR CHAIR (DPIIT) */}
-            <div className="tree-leaf right current">
+            <div className="tree-leaf current">
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="/Photos/IPR/logos/dpiit-logo.jpg"
+                  src="\Photos\logos\dpiit-logo.jpg"
                   alt="DPIIT Logo"
                   className="leaf-logo"
                 />
@@ -188,11 +215,11 @@ const About = () => {
             </div>
 
             {/* 3. PROFESSOR (IITP) */}
-            <div className="tree-leaf left current">
+            <div className="tree-leaf current">
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="/Photos/IPR/logos/iitp-logo.png"
+                  src="\Photos\logos\iitp-logo.png"
                   alt="IIT Patna Logo"
                   className="leaf-logo"
                 />
@@ -206,11 +233,11 @@ const About = () => {
             </div>
 
             {/* 4. ASSOCIATE PROF */}
-            <div className="tree-leaf right">
+            <div className="tree-leaf">
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="/Photos/IPR/logos/iitp-logo.png"
+                  src="\Photos\logos\iitp-logo.png"
                   alt="IIT Patna Logo"
                   className="leaf-logo"
                 />
@@ -223,11 +250,11 @@ const About = () => {
             </div>
 
             {/* 5. ASSISTANT PROF */}
-            <div className="tree-leaf left">
+            <div className="tree-leaf">
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="/Photos/IPR/logos/iitp-logo.png"
+                  src="\Photos\logos\iitp-logo.png"
                   alt="IIT Patna Logo"
                   className="leaf-logo"
                 />
@@ -240,11 +267,11 @@ const About = () => {
             </div>
 
             {/* 6. NALSAR */}
-            <div className="tree-leaf right">
+            <div className="tree-leaf ">
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="/Photos/IPR/logos/nalsar-logo.webp"
+                  src="\Photos\logos\nalsar-logo.webp"
                   alt="NALSAR Logo"
                   className="leaf-logo"
                 />
@@ -257,11 +284,11 @@ const About = () => {
             </div>
 
             {/* 7. HIDAYATULLAH */}
-            <div className="tree-leaf left">
+            <div className="tree-leaf ">
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="/Photos/IPR/logos/hidayatullah-logo.jpg"
+                  src="\Photos\logos\hidayatullah-logo.jpg"
                   alt="HNLU Logo"
                   className="leaf-logo"
                 />
@@ -274,11 +301,11 @@ const About = () => {
             </div>
 
             {/* 8. FINANCE COMMISSION */}
-            <div className="tree-leaf right">
+            <div className="tree-leaf ">
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="/Photos/IPR/logos/finance_commission-logo.jpg"
+                  src="\Photos\logos\finance_commission-logo.jpg"
                   alt="Finance Commission Logo"
                   className="leaf-logo"
                 />
@@ -299,7 +326,7 @@ const About = () => {
             {/* PHD */}
             <div className="edu-step">
               <div className="edu-icon">
-                <Img src="/Photos/IPR/logos/JNU-Logo.jpg" alt="JNU Logo" />
+                <Img src="\Photos\logos\JNU-Logo.jpg" alt="JNU Logo" />
               </div>
               <div className="edu-content">
                 <span className="edu-year">1999 - 2004</span>
@@ -312,7 +339,7 @@ const About = () => {
             {/* MPHIL */}
             <div className="edu-step">
               <div className="edu-icon">
-                <Img src="/Photos/IPR/logos/JNU-Logo.jpg" alt="JNU Logo" />
+                <Img src="\Photos\logos\JNU-Logo.jpg" alt="JNU Logo" />
               </div>
               <div className="edu-content">
                 <span className="edu-year">1997 - 1999</span>
@@ -324,7 +351,7 @@ const About = () => {
             {/* UGC NET */}
             <div className="edu-step">
               <div className="edu-icon">
-                <Img src="/Photos/IPR/logos/UGC-NET.jpg" alt="UGC Logo" />
+                <Img src="\Photos\logos\UGC-NET.jpg" alt="UGC Logo" />
               </div>
               <div className="edu-content">
                 <span className="edu-year">1999</span>

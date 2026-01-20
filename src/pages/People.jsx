@@ -38,6 +38,10 @@ const People = () => {
     }
   }, [location]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [activeTab]);
+
   return (
     <>
       <SEO

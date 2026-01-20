@@ -18,16 +18,11 @@ const Awards = () => {
   useEffect(() => {
     if (location.hash) {
       let tab = location.hash.replace("#", "");
-
-      // FIX: Map the simple hash "#gallery" to the state name "gallery-photos"
       if (tab === "gallery") {
         tab = "gallery-photos";
       }
-
       if (["awards-honors", "media-coverage", "gallery-photos"].includes(tab)) {
         setActiveTab(tab);
-
-        // Scroll to content
         const element = document.querySelector(".tab-content");
         if (element) {
           setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 100);
@@ -35,6 +30,10 @@ const Awards = () => {
       }
     }
   }, [location]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [activeTab]);
 
   const closeLightbox = () => setLightboxImage(null);
 

@@ -15,7 +15,7 @@ const Hero = () => {
       {/* This fixes LCP (Largest Contentful Paint) and adds Accessibility */}
       <div className="hero-image-wrapper">
         <img
-          src="/Photos/manish-profile.jpeg"
+          src="\Photos\manish-profile.jpeg"
           alt="Professor Nalin Bharti standing at the IIT Patna campus"
           className="hero-bg-img"
           loading="eager" /* Loads immediately for speed */

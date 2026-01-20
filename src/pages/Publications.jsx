@@ -41,6 +41,10 @@ const Publications = () => {
     }
   }, [location]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [activeTab]);
+
   // --- SEARCH LOGIC ---
   const allData = useMemo(() => {
     return [

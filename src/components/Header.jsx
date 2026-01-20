@@ -120,7 +120,7 @@ const Header = () => {
                       className="dropdown-link"
                       onClick={closeMenu}
                     >
-                      DPIIT IPR Chair
+                      Policy & Outreach
                     </Link>
                   </li>
                   <li>
@@ -129,7 +129,7 @@ const Header = () => {
                       className="dropdown-link"
                       onClick={closeMenu}
                     >
-                      Invited Talks
+                      Leadership & Talks
                     </Link>
                   </li>
                 </ul>
