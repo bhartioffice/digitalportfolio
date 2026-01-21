@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Card from "../components/ui/Card";
 import "./Awards.css";
 import Img from "../components/Img";
 import SEO from "../components/SEO";
 
-// Import extracted data
 import { awardsData, mediaData, galleryImages } from "../data/awardsData";
 
 const Awards = () => {
   const [activeTab, setActiveTab] = useState("awards-honors");
   const [lightboxImage, setLightboxImage] = useState(null);
-
-  // --- 1. HASH LISTENER LOGIC ---
   const location = useLocation();
 
   useEffect(() => {
     if (location.hash) {
       let tab = location.hash.replace("#", "");
-      if (tab === "gallery") {
-        tab = "gallery-photos";
-      }
+      if (tab === "gallery") tab = "gallery-photos";
       if (["awards-honors", "media-coverage", "gallery-photos"].includes(tab)) {
         setActiveTab(tab);
         const element = document.querySelector(".tab-content");
@@ -31,102 +25,116 @@ const Awards = () => {
     }
   }, [location]);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [activeTab]);
-
-  const closeLightbox = () => setLightboxImage(null);
+  // Split Media into Featured and Standard
+  const featuredMedia = mediaData.filter((m) => m.featured);
+  const standardMedia = mediaData.filter((m) => !m.featured);
 
   return (
     <>
       <SEO
         title="Awards & Media"
-        description="Awards, honors, and media coverage regarding Prof. Nalin Bharti's contributions to economics and policy."
+        description="Recognition of excellence and contributions to the public discourse by Prof. Nalin Bharti."
         url="/awards"
       />
-      {/* --- PAGE HEADER --- */}
+
       <section className="page-header container fade-in-item is-visible">
-        <h1 className="page-title">Awards & Media</h1>
+        <h1 className="page-title">Recognition & Impact</h1>
         <p className="center-text-sm">
-          Recognition of excellence and contributions to the public discourse.
+          Celebrating academic excellence and contributions to public economic
+          discourse.
         </p>
       </section>
 
-      {/* --- TABS --- */}
       <div className="container fade-in-item is-visible">
         <div className="tabs-wrapper">
-          <button
-            className={`tab-btn ${
-              activeTab === "awards-honors" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("awards-honors")}
-          >
-            Awards & Honors
-          </button>
-          <button
-            className={`tab-btn ${
-              activeTab === "media-coverage" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("media-coverage")}
-          >
-            Media Coverage
-          </button>
-          <button
-            className={`tab-btn ${
-              activeTab === "gallery-photos" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("gallery-photos")}
-          >
-            Gallery
-          </button>
+          {["awards-honors", "media-coverage", "gallery-photos"].map((tab) => (
+            <button
+              key={tab}
+              className={`tab-btn ${activeTab === tab ? "active" : ""}`}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab === "awards-honors"
+                ? "Awards & Honors"
+                : tab === "media-coverage"
+                  ? "Media Room"
+                  : "Gallery"}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* =========================================================
-          TAB 1: AWARDS & HONORS
-      ========================================================= */}
+      {/* --- TAB 1: AWARDS (Hall of Fame) --- */}
       {activeTab === "awards-honors" && (
         <section className="tab-content container active">
           <div className="awards-list">
             {awardsData.map((award) => (
-              <Card
-                key={award.id}
-                className="award-item"
-                style={{ padding: "2rem", opacity: 1, transform: "none" }} // Force visible
-              >
-                <div className="award-icon">
+              <div key={award.id} className="certificate-card">
+                <div className="cert-icon-box">
                   <i className={`fa-solid ${award.icon}`}></i>
                 </div>
-                <div className="award-content" style={{ flexGrow: 1 }}>
-                  <div className="award-header">
-                    <h3>{award.title}</h3>
-                    <span className="award-year">{award.year}</span>
-                  </div>
-                  <h4 className="award-org">{award.org}</h4>
-                  <p>{award.desc}</p>
+                <div className="cert-content">
+                  <span className="cert-year-badge">{award.year}</span>
+                  <h3 className="cert-title">{award.title}</h3>
+                  <span className="cert-org">{award.org}</span>
+                  <p className="cert-desc">{award.desc}</p>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </section>
       )}
 
-      {/* =========================================================
-          TAB 2: MEDIA COVERAGE (UPDATED WITH VIDEO SUPPORT)
-      ========================================================= */}
+      {/* --- TAB 2: MEDIA (Cinema & Magazine) --- */}
       {activeTab === "media-coverage" && (
         <section className="tab-content container active">
-          <div className="media-grid">
-            {mediaData.map((media) => (
-              <Card
-                key={media.id}
-                className="media-card"
-                style={{ padding: 0, opacity: 1, transform: "none" }} // Force visible & remove padding
-              >
-                <div
-                  className="media-img-wrapper"
-                  style={{ height: "225px", overflow: "hidden" }}
-                >
+          {/* 1. CINEMA SECTION (Featured Videos) */}
+          <div className="newsroom-hero">
+            {featuredMedia.map((media) => (
+              <div key={media.id} className="hero-video-card">
+                <div className="hero-video-frame">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${media.videoId}`}
+                    title={media.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <div className="hero-video-content">
+                  <div className="hero-meta">
+                    <span className="hero-tag">Featured</span>
+                    <span className="hero-outlet">{media.outlet}</span>
+                  </div>
+                  <h3 className="hero-title">{media.title}</h3>
+                  <p className="hero-desc">{media.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="spacer-divider"></div>
+          <h3 className="section-subtitle" style={{ fontSize: "1.5rem" }}>
+            Media Archive
+          </h3>
+
+          {/* 2. ARCHIVE MAGAZINE GRID */}
+          <div className="media-archives-grid">
+            {standardMedia.map((media) => (
+              <div key={media.id} className="archive-card">
+                <div className="archive-thumb">
+                  {/* Badge */}
+                  <span className="archive-type-badge">
+                    {media.type === "video" ? (
+                      <i className="fa-solid fa-play"></i>
+                    ) : (
+                      <i className="fa-regular fa-newspaper"></i>
+                    )}
+                    &nbsp; {media.type}
+                  </span>
+
+                  {/* Content */}
                   {media.type === "video" ? (
                     <iframe
                       width="100%"
@@ -134,53 +142,40 @@ const Awards = () => {
                       src={`https://www.youtube.com/embed/${media.videoId}`}
                       title={media.title}
                       frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                      style={{ border: "none" }}
                     ></iframe>
                   ) : (
-                    <>
-                      <Img
-                        src={media.img}
-                        alt={media.title}
-                        loading="lazy"
-                        onError={(e) =>
-                          (e.target.src =
-                            "https://placehold.co/600x400?text=News+Clip")
-                        }
-                      />
-                      <div className="media-overlay">
-                        <i className="fa-solid fa-newspaper"></i>
-                      </div>
-                    </>
+                    <Img
+                      src={media.img}
+                      alt={media.title}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                      onError={(e) =>
+                        (e.target.src =
+                          "https://placehold.co/600x400?text=News+Clip")
+                      }
+                    />
                   )}
                 </div>
-                <div className="media-content">
-                  <span
-                    className={`media-date ${
-                      media.type === "video" ? "video-tag" : ""
-                    }`}
-                  >
-                    {media.type === "video" && (
-                      <i
-                        className="fa-brands fa-youtube"
-                        style={{ color: "#ff0000", marginRight: "5px" }}
-                      ></i>
-                    )}
-                    {media.date} | {media.outlet}
-                  </span>
-                  <h4 style={{ marginTop: "0.5rem" }}>{media.title}</h4>
-                  <p>{media.desc}</p>
+
+                <div className="archive-content">
+                  <div className="archive-meta">
+                    <span>{media.outlet}</span>
+                    <span>{media.date}</span>
+                  </div>
+                  <h4 className="archive-title">{media.title}</h4>
+                  <p className="archive-desc">{media.desc}</p>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </section>
       )}
 
-      {/* =========================================================
-          TAB 3: GALLERY (MASONRY GRID)
-      ========================================================= */}
+      {/* --- TAB 3: GALLERY --- */}
       {activeTab === "gallery-photos" && (
         <section className="tab-content container active">
           <div className="gallery-masonry">
@@ -188,19 +183,13 @@ const Awards = () => {
               <div
                 key={index}
                 className="gallery-item"
-                style={{ opacity: 1, transform: "none" }} // Force visible
                 onClick={() => setLightboxImage(photo)}
               >
                 <div className="g-img-container">
-                  <Img
-                    src={photo.src}
-                    alt={photo.alt}
-                    loading="lazy"
-                    onError={(e) => (e.target.style.display = "none")}
-                  />
+                  <Img src={photo.src} alt={photo.alt} loading="lazy" />
                   <div className="g-overlay">
                     <span className="g-text">
-                      <i className="fa-solid fa-magnifying-glass-plus"></i> View
+                      <i className="fa-solid fa-expand"></i> View
                     </span>
                   </div>
                 </div>
@@ -210,16 +199,20 @@ const Awards = () => {
         </section>
       )}
 
-      {/* =========================================================
-          LIGHTBOX MODAL
-      ========================================================= */}
+      {/* Lightbox */}
       {lightboxImage && (
-        <div className="lightbox-overlay" onClick={closeLightbox}>
+        <div
+          className="lightbox-overlay"
+          onClick={() => setLightboxImage(null)}
+        >
           <div
             className="lightbox-content"
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="lightbox-close" onClick={closeLightbox}>
+            <button
+              className="lightbox-close"
+              onClick={() => setLightboxImage(null)}
+            >
               <i className="fa-solid fa-xmark"></i>
             </button>
             <Img src={lightboxImage.src} alt={lightboxImage.alt} />

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Card from "../components/ui/Card";
-import Button from "../components/ui/Button";
 import "./Contact.css";
 import SEO from "../components/SEO";
 
@@ -11,9 +9,8 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-  const [copyStatus, setCopyStatus] = useState(null); // 'address', 'phone', 'email1', 'email2'
 
-  // Form Submission States
+  const [copyStatus, setCopyStatus] = useState(null); // 'address', 'phone', 'email'
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState(null);
 
@@ -64,272 +61,234 @@ const Contact = () => {
         description="Get in touch with Prof. Nalin Bharti for research collaborations, speaking engagements, or academic inquiries."
         url="/contact"
       />
+
+      {/* --- PAGE HEADER --- */}
       <section className="page-header container fade-in-item is-visible">
-        <h1 className="page-title">Get in Touch</h1>
+        <h1 className="page-title">Executive Correspondence</h1>
         <p className="center-text-sm">
-          Reach out for research collaborations, speaking engagements, or
-          academic inquiries.
+          Direct channels for academic collaboration, policy advisory, and
+          research inquiries.
         </p>
       </section>
 
       <div className="container contact-section fade-in-item is-visible">
         <div className="contact-grid">
-          {/* --- LEFT: INFO CARDS --- */}
-          <div className="contact-info-wrapper">
-            {/* Address Card */}
-            <Card
-              className="contact-card"
+          {/* --- LEFT COLUMN: THE DISPATCH STACK --- */}
+          <div className="contact-info-stack">
+            {/* 1. Address Dispatch */}
+            <div
+              className={`dispatch-card ${copyStatus === "address" ? "copied" : ""}`}
               onClick={() =>
                 copyToClipboard(
                   "Room No –210, 2nd Floor, Block 1, Dept. of HSS, IIT Patna, Bihta – 801106",
-                  "address"
+                  "address",
                 )
               }
-              style={{ cursor: "pointer" }}
             >
-              <div className="contact-icon">
-                <i className="fa-solid fa-location-dot"></i>
+              <div className="dispatch-icon">
+                <i className="fa-solid fa-map-location-dot"></i>
               </div>
-              <div className="contact-details">
-                <h4>Office Address</h4>
-                <p style={{ fontSize: "0.9rem", lineHeight: "1.6" }}>
-                  Room No –210, 2nd Floor, Block 1<br />
-                  Department of Humanities and Social Sciences
+              <div className="dispatch-content">
+                <span className="dispatch-label">Headquarters</span>
+                <div className="dispatch-value">IIT Patna Campus</div>
+                <span className="dispatch-sub">
+                  Room 210, Block 1, Dept. of HSS
                   <br />
-                  <strong>Indian Institute of Technology Patna</strong>
-                  <br />
-                  Bihta, Patna – 801106, India
-                </p>
-                {copyStatus === "address" && (
-                  <span
-                    className="sub-text"
-                    style={{ color: "var(--color-accent)" }}
-                  >
-                    Address Copied!
-                  </span>
-                )}
-              </div>
-            </Card>
-
-            {/* Email Card (With Individual Copy Buttons) */}
-            <Card className="contact-card" style={{ cursor: "default" }}>
-              <div className="contact-icon">
-                <i className="fa-solid fa-envelope"></i>
-              </div>
-              <div className="contact-details" style={{ width: "100%" }}>
-                <h4>Email</h4>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "8px",
-                  }}
-                >
-                  {/* Email 1 */}
-                  <div
-                    className="email-row"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <a
-                      href="mailto:nalinbharti@iitp.ac.in"
-                      className="contact-link"
-                    >
-                      nalinbharti@iitp.ac.in
-                    </a>
-                    <button
-                      className="btn-icon-only"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        copyToClipboard("nalinbharti@iitp.ac.in", "email1");
-                      }}
-                      title="Copy Email"
-                      style={{
-                        background: "none",
-                        border: "none",
-                        cursor: "pointer",
-                        color: copyStatus === "email1" ? "green" : "#999",
-                      }}
-                    >
-                      <i
-                        className={`fa-solid ${
-                          copyStatus === "email1" ? "fa-check" : "fa-copy"
-                        }`}
-                      ></i>
-                    </button>
-                  </div>
-
-                  {/* Email 2 */}
-                  <div
-                    className="email-row"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <a
-                      href="mailto:nalinbharti@gmail.com"
-                      className="contact-link"
-                    >
-                      nalinbharti@gmail.com
-                    </a>
-                    <button
-                      className="btn-icon-only"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        copyToClipboard("nalinbharti@gmail.com", "email2");
-                      }}
-                      title="Copy Email"
-                      style={{
-                        background: "none",
-                        border: "none",
-                        cursor: "pointer",
-                        color: copyStatus === "email2" ? "green" : "#999",
-                      }}
-                    >
-                      <i
-                        className={`fa-solid ${
-                          copyStatus === "email2" ? "fa-check" : "fa-copy"
-                        }`}
-                      ></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            {/* Phone Card */}
-            <Card
-              className="contact-card"
-              onClick={() => copyToClipboard("+916115233017", "phone")}
-              style={{ cursor: "pointer" }}
-            >
-              <div className="contact-icon">
-                <i className="fa-solid fa-phone"></i>
-              </div>
-              <div className="contact-details">
-                <h4>Phone</h4>
-                <span className="contact-link">+91-6115-233 017</span>
-                <span className="sub-text">
-                  Office Hours: Mon-Fri, 9AM - 5PM
+                  Bihta, Patna – 801106
                 </span>
-                {copyStatus === "phone" && (
-                  <span
-                    className="sub-text"
-                    style={{ color: "var(--color-accent)" }}
-                  >
-                    Copied!
-                  </span>
-                )}
               </div>
-            </Card>
+              {copyStatus === "address" && (
+                <span className="copy-feedback">Copied</span>
+              )}
+            </div>
 
-            {/* Socials */}
-            <Card
-              className="contact-card"
-              style={{ borderLeft: "4px solid var(--color-accent)" }}
-            >
-              <div className="contact-details" style={{ width: "100%" }}>
-                <h4>Social Profiles</h4>
-                <div className="social-row">
-                  <a
-                    href="https://www.linkedin.com/in/nalin-bharti-439b3815/"
-                    target="_blank"
-                    rel="noreferrer"
+            {/* 2. SMART EMAIL DISPATCH (Dual Channel) */}
+            <div className="dispatch-card" style={{ cursor: "default" }}>
+              <div className="dispatch-icon">
+                <i className="fa-solid fa-envelope-open-text"></i>
+              </div>
+
+              <div className="dispatch-content">
+                <span
+                  className="dispatch-label"
+                  style={{ marginBottom: "0.8rem", display: "block" }}
+                >
+                  Digital Correspondence
+                </span>
+
+                <div className="email-smart-group">
+                  {/* CHANNEL A: ACADEMIC */}
+                  <div
+                    className={`email-item ${copyStatus === "email_official" ? "copied-row" : ""}`}
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent card click
+                      copyToClipboard(
+                        "nalinbharti@iitp.ac.in",
+                        "email_official",
+                      );
+                    }}
                   >
-                    <i className="fa-brands fa-linkedin-in"></i>
-                  </a>
-                  <a
-                    href="https://x.com/nalinbharti"
-                    target="_blank"
-                    rel="noreferrer"
+                    <div className="email-text-col">
+                      <span className="email-tag">Official Channel</span>
+                      <span className="email-addr">nalinbharti@iitp.ac.in</span>
+                    </div>
+                    <i
+                      className={`copy-hint-icon fa-solid ${copyStatus === "email_official" ? "fa-check" : "fa-copy"}`}
+                    ></i>
+                  </div>
+
+                  {/* CHANNEL B: DIRECT */}
+                  <div
+                    className={`email-item ${copyStatus === "email_direct" ? "copied-row" : ""}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      copyToClipboard("nalinbharti@gmail.com", "email_direct");
+                    }}
                   >
-                    <i className="fa-brands fa-x-twitter"></i>
-                  </a>
-                  <a
-                    href="https://www.facebook.com/nalin.bharti"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className="fa-brands fa-facebook-f"></i>
-                  </a>
-                  <a
-                    href="https://www.researchgate.net/profile/Nalin-Bharti"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className="fa-brands fa-researchgate"></i>
-                  </a>
+                    <div className="email-text-col">
+                      <span className="email-tag">Direct Channel</span>
+                      <span className="email-addr">nalinbharti@gmail.com</span>
+                    </div>
+                    <i
+                      className={`copy-hint-icon fa-solid ${copyStatus === "email_direct" ? "fa-check" : "fa-copy"}`}
+                    ></i>
+                  </div>
                 </div>
               </div>
-            </Card>
+            </div>
+
+            {/* 3. Phone Dispatch */}
+            <div
+              className={`dispatch-card ${copyStatus === "phone" ? "copied" : ""}`}
+              onClick={() => copyToClipboard("+916115233017", "phone")}
+            >
+              <div className="dispatch-icon">
+                <i className="fa-solid fa-phone-volume"></i>
+              </div>
+              <div className="dispatch-content">
+                <span className="dispatch-label">Direct Line</span>
+                <div className="dispatch-value">+91-6115-233 017</div>
+                <span className="dispatch-sub">
+                  Mon - Fri, 09:00 - 17:00 IST
+                </span>
+              </div>
+              {copyStatus === "phone" && (
+                <span className="copy-feedback">Copied</span>
+              )}
+            </div>
+
+            {/* 4. Social Connect Box */}
+            <div className="social-connect-box">
+              <span className="dispatch-label">Connect Professionally</span>
+              <div className="social-grid">
+                <a
+                  href="https://www.linkedin.com/in/nalin-bharti-439b3815/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-btn sb-linkedin"
+                >
+                  <i className="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="https://x.com/nalinbharti"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-btn sb-twitter"
+                >
+                  <i className="fa-brands fa-x-twitter"></i>
+                </a>
+                <a
+                  href="https://www.facebook.com/nalin.bharti"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-btn sb-facebook"
+                >
+                  <i className="fa-brands fa-facebook-f"></i>
+                </a>
+                <a
+                  href="https://www.researchgate.net/profile/Nalin-Bharti"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-btn sb-research"
+                >
+                  <i className="fa-brands fa-researchgate"></i>
+                </a>
+              </div>
+            </div>
           </div>
 
-          {/* --- RIGHT: FORM CARD --- */}
-          <Card className="contact-form-wrapper">
-            <h3>Send a Message</h3>
-            <p
-              style={{
-                marginBottom: "2rem",
-                fontSize: "0.9rem",
-                color: "var(--color-text-muted)",
-              }}
-            >
-              Send a direct message via the website.
-            </p>
+          {/* --- RIGHT COLUMN: THE FORM --- */}
+          <div className="correspondence-card">
+            <div className="form-header">
+              <h3>Direct Correspondence</h3>
+              <p>
+                Your message will be routed directly to the academic office.
+              </p>
+            </div>
 
             <form className="modern-form" onSubmit={handleSubmit}>
-              <div className="form-group">
+              <div className="input-group">
                 <input
                   type="text"
                   name="name"
                   id="name"
+                  className="form-input"
                   placeholder=" "
                   required
                   value={formData.name}
                   onChange={handleChange}
                 />
-                <label htmlFor="name">Your Name</label>
+                <label htmlFor="name" className="form-label">
+                  Full Name
+                </label>
               </div>
-              <div className="form-group">
+
+              <div className="input-group">
                 <input
                   type="email"
                   name="email"
                   id="email"
+                  className="form-input"
                   placeholder=" "
                   required
                   value={formData.email}
                   onChange={handleChange}
                 />
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="email" className="form-label">
+                  Email Address
+                </label>
               </div>
-              <div className="form-group">
+
+              <div className="input-group">
                 <input
                   type="text"
                   name="subject"
                   id="subject"
+                  className="form-input"
                   placeholder=" "
                   required
                   value={formData.subject}
                   onChange={handleChange}
                 />
-                <label htmlFor="subject">Subject</label>
+                <label htmlFor="subject" className="form-label">
+                  Subject of Inquiry
+                </label>
               </div>
-              <div className="form-group">
+
+              <div className="input-group">
                 <textarea
                   name="message"
                   id="message"
                   rows="5"
+                  className="form-input"
                   placeholder=" "
                   required
                   value={formData.message}
                   onChange={handleChange}
                 ></textarea>
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message" className="form-label">
+                  Message Content
+                </label>
               </div>
 
               <div style={{ marginTop: "1rem" }}>
@@ -338,72 +297,67 @@ const Contact = () => {
                     className="alert success"
                     style={{
                       color: "green",
-                      fontWeight: "bold",
-                      padding: "10px",
                       background: "#f0fff4",
-                      borderRadius: "4px",
+                      padding: "15px",
+                      borderRadius: "8px",
+                      fontWeight: "600",
+                      border: "1px solid #bbf7d0",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
                     }}
                   >
-                    <i className="fa-solid fa-check-circle"></i> Message sent
-                    successfully!
+                    <i className="fa-solid fa-circle-check"></i>
+                    <span>Message Transmitted Successfully.</span>
                   </div>
                 ) : formStatus === "error" ? (
                   <div
                     className="alert error"
                     style={{
                       color: "#c53030",
-                      fontWeight: "bold",
-                      padding: "10px",
                       background: "#fff5f5",
-                      borderRadius: "4px",
+                      padding: "15px",
+                      borderRadius: "8px",
+                      fontWeight: "600",
+                      border: "1px solid #feb2b2",
                     }}
                   >
-                    <i className="fa-solid fa-circle-exclamation"></i> Error
-                    sending message. Please try again.
+                    Transmission Failed. Please try again.
                   </div>
                 ) : (
-                  <Button
+                  <button
                     type="submit"
-                    variant="primary"
-                    className="submit-btn"
+                    className="btn-submit"
                     disabled={isSubmitting}
-                    style={{ opacity: isSubmitting ? 0.7 : 1, width: "100%" }}
                   >
                     {isSubmitting ? (
-                      <span>
+                      <>
                         <i className="fa-solid fa-spinner fa-spin"></i>{" "}
-                        Sending...
-                      </span>
+                        Processing...
+                      </>
                     ) : (
-                      <span>
-                        Send Message <i className="fa-solid fa-paper-plane"></i>
-                      </span>
+                      <>
+                        Transmit Message{" "}
+                        <i className="fa-solid fa-paper-plane"></i>
+                      </>
                     )}
-                  </Button>
+                  </button>
                 )}
               </div>
             </form>
-          </Card>
+          </div>
         </div>
       </div>
 
-      {/* --- MAP SECTION --- */}
-      {/* Removed Card wrapper to eliminate the "box" look. Now it's a clean, full-width container. */}
-      <div
-        className="container fade-in-item is-visible"
-        style={{ marginTop: "4rem", marginBottom: "4rem" }}
-      >
-        <div
-          style={{
-            width: "100%",
-            height: "450px",
-            borderRadius: "12px",
-            overflow: "hidden",
-            border: "1px solid var(--color-border)",
-          }}
-        >
+      {/* --- LOCATION INTELLIGENCE --- */}
+      <div className="container location-container fade-in-item is-visible">
+        <div className="map-frame">
+          <div className="map-badge">
+            <i className="fa-solid fa-location-dot"></i>
+            <span>Dept. of HSS, IIT Patna</span>
+          </div>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7200.187795165745!2d84.849425!3d25.535249!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed577f6954a4ab%3A0x6ce8f1b9fc2aa02a!2sIndian%20Institute%20of%20Technology%2C%20Patna!5e0!3m2!1sen!2sin!4v1768570338455!5m2!1sen!2sin"
+            src="http://maps.google.com/maps?q=IIT%20Patna&t=&z=13&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}

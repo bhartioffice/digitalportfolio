@@ -1,170 +1,424 @@
-/* =============================================================
-   8. PUBLICATIONS
-============================================================= */
-/* Search & Filters */
+/* --- SEARCH CONTAINER --- */
 .search-section {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
   position: relative;
-  z-index: 100;
+  z-index: 1000;
 }
 .search-box-wrapper {
   width: 100%;
   max-width: 800px;
 }
-.search-container {
-  position: relative;
-  width: 100%;
-}
-.search-input-group {
+
+/* 1. ROW LAYOUT (Input + Detached Button) */
+.search-row-layout {
   display: flex;
-  align-items: flex-start;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 24px;
-  padding: 8px 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: 0.3s;
-  min-height: 50px;
+  gap: 12px; /* Physical separation */
+  align-items: center;
+  position: relative;
 }
-.search-input-group:focus-within {
-  border-color: var(--color-accent);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
-}
-.search-icon {
-  margin: 12px 10px;
-  color: var(--color-text-muted);
-  pointer-events: none;
-}
-.search-chips-input {
+
+/* 2. THE INPUT PILL */
+.search-input-pill {
   flex-grow: 1;
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
   align-items: center;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding: 0 16px;
+  height: 56px; /* Touch friendly */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  z-index: 20;
 }
-#globalSearch {
+
+.search-input-pill.focused {
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+}
+
+.search-icon-input {
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+  margin-right: 12px;
+  transition: opacity 0.2s;
+}
+
+.filter-ui-group {
+  flex-shrink: 0; /* Prevents button from shrinking */
+}
+/* Hide icon on focus to give text space */
+.search-input-pill.focused .search-icon-input {
+  display: none;
+}
+
+.clean-search-input {
+  flex-grow: 1;
   border: none;
-  background: transparent;
+  outline: none;
   font-size: 1rem;
   color: var(--color-text-main);
-  outline: none;
-  flex-grow: 1;
-  min-width: 120px;
-  padding: 8px 0;
+  background: transparent;
+  width: 100%;
+  font-family: var(--font-body);
 }
 
-.search-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #fff;
-  cursor: default;
-  animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.search-chip i {
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.6rem;
-  transition: 0.2s;
-}
-.search-chip i:hover {
-  background: rgba(0, 0, 0, 0.4);
-}
-.chip-Book {
-  background: #003366;
-}
-.chip-Chapter {
-  background: #d69e2e;
-}
-.chip-Article {
-  background: #319795;
-}
-.chip-Conference {
-  background: #805ad5;
-}
-
-.filter-toggle-btn {
-  width: 36px;
-  height: 36px;
-  margin-top: 2px;
-  border-radius: 50%;
+.search-clear-btn {
+  background: #f1f5f9;
   border: none;
-  background: var(--color-bg-secondary);
-  color: var(--color-text-muted);
-  cursor: pointer;
+  color: #64748b;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.2s;
+  cursor: pointer;
   margin-left: 8px;
 }
-.filter-toggle-btn:hover,
-.filter-toggle-btn.active {
-  background: var(--color-accent);
-  color: #003366;
+
+/* 3. DETACHED FILTER CIRCLE */
+.filter-circle-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--color-text-main);
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  position: relative;
 }
 
-.filter-menu {
-  position: absolute;
-  top: 115%;
-  right: 0;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 1.2rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 200;
-  min-width: 300px;
+.filter-circle-btn:active {
+  transform: scale(0.95);
 }
-.filter-menu.show {
-  display: flex;
-}
-.filter-header {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--color-text-light);
-  text-transform: uppercase;
-}
-.filter-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: flex-end;
-}
-.filter-option {
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  transition: 0.2s;
-}
-.filter-option:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-.filter-option.selected {
+.filter-circle-btn.active {
   background: var(--color-primary);
   color: #fff;
   border-color: var(--color-primary);
+}
+
+/* Red Dot if filters active */
+.filter-dot {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+/* 4. MOBILE BOTTOM SHEET MENU */
+.filter-menu {
+  position: absolute;
+  background: #fff;
+  z-index: 1002;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Desktop Dropdown (Above 768px) */
+@media (min-width: 768px) {
+  .filter-menu {
+    top: 70px;
+    right: 0;
+    min-width: 240px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-border);
+    transform: translateY(-10px);
+    padding: 8px;
+  }
+  .filter-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .filter-header-mobile,
+  .sheet-footer {
+    display: none;
+  }
+
+  .filter-option {
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border: none;
+    background: none;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 8px;
+    color: var(--color-text-main);
+  }
+  .filter-option:hover {
+    background: var(--color-bg-secondary);
+  }
+  .filter-option.selected {
+    background: #f0f9ff;
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+  .opt-icon {
+    display: none;
+  } /* Use simple check for desktop if desired */
+}
+
+/* Mobile Sheet (Below 768px) */
+@media (max-width: 768px) {
+  .filter-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    backdrop-filter: blur(2px);
+  }
+  .filter-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .filter-menu {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    border-radius: 24px 24px 0 0;
+    padding: 24px 20px 40px;
+    z-index: 9999 !important;
+    background: #fff;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(110%);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s;
+    display: block !important;
+  }
+  .filter-menu.show {
+    transform: translateY(0);
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .filter-header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--color-primary);
+  }
+  .sheet-clear-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .filter-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+    background: var(--color-bg-secondary);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+  }
+  .filter-option.selected {
+    background: #f0f9ff;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+  .opt-icon {
+    font-size: 1.2rem;
+  }
+
+  .sheet-footer {
+    margin-top: 24px;
+  }
+  .sheet-done-btn {
+    width: 100%;
+    background: var(--color-primary);
+    color: #fff;
+    padding: 16px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+  }
+}
+
+/* 5. VISUAL POLISH: GROUPED RESULTS */
+.result-group {
+  margin-bottom: 4rem;
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.group-title {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+.count-pill {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+}
+
+.group-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, var(--color-border), transparent);
+  margin-bottom: 2rem;
+}
+
+/* 6. CHIPS ROW */
+.active-filters-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+.active-filters-wrapper.expanded {
+  max-height: 60px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+.active-filters-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.search-chip {
+  background: #f1f5f9;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.search-chip i {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+.clear-filters-link {
+  margin-left: auto;
+  color: #64748b;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  background: none;
+  border: none;
+}
+
+/* --- 5. GROUPED RESULTS STYLING --- */
+.search-results-header {
+  display: flex;
+  justify-content: space-between; /* Pushes text left, button right */
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.search-results-header .section-subtitle {
+  font-size: 1.1rem; /* Smaller font */
+  margin: 0;
+  color: var(--color-text-main);
+  font-weight: 700;
+}
+.result-group {
+  margin-bottom: 4rem;
+}
+
+.group-title {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.count-badge {
+  font-size: 0.8rem;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-muted);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+/* Style the Clear button as a link */
+.clear-search-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+/* No Results State */
+.no-results-state {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--color-text-secondary);
+}
+.no-results-icon {
+  font-size: 3rem;
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+}
+.no-results-state h4 {
+  color: var(--color-text-main);
+  margin-bottom: 0.5rem;
 }
 
 /* Search Results Cards */
@@ -326,235 +580,764 @@
   color: var(--color-primary);
   letter-spacing: 1px;
 }
+/* --- VISUAL POLISH: PROMINENT RESET BUTTON --- */
+.btn-reset-prominent {
+  background-color: #f1f5f9;
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
 
-/* Chapter Grid */
+.btn-reset-prominent:hover {
+  background-color: #e2e8f0;
+  color: #ef4444; /* Turns red on hover to indicate 'Delete/Clear' */
+  border-color: #cbd5e1;
+}
+
+.btn-reset-prominent i {
+  font-size: 0.8rem;
+}
+/* --- HIGHLIGHTER STYLING --- */
+
+mark {
+  background-color: rgba(255, 223, 0, 0.4); /* Soft Yellow */
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 2px;
+  font-weight: 700; /* Makes matched text pop */
+}
+
+/* --- NEW "LIBRARY SHELF" CHAPTER CARD --- */
+
+/* 1. Grid Layout: Adapts to screen width */
 .chapter-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
+
+/* 2. Card Base */
 .chapter-card {
   display: flex;
-  gap: 1rem;
-  background: var(--color-bg);
-  padding: 1.2rem;
-  border-radius: 10px;
-  border: 1px solid var(--color-border);
-  transition: 0.3s;
+  flex-direction: row; /* Default: Side-by-Side */
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+  min-height: 220px;
 }
+
 .chapter-card:hover {
   transform: translateY(-5px);
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-md);
-}
-.chapter-img {
-  width: 80px;
-  flex-shrink: 0;
-  overflow: hidden;
-  border-radius: 4px;
-}
-.chapter-img img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 51, 102, 0.1);
+  border-color: #d69e2e;
 }
 
-/* Journal/Publication Lists */
-.numbered-pub-grid {
-  counter-reset: journal-counter;
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-}
-.pub-item {
-  position: relative;
-  background: var(--color-bg);
-  padding: 1.8rem 1.5rem 1.5rem 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--color-border);
-  border-left: 5px solid var(--color-primary);
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-  overflow: hidden;
+/* 3. The Visual Sidebar (Desktop) */
+.chapter-visual {
+  width: 150px; /* Fixed width sidebar */
+  background: #f8fafc; /* Very light slate */
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.pub-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  border-color: var(--color-accent);
-}
-.pub-item::before {
-  counter-increment: journal-counter;
-  content: counter(journal-counter, decimal-leading-zero);
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  font-size: 3rem;
-  font-weight: 900;
-  color: rgba(0, 0, 0, 0.03);
-  font-family: var(--font-heading);
-  line-height: 1;
-  pointer-events: none;
-}
-.pub-year-badge {
-  background: var(--color-bg-secondary);
-  color: var(--color-text-main);
-  font-weight: 800;
-  font-size: 0.85rem;
-  padding: 3px 10px;
-  border-radius: 4px;
-  border: 1px solid var(--color-border);
-}
-.tag {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 4px;
-  color: #fff;
-  letter-spacing: 0.5px;
-}
-.tag.international {
-  background: #3182ce;
-}
-.tag.national {
-  background: #38a169;
-}
-.pub-content h5 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-text-main);
-  margin-bottom: 0.5rem;
-}
-.journal-link {
-  display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  transition: 0.3s;
-}
-.journal-link:hover {
-  color: var(--color-primary);
-  text-decoration: underline;
+  justify-content: center;
+  flex-shrink: 0;
+  border-right: 1px solid #e2e8f0;
+  perspective: 800px; /* Essential for 3D */
+  padding: 1.5rem;
+  position: relative;
 }
 
-/* Timeline (Conferences) */
-.timeline-container {
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-  padding-left: 2rem;
-  counter-reset: tl-counter;
-}
-.timeline-container::before {
+/* Decor: Subtle gradient on the sidebar to give depth */
+.chapter-visual::before {
   content: "";
   position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  left: 0px;
-  width: 2px;
-  background: var(--color-border);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(241, 245, 249, 0) 70%
+  );
+  z-index: 1;
 }
-.timeline-year-marker {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  margin: 2.5rem 0 1.5rem -1rem;
-  background: var(--color-bg);
-  padding: 5px 15px;
-  border: 2px solid var(--color-accent);
-  border-radius: 50px;
-  display: inline-block;
+
+/* The Book Cover (3D Tilt) */
+.chapter-book-cover {
   position: relative;
   z-index: 2;
+  width: 90px;
+  height: auto;
+  box-shadow: -5px 8px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  transform: rotateY(-20deg) rotateX(5deg);
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.timeline-item {
+
+.chapter-card:hover .chapter-book-cover {
+  transform: rotateY(0deg) rotateX(0deg) scale(1.08); /* Pops out */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* 4. Content Area */
+.chapter-body {
+  padding: 1.5rem 1.8rem;
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  counter-increment: tl-counter;
-}
-.timeline-item::after {
-  content: "";
-  position: absolute;
-  left: -2.35rem;
-  top: 1.5rem;
-  width: 12px;
-  height: 12px;
-  background: var(--color-accent);
-  border: 3px solid var(--color-bg);
-  border-radius: 50%;
-  box-shadow: 0 0 0 1px var(--color-border);
-  z-index: 2;
-}
-.timeline-item::before {
-  content: counter(tl-counter, decimal-leading-zero);
-  position: absolute;
-  left: -5.5rem;
-  top: 1.2rem;
-  width: 3rem;
-  text-align: right;
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--color-border);
-  font-family: var(--font-heading);
-  transition: 0.3s;
-}
-.timeline-item:hover::before {
-  color: var(--color-accent);
-}
-.tl-content {
-  background: var(--color-bg);
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid var(--color-border);
+  flex-direction: column;
+  justify-content: center;
   flex-grow: 1;
-  transition: 0.3s;
-  box-shadow: var(--shadow-sm);
-  margin-left: 1rem;
 }
-.timeline-item:hover .tl-content {
-  transform: translateX(5px);
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-lg);
+
+.chapter-meta-top {
+  margin-bottom: 0.8rem;
 }
-.tl-content h5 {
-  font-size: 1.1rem;
+
+.chapter-type-pill {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  color: #94a3b8;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.chapter-title {
+  font-family: var(--font-heading, serif);
+  font-size: 1.25rem;
+  color: #1e293b;
   font-weight: 700;
-  color: var(--color-text-main);
+  line-height: 1.35;
   margin-bottom: 0.5rem;
 }
-.tl-venue i {
-  color: var(--color-primary);
-  margin-right: 5px;
+
+.chapter-in-book {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
 }
-.tl-assoc {
+.chapter-in-book em {
+  color: #003366;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.chapter-actions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 1rem;
+}
+
+.btn-read-chapter {
+  color: #1e293b; /* Dark Slate (Almost Black) */
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease; /* Smooth color change */
+}
+
+/* Hover State - Changes to Gold & Moves Icon */
+.btn-read-chapter:hover {
+  color: #d69e2e; /* Gold Accent Color */
+  gap: 12px; /* Slight arrow movement for effect */
+}
+
+/* Optional: Icon specific transition */
+.btn-read-chapter i {
+  transition: transform 0.3s ease;
+}
+
+.btn-read-chapter:hover i {
+  transform: translateX(2px); /* Pushes the arrow slightly right */
+}
+
+/* --- MOBILE & TABLET BREAKPOINT (Max-Width 768px) --- */
+@media (max-width: 768px) {
+  .chapter-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .chapter-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .chapter-visual {
+    width: 100%;
+    height: auto;
+    min-height: 180px;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1.5rem;
+    background: #f8fafc;
+  }
+
+  .chapter-book-cover {
+    width: 110px;
+    height: auto;
+    transform: none !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  /* 3. Adjust Fonts */
+  .chapter-title {
+    font-size: 1.15rem;
+    line-height: 1.4;
+  }
+}
+
+/* --- CRAZY TECHIE / PROFESSIONAL ARTICLE CARD --- */
+
+/* 1. The Grid Container */
+.numbered-pub-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(480px, 1fr)
+  ); /* Wide, substantial cards */
+  gap: 2rem;
+  counter-reset: journal-counter; /* Starts the auto-numbering engine */
+  padding-bottom: 3rem;
+}
+
+/* 2. The Card Container */
+.article-tech-card {
+  position: relative;
+  display: flex;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  counter-increment: journal-counter; /* Increments number for each card */
+  min-height: 240px;
+}
+
+.article-tech-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 51, 102, 0.1);
+  border-color: #d69e2e; /* Gold border on hover */
+}
+
+/* 3. The "Data Track" Sidebar (Left) */
+.article-index-track {
+  width: 60px;
+  background: #003366; /* Brand Blue */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1.5rem;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* The Auto-Numbering (Big & Industrial) */
+.article-tech-card::before {
+  content: counter(journal-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 1.5rem;
+  width: 60px; /* Matches sidebar width */
+  text-align: center;
+  font-family: "Courier New", monospace; /* Tech font */
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3); /* Faint industrial look */
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect: Number lights up Gold */
+.article-tech-card:hover::before {
+  color: #d69e2e;
+  text-shadow: 0 0 10px rgba(214, 158, 46, 0.5);
+}
+
+/* Decoration Line in Sidebar */
+.tech-decoration-line {
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 3rem;
+}
+
+/* 4. The Body Content */
+.article-body {
+  padding: 1.5rem 1.8rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tech Header (Year + Tag) */
+.article-tech-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed #e2e8f0;
+  padding-bottom: 0.8rem;
+}
+
+.tech-year {
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.tech-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+.tech-tag.international {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+.tech-tag.national {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+/* Title */
+.article-title {
+  font-family: var(--font-heading, serif);
+  font-size: 1.35rem;
+  color: #1e293b;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1.2rem;
+}
+
+/* Details Section (The "Code" look) */
+.article-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  gap: 10px;
   font-size: 0.85rem;
-  color: var(--color-text-muted);
-  background: var(--color-bg-secondary);
-  padding: 8px 12px;
-  border-radius: 6px;
-  border-left: 3px solid var(--color-accent);
+  line-height: 1.5;
+}
+
+.detail-label {
+  font-family: "Courier New", monospace;
+  color: #94a3b8;
+  font-weight: 600;
+  min-width: 70px; /* Aligns values */
+  text-align: right;
+  letter-spacing: -0.5px;
+}
+
+.detail-value {
+  color: #334155;
+  font-weight: 500;
+}
+
+/* 5. Action Button (Command Prompt Style) */
+.article-action-row {
+  margin-top: auto; /* Pushes to bottom */
+}
+
+.tech-access-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.tech-access-btn .btn-text {
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #003366;
+  letter-spacing: 0.5px;
+}
+
+.tech-access-btn i {
+  color: #d69e2e;
+  font-size: 0.8rem;
+  transition: transform 0.2s;
+}
+
+/* Hover State for Button */
+.tech-access-btn:hover {
+  background: #003366;
+  border-color: #003366;
+}
+.tech-access-btn:hover .btn-text {
+  color: #fff;
+}
+.tech-access-btn:hover i {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.tech-status-offline {
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  /* 1. Global Grid Fix: Stop overflow */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow-x: hidden; /* prevents horizontal scroll */
+  }
+
+  .numbered-pub-grid,
+  .chapter-grid {
+    grid-template-columns: 1fr; /* Force single column */
+    gap: 1.5rem;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* --- ARTICLE CARD FIX --- */
+  .article-tech-card {
+    flex-direction: column;
+    padding-left: 0;
+    border-left: 5px solid #003366;
+    width: 100%; /* Force fit */
+    box-sizing: border-box; /* Include padding in width */
+  }
+
+  /* Remove the sidebar track completely to save space */
+  .article-index-track {
+    display: none;
+  }
+
+  /* Move the big number to background */
+  .article-tech-card::before {
+    position: absolute;
+    top: 0;
+    right: 10px; /* Pull it inside */
+    left: auto;
+    font-size: 4rem;
+    color: rgba(0, 51, 102, 0.05);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* KEY FIX: Reduce padding so text doesn't cut off */
+  .article-body {
+    padding: 1.2rem 1rem; /* Smaller horizontal padding */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Ensure Title Wraps */
+  .article-title {
+    font-size: 1.15rem; /* Slightly smaller font */
+    word-wrap: break-word; /* Force wrap if word is long */
+    margin-right: 10px; /* Safe space from edge */
+  }
+
+  /* Adjust the 'Initialize Protocol' button */
+  .article-action-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .tech-access-btn {
+    width: 100%; /* Full width button */
+    justify-content: center;
+    margin-top: 1rem;
+    box-sizing: border-box;
+  }
+
+  .tech-access-btn .btn-text {
+    font-size: 0.7rem; /* Prevent text expansion */
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .article-tech-card {
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .article-index-track {
+    width: 100%;
+    height: 40px;
+    flex-direction: row;
+    padding: 0 1rem;
+    align-items: center;
+  }
+
+  .article-tech-card::before {
+    position: static;
+    width: auto;
+    font-size: 1.2rem;
+    padding-right: 10px;
+  }
+
+  .tech-decoration-line {
+    display: none;
+  }
+
+  .article-body {
+    padding: 1rem;
+  }
+}
+/* --- CONFERENCE "DIPLOMATIC DISPATCH" DESIGN --- */
+
+/* 1. The Grid Container */
+.conference-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 2rem;
+  counter-reset: conf-counter; /* Starts numbering */
+  margin-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+/* 2. The Card */
+.conf-diplomatic-card {
+  display: flex;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  min-height: 220px;
+  counter-increment: conf-counter; /* Increments number */
+}
+
+.conf-diplomatic-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 51, 102, 0.1);
+  border-color: #d69e2e;
+}
+
+/* 3. Auto-Numbering (Watermark Style) */
+.conf-diplomatic-card::before {
+  content: counter(conf-counter, decimal-leading-zero);
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-family: "Courier New", monospace;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: rgba(0, 51, 102, 0.04); /* Subtle watermark */
+  pointer-events: none;
+  z-index: 0;
+}
+.conf-diplomatic-card:hover::before {
+  color: rgba(214, 158, 46, 0.15); /* Gold glow on hover */
+}
+
+/* 4. Left Strip (The "Spine") */
+.conf-strip {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #f1f5f9;
+  border-right: 1px solid #e2e8f0;
+  transition: background 0.3s;
+}
+.strip-intl {
+  border-left: 4px solid #003366;
+} /* Blue for Intl */
+.strip-nat {
+  border-left: 4px solid #15803d;
+} /* Green for National */
+
+.conf-strip-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.conf-diplomatic-card:hover .strip-intl {
+  background: #003366;
+}
+.conf-diplomatic-card:hover .strip-nat {
+  background: #15803d;
+}
+.conf-diplomatic-card:hover .conf-strip-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 5. Content Body */
+.conf-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  z-index: 1; /* Above watermark */
+}
+
+/* Header: Date */
+.conf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 1rem;
 }
-.tag.poster {
-  background: #319795;
-  display: inline-flex;
+
+.conf-date-group {
+  display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  background: #f8fafc;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  color: #003366;
+  font-weight: 700;
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
 }
-.tag.plenary {
-  background: #d97706;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  color: #fff;
+
+.conf-extra-badge {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  background: #fffbeb;
+  color: #b45309;
+  padding: 4px 8px;
+  border: 1px solid #fcd34d;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* Title */
+.conf-title {
+  font-family: var(--font-heading, serif);
+  font-size: 1.25rem;
+  color: #1e293b;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.35;
+}
+
+/* Venue Block */
+.conf-geo-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.geo-row {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.geo-row i {
+  color: #d69e2e;
+  width: 16px;
+}
+.geo-city {
+  font-weight: 600;
+  color: #334155;
+}
+
+/* Footer */
+.conf-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px dashed #e2e8f0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* --- MOBILE RESPONSIVENESS (Max 768px) --- */
+@media (max-width: 768px) {
+  .conference-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .conf-diplomatic-card {
+    flex-direction: column;
+    border-left: 5px solid #003366; /* Replace strip with border */
+    min-height: auto;
+  }
+
+  .conf-strip {
+    display: none; /* Hide vertical strip to save space */
+  }
+
+  .conf-body {
+    padding: 1.25rem;
+  }
+
+  /* Adjust Number Watermark */
+  .conf-diplomatic-card::before {
+    font-size: 3rem;
+    top: 5px;
+    right: 10px;
+  }
+}
+
+.search-results-mixed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.source-tag.compact {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  background: #eee;
+  color: #555;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
 }

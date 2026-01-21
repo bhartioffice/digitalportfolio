@@ -245,7 +245,7 @@ export const articlesData = [
       "Development Dynamics in Jhargram (West Bengal): What is Revealed from PCR and PLS Estimation?",
     journal: "The Indian Economic Journal, Vol 73(2). Sage",
     authors: "Dhananjay Patra, Meghna Dutta, Nalin Bharti",
-    link: "https://doi.org/10.1177/00194662241285433",
+    link: "https://journals.sagepub.com/doi/10.1177/00194662251335886",
   },
   {
     id: "a6",
@@ -256,7 +256,7 @@ export const articlesData = [
       "Educational Infrastructure Challenges in Tribal Regions: An Enquiry in the Context of NEP 2020",
     journal: "Journal of Social and Economic Development, Vol 27(2). Springer",
     authors: "Dhananjay Patra, Meghna Dutta, Nalin Bharti",
-    link: "https://doi.org/10.1007/s40847-024-00287-3",
+    link: "https://link.springer.com/article/10.1007/s40847-025-00446-9",
   },
   {
     id: "a7",
@@ -267,7 +267,7 @@ export const articlesData = [
       "Are Better Equipped Schools Delivering Better Student Outcomes? Evidence from India",
     journal: "Indian Journal of Human Development, 19(1)",
     authors: "Dhananjay Patra, Nalin Bharti, Meghna Dutta",
-    link: "https://doi.org/10.1177/09737030241286064",
+    link: "https://journals.sagepub.com/doi/10.1177/09737030251346751",
   },
   {
     id: "a8",
@@ -397,7 +397,7 @@ export const articlesData = [
       "Developing Countries, Technical Non-Tariff Measures and South-South Trade: A Structural Gravity Analysis",
     journal: "International Journal of Trade Economics and Finance, Vol 13(5)",
     authors: "Ayesha Fatma & Nalin Bharti",
-    link: "http://www.ijtef.org/vol13/695-IE1009.pdf",
+    link: "https://www.ijtef.com/index.php?m=content&c=index&a=show&catid=126&id=1127",
   },
   {
     id: "a20",
@@ -408,7 +408,7 @@ export const articlesData = [
       "Access to Medicines and Medical Equipment during COVID-19: Searching Compatibility between the WTO and the WHO",
     journal: "India Quarterly, Vol 78(1). Sage",
     authors: "Mrityunjay Kumar, Ayesha Fatma & Nalin Bharti",
-    link: "https://journals.sagepub.com/doi/abs/10.1177/09749284221083981",
+    link: "https://journals.sagepub.com/doi/10.1177/09749284211068461",
   },
   {
     id: "a21",
@@ -418,7 +418,7 @@ export const articlesData = [
     title: "India-Australia Agricultural Trade: Recent Trade Restrictions",
     journal: "SSRN Electronic Journal",
     authors: "Chandan Kumar & Nalin Bharti",
-    link: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4052382",
+    link: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4721307",
   },
   {
     id: "a22",
@@ -440,7 +440,7 @@ export const articlesData = [
       "Estimating the impact of COVID-19 on South Asia's exports: does trade facilitation matter now more than ever?",
     journal: "Transnational Corporations Review, Vol 13(4). Taylor & Francis",
     authors: "Mamta Kumari & Nalin Bharti",
-    link: "https://www.tandfonline.com/doi/abs/10.1080/19186444.2021.1995388",
+    link: "https://www.tandfonline.com/doi/abs/10.1080/19186444.2021.1911280",
   },
   {
     id: "a24",
@@ -451,7 +451,7 @@ export const articlesData = [
       "Linkages between Trade Facilitation and Governance: Relevance for Post-COVID-19 Trade Strategy",
     journal: "Millennial Asia, Vol 12(2). Sage",
     authors: "Mamta Kumari & Nalin Bharti",
-    link: "https://journals.sagepub.com/doi/abs/10.1177/09763996211021074",
+    link: "https://journals.sagepub.com/doi/10.1177/0976399620972346",
   },
   {
     id: "a25",
@@ -472,7 +472,7 @@ export const articlesData = [
       "Why India forwent RCEP? Analyzing Trade Diversion Effects of Indian FTAS",
     journal: "Journal of Asia Pacific Studies, Vol 6(3)",
     authors: "Madhuri Kumari, Ayesha Fatma, Nalin Bharti",
-    link: "#",
+    link: "https://www.researchgate.net/publication/355710361_Why_India_forwent_RCEP_Analyzing_Trade_Diversion_Effects_of_Indian_FTAs",
   },
   {
     id: "a27",
@@ -483,7 +483,7 @@ export const articlesData = [
       "Post- SAFTA NTMs for Agro- Trade: What Revealed from India- South Asia approach",
     journal: "Foreign Trade Review, Vol 56(1). Sage",
     authors: "Chandan Kumar & Nalin Bharti",
-    link: "https://journals.sagepub.com/doi/abs/10.1177/0015732520965381",
+    link: "https://www.researchgate.net/publication/345859833_Post-SAFTA_NTMs_for_Agricultural_Trade_Revelations_from_the_India-South_Asia_Approach",
   },
   {
     id: "a28",
@@ -493,7 +493,7 @@ export const articlesData = [
     title: "What Drive Trade Costs? South Asia and Beyond",
     journal: "South Asia Economic Journal, Vol 21(2). Sage",
     authors: "Mamta Kumari & Nalin Bharti",
-    link: "https://journals.sagepub.com/doi/abs/10.1177/1391561420949989",
+    link: "https://journals.sagepub.com/doi/abs/10.1177/1391561420968543",
   },
   {
     id: "a29",
@@ -525,7 +525,7 @@ export const articlesData = [
     title: "Perception vs. reality: understanding the US–China trade war",
     journal: "Transnational Corporations Review, Vol 11(4). Taylor & Francis",
     authors: "Ayesha Fatma & Nalin Bharti",
-    link: "https://www.tandfonline.com/doi/abs/10.1080/19186444.2019.1693103",
+    link: "https://www.tandfonline.com/doi/full/10.1080/19186444.2019.1682409",
   },
   {
     id: "a32",
@@ -544,9 +544,10 @@ export const articlesData = [
     tag: "National",
     title:
       "Provisions of Generic Drugs under Section 3 (d) of Indian IP Act: What does data from the Backward States Reveal?",
-    journal: "Artha Vijnana, Vol 61(4)",
-    authors: "Nalin Bharti",
-    link: "https://www.researchgate.net/publication/340321768_Provisions_of_Generic_Drugs_under_Section_3_d_of_Indian_IP_Act_What_does_data_from_the_Backward_States_Reveal",
+    journal:
+      "Artha Vijnana Journal of The Gokhale Institute of Politics and Economics LXI(4):306-324 ",
+    authors: "Mrityunjay Kumar & Nalin Bharti",
+    link: "https://www.researchgate.net/publication/363210741_Provisions_of_Generic_Drugs_under_Section_3d_of_Indian_IP_Act_What_does_Data_from_the_Backward_States_Reveal",
   },
   {
     id: "a34",
@@ -554,7 +555,7 @@ export const articlesData = [
     year: "2019",
     tag: "International",
     title:
-      "Has the South Asian Free Trade Area Improved the Member Countries Trade?",
+      "Has trade improved from SAPTA to SAFTA? Evidence from the gravity model",
     journal:
       "International Journal of Business and Globalisation, Vol 23(4). Inderscience",
     authors: "Kumar Gaurav & Nalin Bharti",
@@ -568,7 +569,7 @@ export const articlesData = [
     title: "Indo- EU Agricultural Trade: Trade Restrictions and SPS Measures",
     journal: "Óbuda University e-Bulletin, Vol 8(1)",
     authors: "Chandan Kumar & Nalin Bharti",
-    link: "https://www.researchgate.net/publication/329433464_Indo-_EU_Agricultural_Trade_Trade_Restrictions_and_SPS_Measures",
+    link: "https://www.researchgate.net/publication/330753588_Indo-EU_Agricultural_Trade_Trade_Restrictions_and_SPS_Measures",
   },
   {
     id: "a36",
@@ -588,7 +589,7 @@ export const articlesData = [
     title: "Is Labour Law a Hindrance in India’s Public Enterprises Reforms?",
     journal: "OPTIMUM STUDIA EKONOMICZNE, NR 5 (83)",
     authors: "Nalin Bharti & Gopal Ganesh",
-    link: "https://www.researchgate.net/publication/311681285_Is_Labour_Law_a_Hindrance_in_India's_Public_Enterprises_Reforms",
+    link: "https://www.researchgate.net/publication/314983030_Is_Labour_Law_a_Hindrance_in_India's_Public_Enterprises_Reforms",
   },
   {
     id: "a38",
@@ -611,7 +612,7 @@ export const articlesData = [
     journal:
       "Int. J. Transitions and Innovation Systems, Vol 5(1). Inderscience",
     authors: "Nalin Bharti, Kumar Gaurav, Chandan Kumar",
-    link: "https://www.inderscienceonline.com/doi/abs/10.1504/IJTIS.2016.083204",
+    link: "https://www.inderscienceonline.com/doi/abs/10.1504/IJTIS.2016.081566",
   },
   {
     id: "a40",
@@ -622,7 +623,7 @@ export const articlesData = [
       "Why TK Incompatible with IPR: Practical implications and illustrations",
     journal: "Journal of Central European Green Innovation, Vol 2(2)",
     authors: "Nalin Bharti & Shaiwal Satyarthi",
-    link: "https://www.researchgate.net/publication/271286374_Why_TK_Incompatible_with_IPR_Practical_implications_and_illustrations",
+    link: "https://ideas.repec.org/a/ags/hukrgr/174288.html",
   },
   {
     id: "a41",
@@ -632,7 +633,7 @@ export const articlesData = [
     title: "Is India Back to the Hindu Growth Rate",
     journal: "YOJNA, Ministry of Information",
     authors: "Kumar Gaurav, Nalin Bharti, Priyanka Sinha",
-    link: "#",
+    link: "https://www.researchgate.net/publication/278029656_Is_India_back_to_the_Hindu_Growth_Rate",
   },
   {
     id: "a42",
@@ -653,7 +654,7 @@ export const articlesData = [
       "Have trade policy reforms improved Indo-Hungarian trade? Some evidence from agriculture sector",
     journal: "ACTA AGRONOMICA ÓVÁRIENSIS, Vol 55(2)",
     authors: "Priyanka Sinha, Nalin Bharti, et al.",
-    link: "https://www.researchgate.net/publication/271286392_Have_trade_policy_reforms_improved_Indo-Hungarian_trade_Some_evidence_from_agriculture_sector",
+    link: "https://www.researchgate.net/publication/394454063_Have_trade_policy_reforms_improved_Indo-Hungarian_trade_Some_evidence_from_agriculture_sector",
   },
   {
     id: "a44",
@@ -663,7 +664,7 @@ export const articlesData = [
     title: "Has Bihar any Export Potential",
     journal: "Bihar Economic Journal, Vol 1(1)",
     authors: "Kumar Gaurav & Nalin Bharti",
-    link: "#",
+    link: "https://www.researchgate.net/publication/278245099_Has_Bihar_any_Export_Potential",
   },
   {
     id: "a45",
@@ -673,7 +674,7 @@ export const articlesData = [
     title: "Why English? The Leader of ITES Offshore",
     journal: "Amity Global HRM Review",
     authors: "Sadeqa Ghazal, Kumar Gaurav & Nalin Bharti",
-    link: "#",
+    link: "https://www.researchgate.net/publication/339366393_Why_English_The_Leader_of_ITES_offshore",
   },
   {
     id: "a46",
@@ -684,7 +685,7 @@ export const articlesData = [
       "Trade Policy Reforms in India: What is missing in Recent Literature?",
     journal: "Journal of Management & Public Policy, Vol 4(1)",
     authors: "Priyanka Sinha & Nalin Bharti",
-    link: "https://www.researchgate.net/publication/271286438_Trade_Policy_Reforms_in_India_What_is_missing_in_Recent_Literature",
+    link: "https://jmpp.in/wp-content/uploads/2016/01/Priyanka-Sinha-Nalin-Bharti.pdf",
   },
   {
     id: "a47",
@@ -705,7 +706,7 @@ export const articlesData = [
       "Assessing The Role of Trade in Transmission of Global Financial Crisis to the Indian Economy",
     journal: "Indian Journal of Economics and Business, Vol 10(4)",
     authors: "Raj Rajesh, Sanjib Bordoloi, Nalin Bharti",
-    link: "https://www.researchgate.net/publication/227443574_Assessing_The_Role_of_Trade_in_Transmission_of_Global_Financial_Crisis_to_the_Indian_Economy",
+    link: "https://www.researchgate.net/publication/241766170_Assessing_the_Role_of_Trade_in_Transmission_of_Global_Financial_Crisis_to_the_Indian_Economy",
   },
   {
     id: "a49",
@@ -716,7 +717,7 @@ export const articlesData = [
       "Public-private partnership in India's Urban Water Public Utilities: A case of Sonia Vihar Water Project-Delhi",
     journal: "Journal of Management and Public Policy, Vol 1(2)",
     authors: "Nalin Bharti & Gopal Ganesh",
-    link: "https://www.researchgate.net/publication/271286450_Public-private_partnership_in_India's_Urban_Water_Public_Utilities_A_case_of_Sonia_Vihar_Water_Project-Delhi",
+    link: "https://jmpp.in/wp-content/uploads/2016/01/Nalin-Bharti-G.-Ganesh.pdf",
   },
   {
     id: "a50",
@@ -738,7 +739,7 @@ export const articlesData = [
     title: "Doing LPO Business in India",
     journal: "Int. J. Technology Transfer and Commercialisation, Vol 6(2/3/4)",
     authors: "Nalin Bharti",
-    link: "https://www.inderscienceonline.com/doi/abs/10.1504/IJTTC.2007.014972",
+    link: "https://www.researchgate.net/publication/247832962_Doing_LPO_business_in_India",
   },
   {
     id: "a52",
@@ -749,7 +750,7 @@ export const articlesData = [
       "Beyond Wines and Spirits: Developing Countries' GI products and their potentials in WTO Regime",
     journal: "Journal of Intellectual Property Rights, Vol 11(2)",
     authors: "Nalin Bharti & Tushar Kanti Saha",
-    link: "http://nopr.niscpr.res.in/handle/123456789/4144",
+    link: "https://docs.manupatra.in/newsline/articles/Upload/BA311547-E134-4C0D-95C2-A30E6C0D5058.pdf",
   },
   {
     id: "a53",
@@ -760,7 +761,7 @@ export const articlesData = [
       "Privatization–induced Labour Restructuring and Collective Bargaining: Case Studies in South Asia",
     journal: "The Indian Journal of Labour Economics, Vol 47(4)",
     authors: "Nalin Bharti & Gopal Ganesh",
-    link: "https://www.researchgate.net/publication/271286503_Privatization_-induced_Labour_Restructuring_and_Collective_Barganing_Case_Studies_in_South_Asia",
+    link: "https://www.researchgate.net/publication/289639031_Privatisation-induced_labour_restructuring_and_collective_bargaining_Case_studies_in_South_Asia",
   },
   {
     id: "a54",
@@ -770,7 +771,7 @@ export const articlesData = [
     title: "Opportunities for MNCs in India’s Northeast",
     journal: "Peace & Conflict, Vol 7(10)",
     authors: "Nalin Bharti",
-    link: "#",
+    link: "https://www.ipcs.org/comm_select.php?articleNo=1510",
   },
 ];
 export const conferencesData = [

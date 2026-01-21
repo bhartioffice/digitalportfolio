@@ -1,226 +1,507 @@
-/* 1. The Grid */
-.people-grid {
+/* src/components/People/People.css */
+
+/* =========================================================
+   1. SCHOLAR CARD (PhD Identity Style)
+========================================================= */
+.scholar-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2.5rem;
   margin-top: 2rem;
 }
 
-/* 2. The Person Card */
-.person-card {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
+.scholar-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
   border-radius: 16px;
-  padding: 0;
-  transition: all 0.4s ease;
-  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-/* Colored Top Bar */
-.person-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background: var(--color-primary);
-  z-index: 1;
-}
-.person-card.status-ongoing::before {
-  background: #2b6cb0;
-}
-.person-card.status-graduated::before {
-  background: #38a169;
-}
-.person-card.status-staff::before {
-  background: var(--color-accent);
-}
-
-.person-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+.scholar-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 51, 102, 0.12);
   border-color: var(--color-accent);
 }
 
-/* 3. Image Area */
-.person-header {
-  margin-top: 3rem;
-  margin-bottom: 1rem;
+.scholar-header {
+  height: 100px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #1e3a8a 100%);
   position: relative;
 }
 
-.person-img {
-  width: 140px;
+.scholar-img-wrapper {
+  width: 140px; /* Large Headshot */
   height: 140px;
   border-radius: 50%;
   border: 5px solid #fff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  background: #f8fafc;
+  background: #fff;
+  margin: -70px auto 0;
   position: relative;
   z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.person-img img {
+.scholar-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
-  transition: transform 0.5s ease;
+  object-position: top center; /* Focus on Face */
 }
 
-.person-card:hover .person-img img {
-  transform: scale(1.1);
-}
-
-/* 4. Status Badge */
-.status-badge {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 6px;
-  letter-spacing: 0.5px;
-}
-.status-badge.ongoing {
-  background: #ebf8ff;
-  color: #2b6cb0;
-}
-.status-badge.awarded {
-  background: #f0fff4;
-  color: #2f855a;
-}
-.status-badge.staff-badge {
-  display: none;
-}
-
-/* 5. Info Section */
-.person-info {
-  width: 100%;
-  padding: 0 1.5rem 2rem 1.5rem;
+.scholar-body {
+  padding: 1rem 1.5rem 1.5rem;
+  text-align: center;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  flex-grow: 1;
 }
 
-.person-info h4 {
+.scholar-name {
+  font-family: var(--font-heading);
   font-size: 1.3rem;
-  margin-bottom: 0.3rem;
-  color: var(--color-text-main);
+  color: var(--color-primary);
+  margin-bottom: 0.2rem;
   font-weight: 700;
+}
+
+.scholar-role {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.topic-box {
+  background: var(--color-bg-secondary);
+  border-left: 3px solid var(--color-accent);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.topic-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.topic-text {
+  font-size: 0.9rem;
+  color: var(--color-text-main);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.scholar-meta {
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: #64748b;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px dashed #e2e8f0;
+  margin-bottom: 1.2rem;
+}
+
+.meta-row {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 }
-
-.name-link {
-  font-size: 1rem;
-  color: #0077b5;
-  transition: transform 0.2s ease;
-  display: inline-flex;
-}
-.name-link:hover {
-  transform: scale(1.2);
-  color: #004182;
+.meta-row i {
+  color: var(--color-accent);
 }
 
-.role-subtitle {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.tenure {
-  font-size: 0.8rem;
-  color: var(--color-text-light);
-  background: var(--color-bg-secondary);
-  padding: 2px 10px;
-  border-radius: 20px;
-  margin-bottom: 1.5rem;
-  display: inline-block;
-  border: 1px solid var(--color-border);
-  font-weight: 500;
-}
-
-/* 6. Feature Box (Thesis/Topic) */
-.thesis-topic,
-.research-topic {
-  background: var(--color-bg-secondary);
-  padding: 1.2rem;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  width: 100%;
-  margin-top: auto;
-  margin-bottom: 1.5rem;
-  text-align: left;
-  border-left: 4px solid var(--color-accent);
-  line-height: 1.5;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.02);
-}
-
-.thesis-topic strong,
-.research-topic strong {
-  display: block;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  margin-bottom: 6px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-}
-
-.thesis-topic i,
-.research-topic i {
-  margin-right: 5px;
-}
-
-/* 7. Social Links */
-.person-links {
+.scholar-actions {
   display: flex;
+  justify-content: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
-.person-links a {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #fff;
-  border: 1px solid var(--color-border);
+
+/* --- BUTTON STYLES --- */
+.action-btn {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--color-text-light);
-  transition: 0.3s;
-}
-.person-links a:hover {
-  background: var(--color-primary);
-  color: #fff;
-  border-color: var(--color-primary);
-  transform: translateY(-3px);
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+  white-space: nowrap;
 }
 
-/* Compact Grid (Interns) */
-.people-grid.compact-grid {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+/* LinkedIn Blue */
+.btn-linkedin {
+  background: #f0f7ff;
+  color: #0077b5;
+  border-color: #dbeafe;
 }
-.person-card.compact {
-  padding: 0;
+.btn-linkedin:hover {
+  background: #0077b5;
+  color: #fff;
+  border-color: #0077b5;
+  transform: translateY(-2px);
 }
-.person-card.compact .person-img {
-  width: 100px;
-  height: 100px;
+
+/* Research Gold (Webpage/ResearchGate) */
+.btn-research {
+  background: #fffbeb;
+  color: #b45309;
+  border-color: #fef3c7;
+}
+.btn-research:hover {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* NEW: Research Green (For Scholar/ORCID) */
+.btn-green {
+  background: #f0fdf4;
+  color: #15803d;
+  border-color: #dcfce7;
+}
+.btn-green:hover {
+  background: #15803d;
+  color: #fff;
+  border-color: #15803d;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   2. ALUMNI CARD (Global Network Style)
+========================================================= */
+.alumni-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.alumni-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  border-color: #d69e2e;
+}
+
+.alumni-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-bottom-left-radius: 12px;
+  z-index: 2;
+}
+
+.alumni-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.alumni-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ALUMNI IMAGE (Updated with Pop-Up Physics) */
+.alumni-img {
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center; /* Focus on face */
+  border: 4px solid #e2e8f0;
+  flex-shrink: 0;
+  background: #fff;
+
+  /* The "Pop" Animation Physics */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* HOVER TRIGGER: Pop the Photo */
+.alumni-card:hover .alumni-img {
+  transform: scale(1.15) rotate(-3deg); /* Zoom & slight tilt */
+  border-color: var(--color-accent); /* Gold Border */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Lift Shadow */
+}
+
+.alumni-details h4 {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+
+.current-position {
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 3px solid #64748b;
+  margin-top: 0.5rem;
+}
+
+.cp-title {
+  display: block;
+  font-weight: 700;
+  color: var(--color-text-main);
+  font-size: 0.9rem;
+}
+
+.cp-place {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+@media (min-width: 768px) {
+  .alumni-card {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .alumni-body {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1.3fr 1.5fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .alumni-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =========================================================
+   3. STAFF & INTERN ("PROFILE PODS")
+========================================================= */
+
+/* A. The Grid */
+.pods-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(280px, 1fr)
+  ); /* Vertical Cards */
+  gap: 3.5rem 2rem; /* Extra vertical gap for pop-up heads */
+  margin-top: 4rem; /* Space for top row heads */
+}
+
+/* B. The Pod Card */
+.profile-pod {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 0 1.5rem 1.5rem; /* No top padding (image handles it) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+/* Hover Physics: Lift & Glow */
+.profile-pod:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 51, 102, 0.15);
+  border-color: var(--color-accent);
+}
+
+/* C. The "Pop-Up" Headshot */
+.pod-img-wrapper {
+  width: 130px;
+  height: 130px;
+  margin-top: -65px; /* Pulls it 50% out of the card */
+  border-radius: 50%; /* Circle */
+  padding: 5px; /* White gap */
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+
+.pod-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid #e2e8f0;
+}
+
+/* Hover Effect: Zoom Head */
+.profile-pod:hover .pod-img-wrapper {
+  transform: scale(1.15); /* Pop Up! */
+  border-color: var(--color-accent);
+}
+
+/* D. Status Dot (Active/Past) */
+.pod-status {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #22c55e; /* Green for Active */
+  box-shadow: 0 0 0 4px #fff;
+  z-index: 3;
+}
+.profile-pod.previous .pod-status {
+  background: #94a3b8; /* Grey for Past */
+}
+
+/* E. Content */
+.pod-body {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.pod-role {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.pod-name {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-text-main);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* F. The "Data Stack" (Project & Tenure) */
+.pod-meta-stack {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.pod-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.meta-icon {
+  color: var(--color-accent);
+  margin-right: 6px;
+}
+
+/* G. Link Button (Pill) */
+.pod-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s;
+  background: #f0f9ff;
+  color: #0369a1;
+}
+
+.pod-link:hover {
+  background: #0ea5e9;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* PREVIOUS STAFF VARIANT */
+.profile-pod.previous {
+  background: #fafaf9;
+  border-style: dashed;
+}
+.profile-pod.previous .pod-img-wrapper {
+  filter: grayscale(100%); /* Optional: Muted look */
+  opacity: 0.8;
+}
+.profile-pod.previous:hover .pod-img-wrapper {
+  filter: grayscale(0%); /* Color on hover! */
+  opacity: 1;
+}
+
+/* =========================================================
+   4. RESPONSIVE MEDIA QUERIES
+========================================================= */
+@media (max-width: 768px) {
+  .scholar-grid {
+    grid-template-columns: 1fr;
+  }
+  .alumni-body {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .staff-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .staff-meta {
+    align-items: center;
+  }
+  .scholar-actions {
+    flex-wrap: wrap;
+  }
+  .pods-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  /* On mobile, adjust image sizes slightly if too big */
+  .staff-img {
+    width: 120px;
+    height: 120px;
+  }
+  .alumni-img {
+    width: 120px;
+    height: 120px;
+  }
 }
