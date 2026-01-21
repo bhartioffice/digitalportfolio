@@ -183,7 +183,7 @@ const About = () => {
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="\Photos\logos\impri-logo.webp"
+                  src="/Photos/logos/impri-logo.webp"
                   alt="IMPRI Logo"
                   className="leaf-logo"
                 />
@@ -201,7 +201,7 @@ const About = () => {
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="\Photos\logos\dpiit-logo.jpg"
+                  src="/Photos/logos/dpiit-logo.jpg"
                   alt="DPIIT Logo"
                   className="leaf-logo"
                 />
@@ -219,7 +219,7 @@ const About = () => {
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="\Photos\logos\iitp-logo.png"
+                  src="/Photos/logos/iitp-logo.png"
                   alt="IIT Patna Logo"
                   className="leaf-logo"
                 />
@@ -237,7 +237,7 @@ const About = () => {
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="\Photos\logos\iitp-logo.png"
+                  src="/Photos/logos/iitp-logo.png"
                   alt="IIT Patna Logo"
                   className="leaf-logo"
                 />
@@ -254,7 +254,7 @@ const About = () => {
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="\Photos\logos\iitp-logo.png"
+                  src="/Photos/logos/iitp-logo.png"
                   alt="IIT Patna Logo"
                   className="leaf-logo"
                 />
@@ -271,7 +271,7 @@ const About = () => {
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="\Photos\logos\nalsar-logo.webp"
+                  src="/Photos/logos/nalsar-logo.webp"
                   alt="NALSAR Logo"
                   className="leaf-logo"
                 />
@@ -288,7 +288,7 @@ const About = () => {
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="\Photos\logos\hidayatullah-logo.jpg"
+                  src="/Photos/logos/hidayatullah-logo.jpg"
                   alt="HNLU Logo"
                   className="leaf-logo"
                 />
@@ -305,7 +305,7 @@ const About = () => {
               <div className="leaf-branch"></div>
               <div className="leaf-card">
                 <Img
-                  src="\Photos\logos\finance_commission-logo.jpg"
+                  src="/Photos/logos/finance_commission-logo.jpg"
                   alt="Finance Commission Logo"
                   className="leaf-logo"
                 />
@@ -326,7 +326,7 @@ const About = () => {
             {/* PHD */}
             <div className="edu-step">
               <div className="edu-icon">
-                <Img src="\Photos\logos\JNU-Logo.jpg" alt="JNU Logo" />
+                <Img src="/Photos/logos/JNU-Logo.jpg" alt="JNU Logo" />
               </div>
               <div className="edu-content">
                 <span className="edu-year">1999 - 2004</span>
@@ -339,7 +339,7 @@ const About = () => {
             {/* MPHIL */}
             <div className="edu-step">
               <div className="edu-icon">
-                <Img src="\Photos\logos\JNU-Logo.jpg" alt="JNU Logo" />
+                <Img src="/Photos/logos/JNU-Logo.jpg" alt="JNU Logo" />
               </div>
               <div className="edu-content">
                 <span className="edu-year">1997 - 1999</span>
@@ -351,7 +351,7 @@ const About = () => {
             {/* UGC NET */}
             <div className="edu-step">
               <div className="edu-icon">
-                <Img src="\Photos\logos\UGC-NET.jpg" alt="UGC Logo" />
+                <Img src="/Photos/logos/UGC-NET.jpg" alt="UGC Logo" />
               </div>
               <div className="edu-content">
                 <span className="edu-year">1999</span>

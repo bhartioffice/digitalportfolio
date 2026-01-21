@@ -369,7 +369,7 @@
 
 /* --- LOCATION INTELLIGENCE (Map) --- */
 .location-container {
-  margin-top: 5rem;
+  margin-top: 8rem;
   margin-bottom: 5rem;
   position: relative;
 }
@@ -394,8 +394,9 @@
 
 .map-badge {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: auto;
+  bottom: 30px;
+  left: 30px;
   background: #fff;
   padding: 12px 20px;
   border-radius: 12px;
