@@ -10,49 +10,45 @@
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  /* Increase top padding to prevent header overlap */
   padding-top: 100px;
   padding-bottom: 1rem;
 }
 
 /* =========================================
-   2. IMAGE HANDLING (Performance & Accessibility)
+   2. IMAGE HANDLING
    ========================================= */
 .hero-image-wrapper {
   position: absolute;
   top: 0;
-  right: 0;
-  height: 90vh; /* Don't cover full bottom to hint scrolling */
-  width: 55vw; /* Right side only */
+  left: 0; /* Start from the very left edge */
+  height: 90vh;
+  width: 100%; /* Span entire width */
+  max-width: none; /* Remove any width constraints */
   z-index: 1;
   pointer-events: none;
-  overflow: hidden;
 }
 
 .hero-bg-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  /* Ensure the subject's face is usually visible even wide cropped */
+  object-position: center 20%; 
+  opacity: 0.9;
 }
 
-/* The Gradient Mask Layer - Improves Text Readability */
 .hero-overlay-gradient {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Professional Fade: Transparent Right -> White Left */
   background: linear-gradient(
-    to right,
-    #f8fafc 10%,
-    rgba(248, 250, 252, 0.8) 30%,
-    transparent 100%
+    to bottom,
+    rgba(248, 250, 252, 0.3) 100%,  /* More transparent at top */
+    rgba(248, 250, 252, 0.8) 100%, /* Strong fade starts here */
+    #f8fafc 100% /* Solid color at bottom */
   );
-  /* Also fade the bottom slightly */
-  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
 /* =========================================
@@ -69,8 +65,7 @@
 }
 
 .hero-main-content {
-  max-width: 650px;
-  /* Massive margin pushes roles below fold */
+  max-width: 700px;
   margin-bottom: 12vh;
   display: flex;
   flex-direction: column;
@@ -78,26 +73,28 @@
   min-height: 75vh;
 }
 
-/* FIX: Tamed Headline Size */
 .hero-name {
-  font-size: clamp(2.8rem, 4.5vw, 4.5rem); /* Slightly reduced max size */
-  font-weight: 800;
+  font-size: clamp(3rem, 5vw, 5rem); /* Slightly larger font */
+  font-weight: 900;
   color: var(--color-primary);
   line-height: 1.1;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   letter-spacing: -0.03em;
+  /* Stronger shadow to pop against the full image */
+  text-shadow: 2px 2px 20px rgba(255, 255, 255, 0.9), -2px -2px 20px rgba(255, 255, 255, 0.9);
 }
 
 .hero-tagline {
-  font-size: 1.25rem;
-  color: var(--color-text-muted);
-  font-weight: 500;
-  margin-bottom: 3rem;
-  line-height: 1.6;
+  font-size: 1.35rem;
+  color: var(--color-text-main); /* Darker text for contrast */
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  line-height: 1.4;
+  text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.8);
 }
 
 /* =========================================
-   4. BUTTONS (CTA Hierarchy Fix)
+   4. BUTTONS
    ========================================= */
 .cta-buttons {
   display: flex;
@@ -107,33 +104,32 @@
 }
 
 .cta-primary {
-  background: var(--color-accent); /* Gold (#d4af37) */
-  color: #0f172a; /* Dark text (Almost Black) for accessibility */
+  background: var(--color-accent);
+  color: #0f172a;
   padding: 16px 40px;
   border-radius: 50px;
-  font-weight: 700; /* Bolder text */
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 12px;
-  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); /* Gold Shadow */
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  border: 2px solid var(--color-accent); /* Ensure border matches */
+  border: 2px solid var(--color-accent);
 }
 
 .cta-primary:hover {
   transform: translateY(-4px);
-  background: #b5952f; /* Darker Gold on Hover */
+  background: #b5952f;
   border-color: #b5952f;
   box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
-  color: #fff; /* White text on hover for "pop" */
+  color: #fff;
 }
 
-/* SECONDARY CTA: Keep Clean/Ghost style */
 .cta-secondary {
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  color: var(--color-primary); /* Blue Text */
+  color: var(--color-primary);
   padding: 16px 40px;
   border-radius: 50px;
   font-weight: 600;
@@ -149,56 +145,87 @@
 }
 
 /* =========================================
-   5. EXPERT BOX (Layout Shift Fix)
+   4. EXPERT BOX - ATTENTION GRABBER
    ========================================= */
 .expert-container {
-  min-height: 80px; /* Reserve space */
+  min-height: 80px;
+  margin-top: 2rem;
 }
 
 .expert-box {
   background: #fff;
-  padding: 1rem 2rem;
-  border-radius: 12px;
+  padding: 1.2rem 2.5rem;
+  border-radius: 15px;
   display: inline-flex;
-  align-items: center; /* Perfect vertical centering */
+  align-items: center;
   gap: 15px;
-  border-left: 4px solid var(--color-accent);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+
+  /* Bolder styling */
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-left: 6px solid var(--color-accent);
+
+  /* Attention-grabbing Pulse */
+  box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
+  animation: expertPulse 3s infinite ease-in-out;
   transition: 0.3s;
 }
 
-.expert-box:hover {
-  transform: translateX(5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+@keyframes expertPulse {
+  0% {
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
+    transform: scale(1);
+  }
 }
 
 .expert-label {
   font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: #64748b; /* Slate Gray */
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--color-accent); /* GOLD LABEL */
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   white-space: nowrap;
 }
 
-/* STABILIZER: Prevents box resizing */
 .typewriter-wrapper {
-  min-width: 250px; /* Reserves space for long words */
+  min-width: 280px;
   display: flex;
   align-items: center;
 }
 
-/* Typewriter Text */
-.expert-box span {
+/* TYPEWRITER TEXT COLOR CHANGE */
+.expert-box span.typewriter {
   font-family: "Courier Prime", monospace;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #1a202c; /* Solid Black */
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-primary); /* DEEP NAVY BLUE TEXT */
   letter-spacing: -0.5px;
 }
-.expert-box span:not(.expert-label)::after {
-  background-color: var(--color-accent);
+
+/* Gold Cursor */
+.cursor {
+  color: var(--color-accent);
+  font-weight: bold;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: var(--color-accent);
+  }
 }
 
 /* =========================================
@@ -210,7 +237,6 @@
   z-index: 2;
 }
 
-/* Glass Cards */
 .glass-roles-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -282,11 +308,13 @@
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   gap: 2rem;
 }
+
 .researcher-ids {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
+
 .id-badge {
   display: flex;
   align-items: center;
@@ -296,58 +324,56 @@
   font-weight: 600;
   font-size: 0.9rem;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  border: 1px solid transparent; /* Prepare for border */
+  border: 1px solid transparent;
 }
-/* 1. ResearchGate (Teal) */
+
+/* Badge Colors */
 .id-badge.researchgate {
-  background: #e0fbf9; /* Very Light Teal */
-  color: #008f82; /* Dark Teal Text */
+  background: #e0fbf9;
+  color: #008f82;
   border-color: #b2f5ea;
 }
 .id-badge.researchgate:hover {
-  background: #00ccbb; /* Solid Brand Color */
-  color: #ffffff; /* White Text */
+  background: #00ccbb;
+  color: #ffffff;
   border-color: #00ccbb;
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0, 204, 187, 0.3);
 }
 
-/* 2. LinkedIn (Blue) */
 .id-badge.linkedin {
-  background: #e1f0f8; /* Very Light Blue */
-  color: #005582; /* Dark Blue Text */
+  background: #e1f0f8;
+  color: #005582;
   border-color: #b8daff;
 }
 .id-badge.linkedin:hover {
-  background: #0077b5; /* Solid Brand Color */
+  background: #0077b5;
   color: #ffffff;
   border-color: #0077b5;
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
 }
 
-/* 3. ORCID (Green) */
 .id-badge.orcid {
-  background: #f3f9e0; /* Very Light Lime */
-  color: #6a8a00; /* Dark Olive Text */
+  background: #f3f9e0;
+  color: #6a8a00;
   border-color: #dcecb3;
 }
 .id-badge.orcid:hover {
-  background: #a6ce39; /* Solid Brand Color */
+  background: #a6ce39;
   color: #ffffff;
   border-color: #a6ce39;
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(166, 206, 57, 0.3);
 }
 
-/* 4. Scopus (Orange) */
 .id-badge.scopus {
-  background: #fff2e0; /* Very Light Orange */
-  color: #c26100; /* Dark Orange Text */
+  background: #fff2e0;
+  color: #c26100;
   border-color: #ffe0b2;
 }
 .id-badge.scopus:hover {
-  background: #ff8000; /* Solid Brand Color */
+  background: #ff8000;
   color: #ffffff;
   border-color: #ff8000;
   transform: translateY(-3px);
@@ -375,7 +401,6 @@
   color: var(--color-primary);
 }
 
-/* Scroll Indicator */
 .scroll-indicator {
   position: absolute;
   bottom: 30px;
@@ -402,44 +427,70 @@
    ========================================= */
 @media (max-width: 1024px) {
   .hero-banner {
-    padding-top: 6rem;
+    padding-top: 0;
     background: #fff;
-    display: block; /* Remove flex centering */
+    display: block;
     height: auto;
   }
 
-  /* RESET IMAGE FOR MOBILE: Put on top */
   .hero-image-wrapper {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 450px;
     right: auto;
-    margin-bottom: -5rem;
+    left:0,
+    margin-bottom: -80px;
+    margin-top:0,
+  }
+  .hero-bg-img {
+    opacity: 1; /* Make image clearer on mobile */
   }
 
   .hero-overlay-gradient {
-    background: linear-gradient(to bottom, transparent 50%, #ffffff 100%);
-    mask-image: none; /* Reset mask */
+    /* Smoother fade from image to white background */
+    background: linear-gradient(to bottom, transparent 60%, #ffffff 100%);
   }
 
   .hero-main-content {
     min-height: auto;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     align-items: center;
     text-align: center;
-    padding-top: 2rem;
+    /* FIXED: Removed extra padding-top that caused the gap */
+    padding: 0 1.5rem; 
+    position: relative;
+    z-index: 5;
   }
-
   .hero-name {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
+    margin-top: 1 rem;
+  }
+  .hero-tagline {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
   }
   .cta-buttons {
-    justify-content: center;
+    flex-direction: column; /* Stack buttons for easier thumb reach */
+    gap: 1rem;
     width: 100%;
-    margin-bottom: 2.5rem;
+    max-width: 300px;
+    margin: 0 auto 2.5rem;
   }
+  .cta-primary, .cta-secondary {
+    width: 100%; /* Full width buttons on mobile */
+    justify-content: center;
+  }
+
+  /* Ensure expert box doesn't get too wide */
   .expert-box {
     margin: 0 auto;
+    width: 90%;
+    padding: 1rem;
+    justify-content: center;
+  }
+  .typewriter-wrapper {
+    min-width: unset;
+    flex-grow: 1;
   }
   .scroll-indicator {
     display: none;
@@ -447,12 +498,48 @@
 
   .glass-roles-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
   }
+  
   .bottom-links-row {
     flex-direction: column;
     text-align: center;
-    gap: 1.5rem;
+    gap: 2rem;
+    padding: 2rem 1rem;
   }
+
+  /* SOCIAL LINKS 2x2 GRID */
+  .researcher-ids {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .id-badge {
+    justify-content: center;
+    padding: 12px 5px;
+    font-size: 0.8rem;
+  }
+
+  /* --- MOBILE OPTIMIZED SOCIAL LINKS (2x2 GRID) --- */
+  .researcher-ids {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two buttons per row */
+    gap: 10px;
+    width: 100%;
+    max-width: 400px; /* Keep buttons from getting too wide */
+    margin: 0 auto;
+  }
+
+  .id-badge {
+    justify-content: center;
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 10px 10px;
+  }
+
   .secondary-links {
     flex-direction: column;
     gap: 1rem;

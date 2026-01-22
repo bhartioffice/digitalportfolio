@@ -5,13 +5,13 @@ import Img from "../Img";
 const Reviewers = () => {
   // List of logos (filenames based on your folder structure)
   const logos = [
-    "taylor_and_francis.png",
-    "sag.png",
-    "springer-logo.png",
-    "emerald.png",
-    "inderscience.jpg",
-    "scopus.png",
-    "P-IGI-Global.png",
+    "taylor_and_francis.webp",
+    "sag.webp",
+    "springer-logo.webp",
+    "emerald.webp",
+    "inderscience.webp",
+    "scopus.webp",
+    "P-IGI-Global.webp",
   ];
 
   return (

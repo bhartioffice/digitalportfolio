@@ -198,10 +198,6 @@ export const galleryImages = [
     alt: "Award Ceremony at NIFT Patna",
   },
   {
-    src: "/Photos/gallery/chared a public session at AN sinha institute, Patna.jpeg",
-    alt: "Chairing Session at AN Sinha Institute",
-  },
-  {
     src: "/Photos/gallery/cnlu patna.jpg",
     alt: "Event at CNLU Patna",
   },

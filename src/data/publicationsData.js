@@ -8,7 +8,7 @@ export const booksData = [
     subtitle: "Experiences in Bangladesh and India",
     authors: "Nalin Bharti",
     isbn: "978-81-89640835",
-    img: "/Photos/book/Privatization Unbound.jpg",
+    img: "/Photos/book/Privatization Unbound.webp",
     link: "https://www.amazon.in/Privatization-Unbound-Experiences-Bangladesh-India/dp/8189640836",
   },
   {
@@ -20,7 +20,7 @@ export const booksData = [
     subtitle: "Impact on Women-Villagemakers of Bihar",
     authors: "Co-edited with: Simi Mehta, et al.",
     isbn: "978-81-951187-4-8",
-    img: "/Photos/book/Life-in-the-Era-of-COVID-19.png",
+    img: "/Photos/book/Life-in-the-Era-of-COVID-19.webp",
     link: "https://books.impriindia.com/product/life-in-the-era-of-covid-19-impact-on-women-villagemakers-of-bihar-future-prospects/",
   },
   {
@@ -33,7 +33,7 @@ export const booksData = [
     authors:
       "Prof Nilanjan Banik, Dr Soumyadip Chattopadhyay, Prof Nalin Bharti, Dr Arjun Kumar",
     isbn: "978-81-984917-3-2",
-    img: "/Photos/book/impri 732.jpg",
+    img: "/Photos/book/impri 732.webp",
     link: "#",
   },
   {
@@ -46,7 +46,7 @@ export const booksData = [
     authors:
       "Prof Nilanjan Banik, Dr Soumyadip Chattopadhyay, Prof Nalin Bharti, Dr Arjun Kumar",
     isbn: "978-81-984917-0-1",
-    img: "/Photos/book/impri 701.jpg",
+    img: "/Photos/book/impri 701.webp",
     link: "#",
   },
   {
@@ -59,7 +59,7 @@ export const booksData = [
     authors:
       "Soumyadip Chattopadhyay, Rakesh Pandey, Nilanjan Banik, Nalin Bharti",
     isbn: "978-81-988514-2-0",
-    img: "/Photos/book/impri 1420.jpg",
+    img: "/Photos/book/impri 1420.webp",
     link: "#",
   },
 ];
@@ -72,7 +72,7 @@ export const chaptersData = [
     title: "Exploring Smart Waste Management for Smart Agriculture in India",
     book: "Waste Management, Sanitation and Society",
     authors: "Dhananjaya Kumar, Nalin Bharti, Meghna Dutta",
-    img: "/Photos/book/Smart Waste Management.jpg",
+    img: "/Photos/book/Smart Waste Management.webp",
     link: "https://www.cambridgescholars.com/product/978-1-5275-1782-0",
   },
   {
@@ -94,7 +94,7 @@ export const chaptersData = [
       "Foreign Direct Investment in Energy-Mix: An Assessment of Sustainable Indian Cities",
     book: "Smart Cities for Sustainable Development",
     authors: "Aditi, Nalin Bharti",
-    img: "/Photos/book/Smart Cities.jpeg",
+    img: "/Photos/book/Smart Cities.webp",
     link: "https://doi.org/10.1007/978-981-16-7410-5_15",
   },
   {
@@ -115,7 +115,7 @@ export const chaptersData = [
     title: "Utilizing Youth Power for Making India Great",
     book: "YOUTH Power in India",
     authors: "Nalin Bharti, Nribhay Sankar",
-    img: "/Photos/book/youth.png",
+    img: "/Photos/book/youth.webp",
     link: "https://www.researchgate.net/publication/384676365_Role_of_Young_Generation_in_Promoting_National_Integration_Communal_Harmony_In_India_An_Inclusive_Innovative_Approach",
   },
   {
@@ -136,7 +136,7 @@ export const chaptersData = [
       "Privatization and Labour in South Asia: Some Issues in Fiscal Sociology",
     book: "New Essays on Fiscal Sociology",
     authors: "Nalin Bharti, Gopal Ganesh",
-    img: "/Photos/book/sociology.png",
+    img: "/Photos/book/sociology.webp",
     link: "https://api.pageplace.de/preview/DT0400.9783653029055_A31442316/preview-9783653029055_A31442316.pdf",
   },
   {
@@ -146,7 +146,7 @@ export const chaptersData = [
     title: "Privatization as Innovation in Governance in India",
     book: "Innovative Trends in Public Governance in Asia",
     authors: "Nalin Bharti",
-    img: "/Photos/book/innovation trends in public .jpg",
+    img: "/Photos/book/innovation trends in public .webp",
     link: "https://ebooks.iospress.nl/volumearticle/8008",
   },
   {
@@ -156,7 +156,7 @@ export const chaptersData = [
     title: "Institutional Reform in Higher Education: Is NKN an Option?",
     book: "Imperatives for Quality Higher Education",
     authors: "Nalin Bharti, Naveen K. Nishchal",
-    img: "/Photos/book/NKN.png",
+    img: "/Photos/book/NKN.webp",
     link: "#",
   },
   {
@@ -166,7 +166,7 @@ export const chaptersData = [
     title: "Is Dumping Laissez Un-faire?: An Exploratory Survey",
     book: "International Law Association",
     authors: "Nalin Bharti",
-    img: "/Photos/book/international trade law.jpg",
+    img: "/Photos/book/international trade law.webp",
     link: "#",
   },
   {
@@ -177,7 +177,7 @@ export const chaptersData = [
       "Offshore Outsourcing (OO) in India’s ITES: How effective is it in data protection?",
     book: "Tradition and Innovation",
     authors: "Nalin Bharti",
-    img: "/Photos/book/Offshore Outsourcing.png",
+    img: "/Photos/book/Offshore Outsourcing.webp",
     link: "https://ideas.repec.org/p/ags/siubul/43323.html",
   },
   {
@@ -187,7 +187,7 @@ export const chaptersData = [
     title: "IT and ITES: the twin growth in India’s Services Sector",
     book: "Rethinking India's Growth Strategy",
     authors: "Nalin Bharti",
-    img: "/Photos/book/growth.png",
+    img: "/Photos/book/growth.webp",
     link: "https://www.amazon.in/Rethinking-Indias-Growth-Strategy-Services-Manufacturing/dp/8180695492",
   },
 ];

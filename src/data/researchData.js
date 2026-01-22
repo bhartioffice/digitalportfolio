@@ -110,49 +110,49 @@ export const peerReviews = [
     id: "pr1",
     publisher: "Taylor & Francis",
     journal: "Transnational Corporation Review",
-    img: "/Photos/logos/taylor_and_francis.png", // Ensure this matches your file tree
+    img: "/Photos/logos/taylor_and_francis.webp",
   },
   {
     id: "pr2",
     publisher: "Taylor & Francis",
     journal: "Contemporary South Asia",
-    img: "/Photos/logos/taylor_and_francis.png",
+    img: "/Photos/logos/taylor_and_francis.webp",
   },
   {
     id: "pr3",
     publisher: "SAGE",
     journal: "Foreign Trade Review",
-    img: "/Photos/logos/sag.png",
+    img: "/Photos/logos/sag.webp",
   },
   {
     id: "pr4",
     publisher: "SAGE",
     journal: "Metamorphosis - Management Research",
-    img: "/Photos/logos/sag.png",
+    img: "/Photos/logos/sag.webp",
   },
   {
     id: "pr5",
     publisher: "Springer",
     journal: "Economic Change & Restructuring",
-    img: "/Photos/logos/springer-logo.png",
+    img: "/Photos/logos/springer-logo.webp",
   },
   {
     id: "pr6",
     publisher: "Inderscience",
     journal: "Intl. Journal of IP Management",
-    img: "/Photos/logos/inderscience.jpg",
+    img: "/Photos/logos/inderscience.webp",
   },
   {
     id: "pr7",
     publisher: "IGI Global",
     journal: "Integrating Spirituality in Workplaces",
-    img: "/Photos/logos/P-IGI-Global.png",
+    img: "/Photos/logos/P-IGI-Global.webp",
   },
   {
     id: "pr8",
     publisher: "Emerald",
     journal: "Emerging Markets Case Studies",
-    img: "/Photos/logos/emerald.png",
+    img: "/Photos/logos/emerald.webp",
   },
 ];
 
@@ -173,7 +173,7 @@ export const onlineCourses = [
     duration: "12 Weeks",
     enrolled: "5400+",
     link: "https://onlinecourses.nptel.ac.in/noc22_hs64/preview",
-    image: "/Photos/Course/infra.png",
+    image: "/Photos/Course/infra.webp",
     description:
       "Role of infrastructure in economic development & policy implications.",
   },
@@ -183,7 +183,7 @@ export const onlineCourses = [
     duration: "8 Weeks",
     enrolled: "6800+",
     link: "https://onlinecourses.nptel.ac.in/noc22_hs90/preview",
-    image: "/Photos/Course/ipr.png",
+    image: "/Photos/Course/ipr.webp",
     description:
       "Patents, trademarks, and global IPR applications for professionals.",
   },
