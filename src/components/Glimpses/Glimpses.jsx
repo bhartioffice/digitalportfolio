@@ -3,23 +3,22 @@ import { Link } from "react-router-dom";
 import Img from "../Img";
 import "./Glimpses.css";
 
-// Placeholder data - You will replace these paths with your actual photos of famous personalities
 const glimpsesData = [
   {
     id: 1,
-    img: "/Photos/gallery/john_taylor_stanford.JPG", // Replace with actual file name
+    img: "/Photos/gallery/john_taylor_stanford.webp",
     caption:
       "With Prof. John B. Taylor, Stanford University, renowned for the Taylor Rule in monetary policy.",
   },
   {
     id: 2,
-    img: "/Photos/gallery/nobel_laureate_vernon_smith.JPG", // Replace with actual file name
+    img: "/Photos/gallery/nobel_laureate_vernon_smith.webp",
     caption:
       "With Nobel Laureate Prof. Vernon L. Smith (Economics, 2002) at an academic conference.",
   },
   {
     id: 3,
-    img: "/Photos/gallery/panagariya_16th_fc.jpg", // Replace with actual file name
+    img: "/Photos/gallery/panagariya_16th_fc.webp",
     caption:
       "With Dr. Arvind Panagariya, Chairman, 16th Finance Commission, at Nalanda University",
   },
@@ -42,7 +41,6 @@ const Glimpses = () => {
 
           <div className="glimpses-grid">
             {glimpsesData.map((item) => (
-              // CHANGED: From Link to div with onClick
               <div
                 key={item.id}
                 className="glimpse-card"

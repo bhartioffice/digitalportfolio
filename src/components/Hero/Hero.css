@@ -1,550 +1,507 @@
-/* src/components/Hero/Hero.css */
-
 /* =========================================
-   1. HERO BANNER & LAYOUT
+   HERO SECTION LAYOUT
    ========================================= */
-.hero-banner {
-  min-height: 100vh;
+
+.hero-section {
   position: relative;
-  background: #f8fafc;
+  background-color: #ffffff;
+  padding-top: 0px;
+  padding-bottom: 2rem;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  padding-top: 100px;
-  padding-bottom: 1rem;
+  justify-content: center;
 }
 
-/* =========================================
-   2. IMAGE HANDLING
-   ========================================= */
-.hero-image-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0; /* Start from the very left edge */
-  height: 90vh;
-  width: 100%; /* Span entire width */
-  max-width: none; /* Remove any width constraints */
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hero-bg-img {
+.container {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Ensure the subject's face is usually visible even wide cropped */
-  object-position: center 20%; 
-  opacity: 0.9;
+  max-width: 1400px; /* Slightly wider to accommodate the overlap */
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-.hero-overlay-gradient {
+/* --- PART 1: TOP SPLIT --- */
+.hero-top-split {
+  display: grid;
+  /* Columns: Text gets space, Image gets space */
+  grid-template-columns: 0.5fr 1.5fr;
+  align-items: center;
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+/* 1. LEFT: Text Content */
+.hero-text-content {
+  z-index: 10; /* CRITICAL: Keeps text ON TOP of the image */
+  position: relative;
+  /* Text shadow ensures readability if image is dark under the text */
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.hero-name {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: clamp(3.5rem, 5vw, 6rem); /* Huge text */
+  font-weight: 800;
+  color: var(--color-primary, #003366);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1.5px;
+  white-space: nowrap; /* Keeps name on one line */
+}
+
+.hero-tagline {
+  font-family: var(--font-body, sans-serif);
+  font-size: 1.25rem;
+  color: var(--color-text-secondary, #4a5568);
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.6); /* Slight backing for readability */
+  backdrop-filter: blur(2px);
+  padding: 5px 0;
+}
+
+/* --- CTA Buttons (Capsule Style) --- */
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+/* We use ".hero-actions .btn" to force these styles over the global .btn */
+.hero-actions .btn {
+  /* FATTER SIZE: !important ensures this wins over Button.css */
+  padding: 1.1rem 3rem !important;
+  font-size: 1.1rem !important;
+  border-radius: 50px !important; /* Force Capsule */
+  font-weight: 700 !important;
+  text-transform: capitalize !important;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  letter-spacing: 0.5px;
+  line-height: 1.2 !important;
+  min-width: 200px; /* Ensures they don't look squished */
+  justify-content: center;
+}
+
+/* Primary: FORCE NAVY BLUE (Overriding any orange defaults) */
+.btn-primary {
+  background-color: rgb(212, 175, 55) !important;
+  color: #292c2f !important;
+  box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #d8d056 !important; /* Darker Navy */
+  border-color: #3c4400 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 51, 102, 0.4);
+}
+
+/* Secondary: Contact Button */
+.btn-secondary {
+  background: transparent;
+  color: #003366 !important; /* Navy Text Default */
+  border: 2px solid #003366 !important;
+}
+
+.btn-secondary:hover {
+  background-color: #003366 !important; /* Navy Fill */
+  color: #ffffff !important; /* White Text (Visible) */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 51, 102, 0.2);
+}
+
+/* --- EXPERT BOX (True Typewriter Theme) --- */
+.expert-container {
+  display: inline-flex;
+  flex-direction: column; /* Stack label on top of text for typewriter feel */
+  align-items: flex-start;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 1.2rem 2rem;
+  border-radius: 8px; /* Classic paper corner look */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  position: relative;
+  min-width: 320px; /* Ensure space for typing */
+  border-left: 6px solid var(--color-primary, #003366); /* Navy Anchor */
+}
+
+/* The Label: Looks like printed text */
+.expert-label {
+  font-family: "Courier New", Courier, monospace; /* Typewriter Font */
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #00040a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* The Dynamic Text: Looks like it's being typed */
+.expert-typewriter {
+  font-family: "Courier New", Courier, monospace; /* Typewriter Font */
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary, #664200);
+  line-height: 1.2;
+  position: relative;
+}
+
+/* Optional: Adds a subtle paper texture background */
+.expert-container::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(248, 250, 252, 0.3) 100%,  /* More transparent at top */
-    rgba(248, 250, 252, 0.8) 100%, /* Strong fade starts here */
-    #f8fafc 100% /* Solid color at bottom */
-  );
+  border-radius: 8px;
+  background-image: radial-gradient(#8b5704 0.5px, transparent 0.5px);
+  background-size: 10px 10px;
+  opacity: 0.03;
+  pointer-events: none;
 }
 
-/* =========================================
-   3. TYPOGRAPHY & HIERARCHY
-   ========================================= */
-.hero-layout {
+/* 2. RIGHT: Visual (THE OVERLAP MAGIC) */
+.hero-visual-wrapper {
+  position: relative;
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 5%;
-  position: relative;
-  z-index: 2;
   height: 100%;
-}
-
-.hero-main-content {
-  max-width: 700px;
-  margin-bottom: 12vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 75vh;
-}
-
-.hero-name {
-  font-size: clamp(3rem, 5vw, 5rem); /* Slightly larger font */
-  font-weight: 900;
-  color: var(--color-primary);
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.03em;
-  /* Stronger shadow to pop against the full image */
-  text-shadow: 2px 2px 20px rgba(255, 255, 255, 0.9), -2px -2px 20px rgba(255, 255, 255, 0.9);
-}
-
-.hero-tagline {
-  font-size: 1.35rem;
-  color: var(--color-text-main); /* Darker text for contrast */
-  font-weight: 700;
-  margin-bottom: 2.5rem;
-  line-height: 1.4;
-  text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.8);
-}
-
-/* =========================================
-   4. BUTTONS
-   ========================================= */
-.cta-buttons {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 3.5rem;
+  justify-content: flex-end;
   align-items: center;
+  z-index: 1; /* Sit BEHIND text */
 }
 
-.cta-primary {
-  background: var(--color-accent);
-  color: #0f172a;
-  padding: 16px 40px;
-  border-radius: 50px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  border: 2px solid var(--color-accent);
-}
-
-.cta-primary:hover {
-  transform: translateY(-4px);
-  background: #b5952f;
-  border-color: #b5952f;
-  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
-  color: #fff;
-}
-
-.cta-secondary {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: var(--color-primary);
-  padding: 16px 40px;
-  border-radius: 50px;
-  font-weight: 600;
-  border: 2px solid rgba(0, 51, 102, 0.1);
-  transition: all 0.3s ease;
-}
-
-.cta-secondary:hover {
-  border-color: var(--color-primary);
-  background: #fff;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-}
-
-/* =========================================
-   4. EXPERT BOX - ATTENTION GRABBER
-   ========================================= */
-.expert-container {
-  min-height: 80px;
-  margin-top: 2rem;
-}
-
-.expert-box {
-  background: #fff;
-  padding: 1.2rem 2.5rem;
-  border-radius: 15px;
-  display: inline-flex;
-  align-items: center;
-  gap: 15px;
-
-  /* Bolder styling */
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  border-left: 6px solid var(--color-accent);
-
-  /* Attention-grabbing Pulse */
-  box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
-  animation: expertPulse 3s infinite ease-in-out;
-  transition: 0.3s;
-}
-
-@keyframes expertPulse {
-  0% {
-    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
-    transform: scale(1.02);
-  }
-  100% {
-    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
-    transform: scale(1);
-  }
-}
-
-.expert-label {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 900;
-  color: var(--color-accent); /* GOLD LABEL */
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  white-space: nowrap;
-}
-
-.typewriter-wrapper {
-  min-width: 280px;
-  display: flex;
-  align-items: center;
-}
-
-/* TYPEWRITER TEXT COLOR CHANGE */
-.expert-box span.typewriter {
-  font-family: "Courier Prime", monospace;
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--color-primary); /* DEEP NAVY BLUE TEXT */
-  letter-spacing: -0.5px;
-}
-
-/* Gold Cursor */
-.cursor {
-  color: var(--color-accent);
-  font-weight: bold;
-  margin-left: 2px;
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  from,
-  to {
-    color: transparent;
-  }
-  50% {
-    color: var(--color-accent);
-  }
-}
-
-/* =========================================
-   6. SCROLL CONTENT & ROLES
-   ========================================= */
-.scroll-content {
-  padding-bottom: 1.5rem;
+.hero-image-container {
   position: relative;
-  z-index: 2;
+  width: 120%; /* Makes image larger than its grid cell */
+  max-width: 1000px;
+
+  /* THIS IS THE KEY: Pull image LEFT to overlap text */
+  margin-left: -100px;
+  margin-right: -5rem; /* Let it bleed off screen right */
 }
 
-.glass-roles-grid {
+/* THE WIDE FADE */
+.hero-image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 40%; /* Wider fade to ensure text readability on overlap */
+  background: linear-gradient(90deg, #ffffff 20%, rgba(255, 255, 255, 0) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* --- PART 2: BOTTOM DETAILS --- */
+.hero-bottom-details {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 3rem;
+  background: #ffffff;
+  position: relative;
+  z-index: 15;
+}
+
+.designation-grid {
   display: grid;
+  /* Forces exactly two equal columns */
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin-bottom: 3rem;
+  width: 100%;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  padding: 2rem;
-  border-radius: 20px;
+/* HIDE the vertical divider so it doesn't break the grid layout */
+.divider-vertical {
+  display: none;
+}
+
+/* Innovative Highlight: Card Style */
+.designation-card {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
   align-items: flex-start;
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
   transition: all 0.3s ease;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-}
-.glass-card:hover {
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-}
-.glass-card.highlight {
-  border-left: 4px solid var(--color-accent);
 }
 
-.role-icon {
-  width: 48px;
-  height: 48px;
-  background: rgba(0, 51, 102, 0.08);
-  color: var(--color-primary);
-  border-radius: 10px;
+.designation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  border-color: var(--color-accent, #d4af37);
+}
+
+.icon-box {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 51, 102, 0.05); /* Soft Blue Tint */
+  color: var(--color-primary, #003366);
+  border-radius: 50%; /* Circle Icon */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   flex-shrink: 0;
-}
-.role-text h3 {
-  font-size: 1.1rem;
-  margin: 0.3rem 0;
-  color: var(--color-text-main);
-  line-height: 1.3;
-}
-.role-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--color-text-light);
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-.inst-name {
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-top: 6px;
-  font-size: 0.95rem;
+  transition: 0.3s;
 }
 
-/* Links Row */
-.bottom-links-row {
+.designation-card:hover .icon-box {
+  background: var(--color-primary, #003366);
+  color: #fff;
+}
+
+/* Typography for Roles */
+.designation-info h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-primary, #003366);
+  margin-bottom: 0.4rem;
+}
+
+.designation-info p {
+  font-size: 0.95rem;
+  color: #475569;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.sub-charge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #d4af37; /* Accent Color */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  background: rgba(212, 175, 55, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* --- Footer & Socials --- */
+.hero-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
   gap: 2rem;
+  padding-top: 1rem;
 }
 
 .researcher-ids {
   display: flex;
-  gap: 1rem;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
+/* Social Capsules Base */
 .id-badge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
-  border-radius: 50px;
+  padding: 8px 20px;
+  border-radius: 50px; /* Full Capsule */
+  font-size: 0.85rem;
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-decoration: none;
+  background: #ffffff;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+  /* Default Border Width */
   border: 1px solid transparent;
 }
 
-/* Badge Colors */
+/* --- BRAND COLORS (DEFAULT STATE) --- */
+/* We apply the color to Text and Border immediately */
+
 .id-badge.researchgate {
-  background: #e0fbf9;
-  color: #008f82;
-  border-color: #b2f5ea;
-}
-.id-badge.researchgate:hover {
-  background: #00ccbb;
-  color: #ffffff;
+  color: #00ccbb;
   border-color: #00ccbb;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 204, 187, 0.3);
 }
 
 .id-badge.linkedin {
-  background: #e1f0f8;
-  color: #005582;
-  border-color: #b8daff;
-}
-.id-badge.linkedin:hover {
-  background: #0077b5;
-  color: #ffffff;
+  color: #0077b5;
   border-color: #0077b5;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
 }
 
 .id-badge.orcid {
-  background: #f3f9e0;
-  color: #6a8a00;
-  border-color: #dcecb3;
-}
-.id-badge.orcid:hover {
-  background: #a6ce39;
-  color: #ffffff;
+  color: #a6ce39;
   border-color: #a6ce39;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(166, 206, 57, 0.3);
 }
 
 .id-badge.scopus {
-  background: #fff2e0;
-  color: #c26100;
-  border-color: #ffe0b2;
+  color: #f57c00;
+  border-color: #f57c00;
+}
+
+/* --- HOVER STATE (FILL) --- */
+.id-badge.researchgate:hover {
+  background: #00ccbb;
+  color: #fff;
+  transform: translateY(-3px);
+}
+.id-badge.linkedin:hover {
+  background: #0077b5;
+  color: #fff;
+  transform: translateY(-3px);
+}
+.id-badge.orcid:hover {
+  background: #a6ce39;
+  color: #fff;
+  transform: translateY(-3px);
 }
 .id-badge.scopus:hover {
-  background: #ff8000;
-  color: #ffffff;
-  border-color: #ff8000;
+  background: #f57c00;
+  color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(255, 128, 0, 0.3);
 }
 
-.secondary-links {
+/* Footer Text Links with Hover Effect */
+.footer-links {
   display: flex;
-  gap: 1.2rem;
   align-items: center;
-  flex-wrap: wrap;
-}
-.text-link {
-  font-weight: 600;
-  color: var(--color-text-muted);
+  gap: 1.5rem;
   font-size: 0.95rem;
-  transition: 0.2s;
-  border-bottom: 2px solid transparent;
-}
-.text-link:hover {
-  color: var(--color-primary);
-  border-bottom-color: var(--color-primary);
-}
-.text-link.download {
-  color: var(--color-primary);
+  font-weight: 600;
 }
 
-.scroll-indicator {
+.footer-links a {
+  color: #64748b;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--color-primary, #003366);
+}
+
+/* Underline animation */
+.footer-links a::after {
+  content: "";
   position: absolute;
-  bottom: 30px;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
   left: 0;
+  background-color: var(--color-accent, #d4af37);
+  transition: width 0.3s ease;
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+/* Download Link specific style */
+.download-link {
+  color: var(--color-primary, #003366) !important;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  opacity: 0.6;
-}
-.scroll-text {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-.bounce {
-  animation: bounce 2s infinite;
-  font-size: 1.2rem;
-  color: var(--color-primary);
+  align-items: center;
+  gap: 6px;
 }
 
 /* =========================================
-   7. RESPONSIVE (MOBILE & TABLET)
+   MOBILE RESPONSIVE
    ========================================= */
 @media (max-width: 1024px) {
-  .hero-banner {
-    padding-top: 0;
-    background: #fff;
-    display: block;
-    height: auto;
-  }
-
-  .hero-image-wrapper {
-    position: relative;
-    width: 100%;
-    height: 450px;
-    right: auto;
-    left:0,
-    margin-bottom: -80px;
-    margin-top:0,
-  }
-  .hero-bg-img {
-    opacity: 1; /* Make image clearer on mobile */
-  }
-
-  .hero-overlay-gradient {
-    /* Smoother fade from image to white background */
-    background: linear-gradient(to bottom, transparent 60%, #ffffff 100%);
-  }
-
-  .hero-main-content {
-    min-height: auto;
-    margin-bottom: 3rem;
-    align-items: center;
+  .hero-section {
+    padding-top: 40px;
     text-align: center;
-    /* FIXED: Removed extra padding-top that caused the gap */
-    padding: 0 1.5rem; 
-    position: relative;
-    z-index: 5;
-  }
-  .hero-name {
-    font-size: 2.4rem;
-    margin-top: 1 rem;
-  }
-  .hero-tagline {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-  .cta-buttons {
-    flex-direction: column; /* Stack buttons for easier thumb reach */
-    gap: 1rem;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto 2.5rem;
-  }
-  .cta-primary, .cta-secondary {
-    width: 100%; /* Full width buttons on mobile */
-    justify-content: center;
   }
 
-  /* Ensure expert box doesn't get too wide */
-  .expert-box {
-    margin: 0 auto;
-    width: 90%;
-    padding: 1rem;
-    justify-content: center;
-  }
-  .typewriter-wrapper {
-    min-width: unset;
-    flex-grow: 1;
-  }
-  .scroll-indicator {
-    display: none;
-  }
-
-  .glass-roles-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 0 1rem;
-  }
-  
-  .bottom-links-row {
-    flex-direction: column;
-    text-align: center;
+  /* STACK: Image Top, Text Bottom */
+  .hero-top-split {
+    display: flex;
+    flex-direction: column-reverse;
     gap: 2rem;
-    padding: 2rem 1rem;
+    margin-bottom: 3rem;
   }
-
-  /* SOCIAL LINKS 2x2 GRID */
-  .researcher-ids {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .id-badge {
+  .hero-actions {
     justify-content: center;
-    padding: 12px 5px;
-    font-size: 0.8rem;
+    flex-direction: column; /* Stack buttons vertically on phone */
+    align-items: center;
+    gap: 1rem; /* Smaller gap between stacked buttons */
+    width: 100%;
+  }
+  .hero-actions .btn,
+  .btn {
+    padding: 1rem 2rem !important; /* Standard comfortable mobile padding */
+    width: 100%; /* Make them fill the container */
+    max-width: 320px; /* But don't let them get too wide */
+    font-size: 1rem; /* Readable text size */
+    justify-content: center;
   }
 
-  /* --- MOBILE OPTIMIZED SOCIAL LINKS (2x2 GRID) --- */
-  .researcher-ids {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two buttons per row */
-    gap: 10px;
+  /* Reset layout for mobile */
+  .hero-visual-wrapper {
+    z-index: auto; /* Normal stacking */
+  }
+
+  .hero-image-container {
     width: 100%;
-    max-width: 400px; /* Keep buttons from getting too wide */
+    max-width: 100%;
+    margin-left: 0; /* Remove overlap */
+    margin-right: 0;
+  }
+
+  .hero-name {
+    font-size: 2.8rem;
+    white-space: normal; /* Allow wrapping */
+  }
+
+  .expert-container {
     margin: 0 auto;
-  }
-
-  .id-badge {
-    justify-content: center;
     width: 100%;
-    font-size: 0.85rem;
-    padding: 10px 10px;
+    justify-content: center;
+    min-width: auto;
   }
 
-  .secondary-links {
-    flex-direction: column;
-    gap: 1rem;
+  /* Fade Bottom Up */
+  .hero-image-container::before {
+    background: linear-gradient(
+      to top,
+      #ffffff 10%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    width: 100%;
+    height: 40%;
+    top: auto;
+    bottom: 0;
+    left: 0;
   }
-  .sep {
+
+  .designation-grid {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .divider-vertical {
     display: none;
+  }
+  .hero-footer {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .researcher-ids {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }

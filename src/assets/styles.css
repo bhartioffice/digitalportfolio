@@ -39,6 +39,22 @@
   --body-line-height: 1.75;
 }
 
+/* 1. Prevent invisible text */
+@font-face {
+  font-family: "Playfair Display";
+  src:
+    local("Playfair Display"),
+    url(...) format("woff2"); /* If using local */
+  font-display: swap; /* CRITICAL FIX */
+}
+
+/* 2. For FontAwesome (if loaded via CSS import) */
+.fa-solid,
+.fas,
+.fa-brands,
+.fab {
+  font-display: swap;
+}
 /* ===========================
    2. GLOBAL RESET & BASE
 =========================== */
@@ -46,7 +62,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    opacity 0.25s ease;
 }
 
 html {
@@ -377,7 +396,8 @@ strong {
 .fade-in-item {
   opacity: 0;
   transform: translateY(15px);
-  transition: opacity 0.8s ease-out,
+  transition:
+    opacity 0.8s ease-out,
     transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
   will-change: opacity, transform; /* Performance hint for browser */
   animation: fadeIn 0.8s ease forwards;
