@@ -6,7 +6,7 @@ import "./Hero.css";
 const Hero = () => {
   return (
     <section className="hero-section" id="home">
-      <div className="container">
+      <div className="hero-container">
         {/* === PART 1: TOP SPLIT === */}
         <div className="hero-top-split">
           {/* --- LEFT: Text Content --- */}

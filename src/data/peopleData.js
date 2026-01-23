@@ -287,7 +287,7 @@ export const previousStaffData = [
     role: "Secretarial Assistant",
     project: "DPIIT IPR Chair",
     tenure: "Jan 2024 - Mar 2024",
-    img: "https://placehold.co/200x200?text=Ex-Staff",
+    img: "/Photos/IPR/Staff/sonali.webp",
     linkedin: "#",
   },
 ];

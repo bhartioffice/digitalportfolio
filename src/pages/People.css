@@ -459,10 +459,7 @@
   background: #fafaf9;
   border-style: dashed;
 }
-.profile-pod.previous .pod-img-wrapper {
-  filter: grayscale(100%); /* Optional: Muted look */
-  opacity: 0.8;
-}
+
 .profile-pod.previous:hover .pod-img-wrapper {
   filter: grayscale(0%); /* Color on hover! */
   opacity: 1;
