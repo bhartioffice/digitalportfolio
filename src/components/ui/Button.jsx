@@ -1,9 +1,8 @@
 import React from "react";
-import "./Button.css";
 
 const Button = ({
   children,
-  variant = "primary", // primary, secondary, outline, text
+  variant = "primary",
   href,
   onClick,
   className = "",

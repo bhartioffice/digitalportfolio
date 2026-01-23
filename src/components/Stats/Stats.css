@@ -2,16 +2,13 @@
 
 .metrics-section {
   position: relative;
-  /* PREMIUM DARK GRADIENT BACKGROUND */
   background: linear-gradient(135deg, var(--color-primary) 0%, #002a5c 100%);
   padding: 6rem 0;
   color: #fff;
   overflow: hidden;
-  /* Remove negative margins so waves fit perfectly */
   margin: 0;
 }
 
-/* THE "NOTES" TEXTURE EFFECT (Subtle Dot Grid) */
 .metrics-section::before {
   content: "";
   position: absolute;
@@ -19,7 +16,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* This creates the "Security Paper" / Certificate texture look */
   background-image: radial-gradient(
     rgba(255, 255, 255, 0.1) 1px,
     transparent 1px
@@ -32,20 +28,18 @@
 
 .metrics-grid {
   position: relative;
-  z-index: 2; /* Content sits ABOVE the texture */
+  z-index: 2;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   text-align: center;
 }
 
-/* REMOVED: White card background & shadows */
 .metric-card {
   background: transparent;
   box-shadow: none;
   border: none;
   padding: 1rem;
-  /* Add a subtle separator line instead */
   border-right: 1px solid rgba(255, 255, 255, 0.15);
 }
 
@@ -53,7 +47,6 @@
   border-right: none;
 }
 
-/* Updated Icon Styling */
 .metric-icon {
   font-size: 2.2rem;
   color: var(--color-accent); /* Gold Icons */

@@ -682,3 +682,144 @@ button:focus-visible {
   outline-offset: 4px;
   border-radius: 4px;
 }
+/* ===========================
+   LARGE SCREEN 125% ZOOM
+   (Forces the browser to render at 125% scale on wide screens)
+=========================== */
+@media (min-width: 1600px) {
+  body {
+    zoom: 1.25; /* This acts exactly like pressing Ctrl + */
+  }
+}
+
+/* Optional: Fallback for Firefox (which doesn't support 'zoom') */
+@supports not (zoom: 1) {
+  @media (min-width: 1600px) {
+    body {
+      transform: scale(1.25);
+      transform-origin: top center;
+      width: 80%; /* Compensate for the scale (100 / 1.25 = 80) */
+      margin: 0 auto;
+    }
+  }
+}
+/* =============================================================
+  1. PAGE HEADER
+============================================================= */
+.page-header {
+  text-align: center;
+  padding: 6rem 1rem 4rem;
+  position: relative;
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 51, 102, 0.03) 0%,
+    transparent 70%
+  );
+}
+
+.page-title {
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Elegant Subtitles with Gold Underline */
+.section-subtitle {
+  font-size: 2rem;
+  margin: 5rem 0 2.5rem;
+  color: var(--color-primary);
+  text-align: center;
+  position: relative;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+
+.section-subtitle::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--color-accent);
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+
+/* Fade In Animation for Sections */
+.fade-in-item {
+  animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================================
+   2. PREMIUM GLASS TABS (Blue Active State)
+============================================================= */
+.tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+
+  /* Glass Container */
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 6px;
+  border-radius: 60px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(0, 51, 102, 0.08);
+
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  position: sticky;
+  top: 20px;
+  z-index: 50;
+}
+
+.tab-btn {
+  padding: 0.9rem 2.2rem;
+  background: transparent;
+  color: var(--color-text-secondary); /* Grey text initially */
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+
+  /* Smooth transition for color swap */
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.tab-btn:hover {
+  background: rgba(0, 51, 102, 0.08); /* Light blue tint on hover */
+  color: var(--color-primary);
+}
+
+/* ACTIVE STATE: Solid Blue Button */
+.tab-btn.active {
+  background: var(--color-primary); /* Navy Blue */
+  color: #ffffff; /* White Text */
+  box-shadow: 0 4px 15px rgba(0, 51, 102, 0.4); /* Deep shadow */
+  border-color: transparent;
+  transform: scale(1.05); /* Slight pop */
+}
