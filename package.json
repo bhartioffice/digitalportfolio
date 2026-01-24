@@ -1,6 +1,5 @@
 {
-  "name": "nalin-bharti-portfolio",
-  "homepage": "https://bhartioffice.github.io/digitalportfolio",
+  "name": "digitalportfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,8 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "prebuild": "npm run generate-sitemap"
   },
   "dependencies": {
     "lenis": "^1.3.17",
