@@ -12,18 +12,19 @@ import SmoothScroll from "./components/SmoothScroll";
 import ScrollProgress from "./components/ScrollProgress";
 
 // --- LAZY LOAD PAGES ---
-// This splits the code so the browser only downloads what it needs
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Research = lazy(() => import("./pages/Research"));
 const Publications = lazy(() => import("./pages/Publications"));
+// NEW: Import the Detail Page
+const PublicationDetail = lazy(() => import("./pages/PublicationDetail"));
 const People = lazy(() => import("./pages/People"));
 const Awards = lazy(() => import("./pages/Awards"));
 const Contact = lazy(() => import("./pages/Contact"));
 
 ReactGA.initialize("G-TYL4FY2KGP");
 
-// Simple Loading Spinner to show while the new page downloads
+// Simple Loading Spinner
 const Loading = () => (
   <div
     style={{
@@ -59,13 +60,18 @@ function App() {
       <ScrollToTop />
       <AccessibilityTool />
 
-      {/* Suspense handles the loading state while the lazy page is fetched */}
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/research" element={<Research />} />
+
+          {/* Main List View */}
           <Route path="/publications" element={<Publications />} />
+
+          {/* NEW: Master-Detail Route */}
+          <Route path="/publications/:id" element={<PublicationDetail />} />
+
           <Route path="/people" element={<People />} />
           <Route path="/awards" element={<Awards />} />
           <Route path="/contact" element={<Contact />} />

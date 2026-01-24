@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link
 
 // Helper to highlight search terms
 const highlightText = (text, highlight) => {
@@ -9,7 +10,7 @@ const highlightText = (text, highlight) => {
       <mark key={index}>{part}</mark>
     ) : (
       part
-    )
+    ),
   );
 };
 
@@ -38,8 +39,15 @@ const ConferenceCard = ({ data, highlight }) => {
           )}
         </div>
 
-        {/* Title */}
-        <h5 className="conf-title">{highlightText(data.title, highlight)}</h5>
+        {/* Title - LINK ADDED */}
+        <h5 className="conf-title">
+          <Link
+            to={`/publications/${data.id}`}
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            {highlightText(data.title, highlight)}
+          </Link>
+        </h5>
 
         {/* Venue & Location Block */}
         <div className="conf-geo-block">

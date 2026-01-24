@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link
 import Card from "../ui/Card";
 import Button from "../ui/Button";
 import Img from "../Img";
@@ -10,7 +11,8 @@ const BookCard = ({ data }) => {
       style={{ overflow: "visible", opacity: 1, transform: "none" }}
     >
       <div className="book-cover-container">
-        <div className="book-cover-3d">
+        {/* Wrap Image with Link */}
+        <Link to={`/publications/${data.id}`} className="book-cover-3d">
           <Img
             src={data.img}
             alt={data.title}
@@ -19,15 +21,21 @@ const BookCard = ({ data }) => {
               (e.target.src = "https://placehold.co/300x450?text=Cover")
             }
           />
-        </div>
+        </Link>
       </div>
       <div className="book-info-pro">
         <div className="book-badges">
           <span className="b-badge year">{data.year}</span>
-          {/* Optional: Add Category Badge for Search Context */}
           {data.category && <span className="source-tag">{data.category}</span>}
         </div>
-        <h4>{data.title}</h4>
+        
+        {/* Wrap Title with Link */}
+        <h4>
+          <Link to={`/publications/${data.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+            {data.title}
+          </Link>
+        </h4>
+        
         <p className="b-subtitle">{data.subtitle}</p>
         <div className="b-action">
           {data.link !== "#" && (

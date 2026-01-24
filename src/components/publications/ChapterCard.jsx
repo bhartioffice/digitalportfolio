@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link
 import Img from "../Img";
 
 // Helper function to highlight search text
@@ -10,21 +11,23 @@ const highlightText = (text, highlight) => {
       <mark key={index}>{part}</mark>
     ) : (
       part
-    )
+    ),
   );
 };
 
 const ChapterCard = ({ data, highlight }) => {
   return (
     <div className="chapter-card">
-      {/* 1. VISUAL SIDEBAR (The 3D Book Shelf) */}
+      {/* 1. VISUAL SIDEBAR */}
       <div className="chapter-visual">
-        <Img
-          src={data.img || "https://placehold.co/150x220?text=Book"}
-          alt={`${data.book} Cover`}
-          className="chapter-book-cover"
-          loading="lazy"
-        />
+        <Link to={`/publications/${data.id}`}>
+          <Img
+            src={data.img || "https://placehold.co/150x220?text=Book"}
+            alt={`${data.book} Cover`}
+            className="chapter-book-cover"
+            loading="lazy"
+          />
+        </Link>
       </div>
 
       {/* 2. CONTENT SIDE */}
@@ -36,7 +39,12 @@ const ChapterCard = ({ data, highlight }) => {
 
         {/* Middle: Title & Context */}
         <h3 className="chapter-title">
-          {highlightText(data.title, highlight)}
+          <Link
+            to={`/publications/${data.id}`}
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            {highlightText(data.title, highlight)}
+          </Link>
         </h3>
 
         <div className="chapter-in-book">

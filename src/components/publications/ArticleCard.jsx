@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link
 
 const ArticleCard = ({ data }) => {
   return (
@@ -18,8 +19,15 @@ const ArticleCard = ({ data }) => {
           </span>
         </div>
 
-        {/* Title: Professional Academic Serif */}
-        <h5 className="article-title">{data.title}</h5>
+        {/* Title: Professional Academic Serif - LINK ADDED */}
+        <h5 className="article-title">
+          <Link
+            to={`/publications/${data.id}`}
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            {data.title}
+          </Link>
+        </h5>
 
         {/* Details: Labeled like variables */}
         <div className="article-details">
