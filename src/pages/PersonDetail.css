@@ -1,0 +1,173 @@
+/* src/pages/PersonDetail.css */
+.person-detail-container {
+  padding: 120px 20px 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 80vh;
+  font-family: "Inter", sans-serif;
+}
+
+.person-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 40px;
+  transition: color 0.2s ease;
+}
+
+.person-back-btn:hover {
+  color: #0f172a;
+}
+
+.person-profile-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 30px;
+  text-align: center;
+  border: 1px solid #f1f5f9;
+}
+
+@media (min-width: 768px) {
+  .person-profile-card {
+    flex-direction: row;
+    text-align: left;
+    gap: 50px;
+    padding: 60px;
+  }
+}
+
+.person-image-wrapper {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+}
+
+@media (min-width: 768px) {
+  .person-image-wrapper {
+    margin-bottom: 0;
+    width: 240px;
+    height: 240px;
+  }
+}
+
+.person-img {
+  width: 100%;
+  height: 100%;
+}
+
+.person-info-body {
+  flex: 1;
+}
+
+.person-role-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: #f0f9ff;
+  color: #0369a1;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 15px;
+}
+
+.person-name {
+  font-size: 2.25rem;
+  color: #1e293b;
+  font-weight: 800;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.person-meta-list {
+  list-style: none;
+  padding: 0;
+  margin: 25px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.person-meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #475569;
+  font-size: 1rem;
+}
+
+.meta-icon {
+  margin-top: 4px;
+  color: #94a3b8;
+}
+
+.meta-label {
+  font-weight: 600;
+  color: #334155;
+  margin-right: 5px;
+}
+
+.person-social-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .person-social-row {
+    justify-content: flex-start;
+  }
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.social-btn.linkedin {
+  background-color: #0077b5;
+  color: white;
+}
+
+.social-btn.research {
+  background-color: #00cc88;
+  color: white;
+}
+
+.social-btn.email {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.not-found-container {
+  text-align: center;
+  padding: 100px 0;
+}

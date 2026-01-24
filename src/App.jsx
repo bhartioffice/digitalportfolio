@@ -15,10 +15,15 @@ import ScrollProgress from "./components/ScrollProgress";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Research = lazy(() => import("./pages/Research"));
+
+// Phase 1: Publications
 const Publications = lazy(() => import("./pages/Publications"));
-// NEW: Import the Detail Page
 const PublicationDetail = lazy(() => import("./pages/PublicationDetail"));
+
+// Phase 2: People
 const People = lazy(() => import("./pages/People"));
+const PersonDetail = lazy(() => import("./pages/PersonDetail"));
+
 const Awards = lazy(() => import("./pages/Awards"));
 const Contact = lazy(() => import("./pages/Contact"));
 
@@ -66,13 +71,14 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/research" element={<Research />} />
 
-          {/* Main List View */}
+          {/* Publications Routes */}
           <Route path="/publications" element={<Publications />} />
-
-          {/* NEW: Master-Detail Route */}
           <Route path="/publications/:id" element={<PublicationDetail />} />
 
+          {/* People Routes */}
           <Route path="/people" element={<People />} />
+          <Route path="/people/:id" element={<PersonDetail />} />
+
           <Route path="/awards" element={<Awards />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />

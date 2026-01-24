@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom"; // Import Link
 import "./People.css";
 import Img from "../components/Img";
 import SEO from "../components/SEO";
@@ -88,12 +88,24 @@ const People = () => {
             {phdStudents.map((student) => (
               <div key={student.id} className="scholar-card">
                 <div className="scholar-header"></div>
+
+                {/* Image Link */}
                 <div className="scholar-img-wrapper">
-                  <Img src={student.img} alt={student.name} loading="lazy" />
+                  <Link to={`/people/${student.id}`}>
+                    <Img src={student.img} alt={student.name} loading="lazy" />
+                  </Link>
                 </div>
 
                 <div className="scholar-body">
-                  <h4 className="scholar-name">{student.name}</h4>
+                  {/* Name Link */}
+                  <h4 className="scholar-name">
+                    <Link
+                      to={`/people/${student.id}`}
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {student.name}
+                    </Link>
+                  </h4>
                   <span className="scholar-role">{student.role}</span>
 
                   <div className="topic-box">
@@ -106,7 +118,6 @@ const People = () => {
                       <i className="fa-regular fa-calendar"></i>
                       <span>{student.tenure || "Current"}</span>
                     </div>
-                    {/* Add IITP Email if available for credibility */}
                     {student.email && (
                       <div className="meta-row">
                         <i className="fa-regular fa-envelope"></i>
@@ -165,13 +176,24 @@ const People = () => {
 
                 <div className="alumni-body">
                   <div className="alumni-header">
-                    <Img
-                      src={alum.img}
-                      alt={alum.name}
-                      className="alumni-img"
-                    />
+                    {/* Image Link */}
+                    <Link to={`/people/${alum.id}`}>
+                      <Img
+                        src={alum.img}
+                        alt={alum.name}
+                        className="alumni-img"
+                      />
+                    </Link>
                     <div className="alumni-details">
-                      <h4>{alum.name}</h4>
+                      {/* Name Link */}
+                      <h4>
+                        <Link
+                          to={`/people/${alum.id}`}
+                          style={{ color: "inherit", textDecoration: "none" }}
+                        >
+                          {alum.name}
+                        </Link>
+                      </h4>
                       <div className="current-position">
                         <span className="cp-title">{alum.currentRole}</span>
                         <span className="cp-place">{alum.place}</span>
@@ -196,10 +218,9 @@ const People = () => {
                       style={{
                         justifyContent: "flex-start",
                         marginTop: "1rem",
-                        flexWrap: "wrap", // Ensures buttons wrap on small screens
+                        flexWrap: "wrap",
                       }}
                     >
-                      {/* 1. LinkedIn */}
                       {alum.linkedin && alum.linkedin !== "#" && (
                         <a
                           href={alum.linkedin}
@@ -211,7 +232,6 @@ const People = () => {
                         </a>
                       )}
 
-                      {/* 2. Webpage */}
                       {alum.webpage && alum.webpage !== "#" && (
                         <a
                           href={alum.webpage}
@@ -223,13 +243,12 @@ const People = () => {
                         </a>
                       )}
 
-                      {/* 3. Research ID (UPDATED with CSS Class) */}
                       {alum.researchLink && alum.researchLink !== "#" && (
                         <a
                           href={alum.researchLink}
                           target="_blank"
                           rel="noreferrer"
-                          className="action-btn btn-green" // <--- CHANGED THIS
+                          className="action-btn btn-green"
                         >
                           <i className="fa-solid fa-graduation-cap"></i>{" "}
                           {alum.researchLabel || "Research"}
@@ -266,13 +285,24 @@ const People = () => {
               <div key={staff.id} className="profile-pod">
                 <span className="pod-status" title="Active Member"></span>
 
+                {/* Image Link */}
                 <div className="pod-img-wrapper">
-                  <Img src={staff.img} alt={staff.name} className="pod-img" />
+                  <Link to={`/people/${staff.id}`}>
+                    <Img src={staff.img} alt={staff.name} className="pod-img" />
+                  </Link>
                 </div>
 
                 <div className="pod-body">
                   <span className="pod-role">{staff.role}</span>
-                  <h4 className="pod-name">{staff.name}</h4>
+                  {/* Name Link */}
+                  <h4 className="pod-name">
+                    <Link
+                      to={`/people/${staff.id}`}
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {staff.name}
+                    </Link>
+                  </h4>
 
                   <div className="pod-meta-stack">
                     <div className="pod-meta-row">
@@ -319,20 +349,29 @@ const People = () => {
                   <div key={staff.id} className="profile-pod previous">
                     <span className="pod-status" title="Alumni Staff"></span>
 
+                    {/* Image Link */}
                     <div className="pod-img-wrapper">
-                      <Img
-                        src={staff.img}
-                        alt={staff.name}
-                        className="pod-img"
-                      />
+                      <Link to={`/people/${staff.id}`}>
+                        <Img
+                          src={staff.img}
+                          alt={staff.name}
+                          className="pod-img"
+                        />
+                      </Link>
                     </div>
 
                     <div className="pod-body">
                       <span className="pod-role" style={{ color: "#64748b" }}>
                         {staff.role}
                       </span>
-                      <h4 className="pod-name" style={{ color: "#64748b" }}>
-                        {staff.name}
+                      {/* Name Link */}
+                      <h4 className="pod-name">
+                        <Link
+                          to={`/people/${staff.id}`}
+                          style={{ color: "#64748b", textDecoration: "none" }}
+                        >
+                          {staff.name}
+                        </Link>
                       </h4>
 
                       <div className="pod-meta-stack">
@@ -371,17 +410,31 @@ const People = () => {
               <div key={intern.id} className="profile-pod">
                 <span className="pod-status" title="Active Intern"></span>
 
+                {/* Image Link */}
                 <div className="pod-img-wrapper">
-                  <Img src={intern.img} alt={intern.name} className="pod-img" />
+                  <Link to={`/people/${intern.id}`}>
+                    <Img
+                      src={intern.img}
+                      alt={intern.name}
+                      className="pod-img"
+                    />
+                  </Link>
                 </div>
 
                 <div className="pod-body">
-                  {/* Gold Role for Interns */}
                   <span className="pod-role" style={{ color: "#d69e2e" }}>
                     {intern.role}
                   </span>
 
-                  <h4 className="pod-name">{intern.name}</h4>
+                  {/* Name Link */}
+                  <h4 className="pod-name">
+                    <Link
+                      to={`/people/${intern.id}`}
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {intern.name}
+                    </Link>
+                  </h4>
 
                   <div className="pod-meta-stack">
                     <div className="pod-meta-row">
