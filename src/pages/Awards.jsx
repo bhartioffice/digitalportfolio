@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom"; // Import Link
 import "./Awards.css";
 import Img from "../components/Img";
 import SEO from "../components/SEO";
@@ -74,9 +74,37 @@ const Awards = () => {
                 </div>
                 <div className="cert-content">
                   <span className="cert-year-badge">{award.year}</span>
-                  <h3 className="cert-title">{award.title}</h3>
+
+                  {/* Link Title */}
+                  <h3 className="cert-title">
+                    <Link
+                      to={`/awards/${award.id}`}
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {award.title}
+                    </Link>
+                  </h3>
+
                   <span className="cert-org">{award.org}</span>
                   <p className="cert-desc">{award.desc}</p>
+
+                  {/* Action Link */}
+                  <Link
+                    to={`/awards/${award.id}`}
+                    style={{
+                      fontSize: "0.9rem",
+                      color: "#64748b",
+                      fontWeight: "600",
+                      marginTop: "10px",
+                      display: "inline-block",
+                    }}
+                  >
+                    View Details{" "}
+                    <i
+                      className="fa-solid fa-arrow-right"
+                      style={{ fontSize: "0.8em" }}
+                    ></i>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -92,6 +120,7 @@ const Awards = () => {
             {featuredMedia.map((media) => (
               <div key={media.id} className="hero-video-card">
                 <div className="hero-video-frame">
+                  {/* Keep iframe for hero, but user can click title to go to detail */}
                   <iframe
                     width="100%"
                     height="100%"
@@ -107,7 +136,17 @@ const Awards = () => {
                     <span className="hero-tag">Featured</span>
                     <span className="hero-outlet">{media.outlet}</span>
                   </div>
-                  <h3 className="hero-title">{media.title}</h3>
+
+                  {/* Link Title */}
+                  <h3 className="hero-title">
+                    <Link
+                      to={`/awards/${media.id}`}
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {media.title}
+                    </Link>
+                  </h3>
+
                   <p className="hero-desc">{media.desc}</p>
                 </div>
               </div>
@@ -124,41 +163,78 @@ const Awards = () => {
             {standardMedia.map((media) => (
               <div key={media.id} className="archive-card">
                 <div className="archive-thumb">
-                  {/* Badge */}
-                  <span className="archive-type-badge">
-                    {media.type === "video" ? (
-                      <i className="fa-solid fa-play"></i>
-                    ) : (
-                      <i className="fa-regular fa-newspaper"></i>
-                    )}
-                    &nbsp; {media.type}
-                  </span>
+                  {/* Wrap Thumbnail in Link */}
+                  <Link
+                    to={`/awards/${media.id}`}
+                    style={{ display: "block", width: "100%", height: "100%" }}
+                  >
+                    {/* Badge */}
+                    <span className="archive-type-badge">
+                      {media.type === "video" ? (
+                        <i className="fa-solid fa-play"></i>
+                      ) : (
+                        <i className="fa-regular fa-newspaper"></i>
+                      )}
+                      &nbsp; {media.type}
+                    </span>
 
-                  {/* Content */}
-                  {media.type === "video" ? (
-                    <iframe
-                      width="100%"
-                      height="100%"
-                      src={`https://www.youtube.com/embed/${media.videoId}`}
-                      title={media.title}
-                      frameBorder="0"
-                      allowFullScreen
-                    ></iframe>
-                  ) : (
-                    <Img
-                      src={media.img}
-                      alt={media.title}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                      onError={(e) =>
-                        (e.target.src =
-                          "https://placehold.co/600x400?text=News+Clip")
-                      }
-                    />
-                  )}
+                    {/* Use Thumbnails for List View to allow Navigation */}
+                    {media.type === "video" ? (
+                      <div
+                        style={{
+                          position: "relative",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                      >
+                        <img
+                          src={`https://img.youtube.com/vi/${media.videoId}/mqdefault.jpg`}
+                          alt={media.title}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            background: "rgba(0,0,0,0.1)",
+                          }}
+                        >
+                          <i
+                            className="fa-solid fa-play-circle"
+                            style={{
+                              fontSize: "3rem",
+                              color: "#fff",
+                              opacity: 0.9,
+                            }}
+                          ></i>
+                        </div>
+                      </div>
+                    ) : (
+                      <Img
+                        src={media.img}
+                        alt={media.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                        onError={(e) =>
+                          (e.target.src =
+                            "https://placehold.co/600x400?text=News+Clip")
+                        }
+                      />
+                    )}
+                  </Link>
                 </div>
 
                 <div className="archive-content">
@@ -166,7 +242,17 @@ const Awards = () => {
                     <span>{media.outlet}</span>
                     <span>{media.date}</span>
                   </div>
-                  <h4 className="archive-title">{media.title}</h4>
+
+                  {/* Link Title */}
+                  <h4 className="archive-title">
+                    <Link
+                      to={`/awards/${media.id}`}
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {media.title}
+                    </Link>
+                  </h4>
+
                   <p className="archive-desc">{media.desc}</p>
                 </div>
               </div>

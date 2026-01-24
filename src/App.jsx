@@ -15,19 +15,22 @@ import ScrollProgress from "./components/ScrollProgress";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 
-// Research Ecosystem
+// Research
 const Research = lazy(() => import("./pages/Research"));
 const ResearchDetail = lazy(() => import("./pages/ResearchDetail"));
 
-// Publications Ecosystem
+// Publications
 const Publications = lazy(() => import("./pages/Publications"));
 const PublicationDetail = lazy(() => import("./pages/PublicationDetail"));
 
-// People Ecosystem
+// People
 const People = lazy(() => import("./pages/People"));
 const PersonDetail = lazy(() => import("./pages/PersonDetail"));
 
+// Awards & Media
 const Awards = lazy(() => import("./pages/Awards"));
+const AwardDetail = lazy(() => import("./pages/AwardDetail")); // New Import
+
 const Contact = lazy(() => import("./pages/Contact"));
 
 ReactGA.initialize("G-TYL4FY2KGP");
@@ -85,7 +88,10 @@ function App() {
           <Route path="/people" element={<People />} />
           <Route path="/people/:id" element={<PersonDetail />} />
 
+          {/* Awards & Media Routes */}
           <Route path="/awards" element={<Awards />} />
+          <Route path="/awards/:id" element={<AwardDetail />} />
+
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

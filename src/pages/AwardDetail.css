@@ -1,0 +1,190 @@
+/* src/pages/AwardDetail.css */
+.award-detail-container {
+  padding: 120px 20px 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 80vh;
+  font-family: "Inter", sans-serif;
+}
+
+.aw-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 40px;
+  transition: color 0.2s ease;
+}
+
+.aw-back-btn:hover {
+  color: #0f172a;
+}
+
+/* =========================================
+   STYLE A: DIGITAL CERTIFICATE (For Awards)
+   ========================================= */
+.certificate-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px; /* Inner spacing for the border effect */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.cert-border-inner {
+  border: 4px double #d4af37; /* Gold border */
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 8px;
+  background-image: radial-gradient(circle at center, #fffbeb 0%, #ffffff 70%);
+}
+
+.cert-icon-wrapper {
+  font-size: 3rem;
+  color: #d4af37;
+  margin-bottom: 20px;
+}
+
+.cert-type-label {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.cert-title {
+  font-family: "Playfair Display", serif; /* Or system serif */
+  font-size: 2.5rem;
+  color: #1e293b;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.cert-year {
+  display: inline-block;
+  background: #d4af37;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.cert-citation {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #334155;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  font-style: italic;
+}
+
+.cert-issuer {
+  border-top: 1px solid #cbd5e1;
+  display: inline-block;
+  padding-top: 15px;
+  margin-top: 20px;
+}
+
+.cert-issuer strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #0f172a;
+}
+
+.cert-issuer span {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* =========================================
+   STYLE B: MEDIA ROOM (For Video/News)
+   ========================================= */
+.media-detail-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.media-hero {
+  width: 100%;
+  background: #000;
+}
+
+.media-video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.media-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.media-image-hero {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.media-content {
+  padding: 40px;
+}
+
+.media-meta-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.media-tag {
+  color: #ef4444; /* Youtube red accent */
+  text-transform: uppercase;
+}
+
+.media-title {
+  font-size: 2rem;
+  line-height: 1.3;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.media-desc {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.media-outlet-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-top: 25px;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Not Found */
+.aw-not-found {
+  text-align: center;
+  padding: 100px 0;
+}
