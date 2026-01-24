@@ -1,9 +1,7 @@
 // src/pages/Research.jsx
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom"; // Keep this
+import { useLocation, Link } from "react-router-dom";
 import Card from "../components/ui/Card";
-import Button from "../components/ui/Button";
-import { Link } from "react-router-dom"; // Ensure Link is imported
 import "./Research.css";
 import Img from "../components/Img";
 import SEO from "../components/SEO";
@@ -20,10 +18,8 @@ import {
   giOdyssey,
   outreachEvents,
   institutionalLeadership,
-  dpiitFieldVisits,
   invitedTalks,
   organizedEvents,
-  policyImpact,
 } from "../data/researchData";
 
 const Research = () => {
@@ -55,7 +51,7 @@ const Research = () => {
     setFlippedIndex(flippedIndex === index ? null : index);
   };
 
-  // --- UPDATED STATS DATA WITH LINKS ---
+  // Stats Data
   const mentorshipStats = [
     {
       label: "PhD Scholars Graduated",
@@ -79,24 +75,6 @@ const Research = () => {
       link: "/people#interns",
     },
   ];
-
-  // Helper for Icons (Keep existing helpers)
-  const getServiceIcon = (type) => {
-    const t = type.toLowerCase();
-    if (t.includes("chair") || t.includes("moderator")) return "fa-gavel";
-    if (t.includes("fdp") || t.includes("refresher"))
-      return "fa-chalkboard-user";
-    if (t.includes("keynote")) return "fa-microphone";
-    return "fa-lectern";
-  };
-
-  const getServiceClass = (type) => {
-    const t = type.toLowerCase();
-    if (t.includes("chair") || t.includes("moderator")) return "chair";
-    if (t.includes("fdp") || t.includes("refresher")) return "fdp";
-    if (t.includes("organizer")) return "organizer";
-    return "talk";
-  };
 
   return (
     <>
@@ -143,7 +121,6 @@ const Research = () => {
       {/* ==================== TAB 1: RESEARCH AREAS ==================== */}
       {activeTab === "research" && (
         <section className="tab-content container active">
-          {/* ... (Keep existing Flip Cards code) ... */}
           <h3 className="section-subtitle">Fields of Inquiry</h3>
           <div className="flip-grid">
             {researchAreas.map((area, index) => (
@@ -159,14 +136,30 @@ const Research = () => {
                 >
                   <div className="flip-front">
                     <i className={`fa-solid ${area.icon}`}></i>
-                    <h4>{area.title}</h4>
+                    {/* Link Title */}
+                    <h4>
+                      <Link
+                        to={`/research/${area.id}`}
+                        style={{ color: "inherit", textDecoration: "none" }}
+                      >
+                        {area.title}
+                      </Link>
+                    </h4>
                     <span className="mobile-tap-hint">
                       <i className="fa-solid fa-arrow-rotate-right"></i> Tap to
                       flip
                     </span>
                   </div>
                   <div className="flip-back">
-                    <h4>{area.title}</h4>
+                    {/* Link Back Title */}
+                    <h4>
+                      <Link
+                        to={`/research/${area.id}`}
+                        style={{ color: "inherit", textDecoration: "none" }}
+                      >
+                        {area.title}
+                      </Link>
+                    </h4>
                     <p>{area.description}</p>
                   </div>
                 </div>
@@ -193,7 +186,15 @@ const Research = () => {
                   </span>
                   <span className="amount">{project.amount}</span>
                 </div>
-                <h4>{project.title}</h4>
+                {/* Link Title */}
+                <h4>
+                  <Link
+                    to={`/research/${project.id}`}
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
+                    {project.title}
+                  </Link>
+                </h4>
                 <p>{project.description}</p>
                 <div className="project-footer">
                   <span>
@@ -238,7 +239,6 @@ const Research = () => {
       {/* ==================== TAB 2: TEACHING ==================== */}
       {activeTab === "teaching" && (
         <section className="tab-content container active">
-          {/* ... (Keep existing Teaching Intro & NPTEL code) ... */}
           <div className="teaching-intro">
             <h3>Knowledge Sharing Philosophy</h3>
             <p>
@@ -320,13 +320,11 @@ const Research = () => {
             ))}
           </div>
 
-          {/* --- UPDATED: CLICKABLE MENTORSHIP STATS --- */}
           <h3 className="section-subtitle spacer-top-lg">
             Nurturing the Next Generation
           </h3>
           <div className="mentorship-stats">
             {mentorshipStats.map((stat, index) => (
-              // Changed div to Link to make the whole card clickable
               <Link
                 to={stat.link}
                 key={index}
@@ -347,7 +345,6 @@ const Research = () => {
       {/* ==================== TAB 3: POLICY & OUTREACH ==================== */}
       {activeTab === "dpiit" && (
         <section className="tab-content container active">
-          {/* ... (Keep existing Policy code same as before) ... */}
           <div className="policy-hero fade-in-item">
             <div className="ph-content">
               <span className="ph-badge">SPRIHA SCHEME</span>
@@ -371,7 +368,15 @@ const Research = () => {
                   <div className="gov-number">0{index + 1}</div>
                 </div>
                 <span className="gov-role">{item.role}</span>
-                <h4 className="gov-org">{item.org}</h4>
+                {/* Link Title */}
+                <h4 className="gov-org">
+                  <Link
+                    to={`/research/${item.id}`}
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
+                    {item.org}
+                  </Link>
+                </h4>
                 <p className="gov-desc">{item.desc}</p>
               </div>
             ))}
@@ -391,18 +396,29 @@ const Research = () => {
           <div className="gi-grid fade-in-item">
             {giOdyssey.map((item) => (
               <div key={item.id} className="gi-card">
-                <Img
-                  src={item.img}
-                  alt={item.title}
-                  className="gi-bg"
-                  onError={(e) =>
-                    (e.target.src =
-                      "https://placehold.co/600x800?text=Field+Visit")
-                  }
-                />
+                {/* Link Image */}
+                <Link to={`/research/${item.id}`}>
+                  <Img
+                    src={item.img}
+                    alt={item.title}
+                    className="gi-bg"
+                    onError={(e) =>
+                      (e.target.src =
+                        "https://placehold.co/600x800?text=Field+Visit")
+                    }
+                  />
+                </Link>
                 <div className="gi-overlay">
                   <span className="gi-cat">{item.category}</span>
-                  <h4 className="gi-title">{item.title}</h4>
+                  {/* Link Title */}
+                  <h4 className="gi-title">
+                    <Link
+                      to={`/research/${item.id}`}
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {item.title}
+                    </Link>
+                  </h4>
                   <span className="gi-loc">
                     <i className="fa-solid fa-location-dot"></i> {item.location}
                   </span>
@@ -420,7 +436,15 @@ const Research = () => {
               <div className="v-item" key={evt.id}>
                 <div className="v-date">{evt.date}</div>
                 <div className="v-content">
-                  <h4>{evt.title}</h4>
+                  {/* Link Title */}
+                  <h4>
+                    <Link
+                      to={`/research/${evt.id}`}
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {evt.title}
+                    </Link>
+                  </h4>
                   <p>
                     <strong>{evt.role}:</strong> {evt.desc}
                   </p>
@@ -458,21 +482,7 @@ const Research = () => {
       {/* ==================== TAB 4: LEADERSHIP & TALKS ==================== */}
       {activeTab === "talks" && (
         <section className="tab-content container active">
-          {/* 1. ACADEMIC EVENTS ORGANIZED */}
           <h3 className="section-subtitle">Academic Events Organized</h3>
-          <p
-            className="text-center"
-            style={{
-              color: "var(--color-text-secondary)",
-              marginBottom: "3rem",
-              maxWidth: "700px",
-              marginInline: "auto",
-            }}
-          >
-            Conferences, GIAN Courses, and Symposia convened to foster global
-            academic dialogue and regional development.
-          </p>
-
           <div className="events-grid fade-in-item">
             {organizedEvents.map((event) => (
               <div key={event.id} className="event-card">
@@ -483,7 +493,15 @@ const Research = () => {
                   </span>
                 </div>
                 <div className="event-body">
-                  <h4>{event.title}</h4>
+                  {/* Link Title */}
+                  <h4>
+                    <Link
+                      to={`/research/${event.id}`}
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {event.title}
+                    </Link>
+                  </h4>
                   <p>{event.desc}</p>
                   <div className="event-loc">
                     <i
@@ -497,21 +515,9 @@ const Research = () => {
             ))}
           </div>
 
-          {/* 2. INVITED TALKS (High Worth Only) */}
           <h3 className="section-subtitle spacer-top-lg">
             Keynote & Invited Lectures
           </h3>
-          <p
-            className="text-center"
-            style={{
-              color: "var(--color-text-secondary)",
-              marginBottom: "3rem",
-            }}
-          >
-            Selected high-impact talks at premier international universities and
-            national policy forums.
-          </p>
-
           <div className="service-grid fade-in-item">
             {invitedTalks.map((talk) => (
               <Card key={talk.id} className="service-card">
@@ -520,7 +526,15 @@ const Research = () => {
                 </div>
                 <div className="service-content">
                   <span className="service-type">{talk.type}</span>
-                  <h4>{talk.title}</h4>
+                  {/* Link Title */}
+                  <h4>
+                    <Link
+                      to={`/research/${talk.id}`}
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {talk.title}
+                    </Link>
+                  </h4>
                   <div className="service-meta">
                     <span>
                       <i className="fa-solid fa-landmark"></i> {talk.venue}

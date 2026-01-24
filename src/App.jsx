@@ -14,13 +14,16 @@ import ScrollProgress from "./components/ScrollProgress";
 // --- LAZY LOAD PAGES ---
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
-const Research = lazy(() => import("./pages/Research"));
 
-// Phase 1: Publications
+// Research Ecosystem
+const Research = lazy(() => import("./pages/Research"));
+const ResearchDetail = lazy(() => import("./pages/ResearchDetail"));
+
+// Publications Ecosystem
 const Publications = lazy(() => import("./pages/Publications"));
 const PublicationDetail = lazy(() => import("./pages/PublicationDetail"));
 
-// Phase 2: People
+// People Ecosystem
 const People = lazy(() => import("./pages/People"));
 const PersonDetail = lazy(() => import("./pages/PersonDetail"));
 
@@ -69,7 +72,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+
+          {/* Research Routes */}
           <Route path="/research" element={<Research />} />
+          <Route path="/research/:id" element={<ResearchDetail />} />
 
           {/* Publications Routes */}
           <Route path="/publications" element={<Publications />} />
