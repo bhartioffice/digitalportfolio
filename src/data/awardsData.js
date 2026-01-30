@@ -174,8 +174,16 @@ export const galleryImages = [
     alt: "With Finance Commission Chairman Arvind Panagariya at Nalanda University",
   },
   {
+    src: "/Photos/gallery/mahila_clg.webp",
+    alt: "Delivering a guest talk at Magadh Mahila College",
+  },
+  {
     src: "/Photos/gallery/arjun_mandal.webp",
     alt: "Sri Arjun Mandal showcasing his President Award to Prof. Nalin Bharti",
+  },
+  {
+    src: "/Photos/gallery/nobel_laureate_vernon_smith.webp",
+    alt: "With Nobel Laureate Prof. Vernon L. Smith (Economics, 2002) at an academic conference.",
   },
   {
     src: "/Photos/gallery/panagariya.webp",
@@ -200,6 +208,10 @@ export const galleryImages = [
   {
     src: "/Photos/gallery/At Nalsar.webp",
     alt: "At NALSAR University",
+  },
+  {
+    src: "/Photos/gallery/mahila_clg1.webp",
+    alt: "At Magadh Mahila College",
   },
   {
     src: "/Photos/gallery/viva_kislay.webp",
@@ -234,8 +246,16 @@ export const galleryImages = [
     alt: "With Prof. John B. Taylor, Stanford University, renowned for the Taylor Rule in monetary policy.",
   },
   {
+    src: "/Photos/gallery/kapil_dev_prasad.webp",
+    alt: "Shri Kapil Dev Prasad with the IPR Chair displaying his Padma Shree Award",
+  },
+  {
     src: "/Photos/gallery/GI_workshop.webp",
     alt: "Workshop on GI at IIT Patna",
+  },
+  {
+    src: "/Photos/gallery/g20_linguistics.webp",
+    alt: "G20 conference panel discusses linguistic equity and national education policy at Gautam Buddha University.",
   },
   {
     src: "/Photos/gallery/GI_workshop1.webp",
@@ -251,7 +271,7 @@ export const galleryImages = [
     alt: "FDP at NIT Patna",
   },
   {
-    src: "/Photos/gallery/India LICS 2025.jpeg",
+    src: "/Photos/gallery/India LICS 2025.webp",
     alt: "India LICS 2025",
   },
   {
@@ -272,12 +292,20 @@ export const galleryImages = [
     alt: "National Statistics Day",
   },
   {
+    src: "/Photos/gallery/CHCDS_seminar.webp",
+    alt: "A seminar at CHCDS",
+  },
+  {
     src: "/Photos/gallery/rajesh_fieldvisit.webp",
     alt: "With Prof. Rajesh Kumar, Professor of Linguistics and English Language, IIT Madras",
   },
   {
     src: "/Photos/gallery/with guest.webp",
     alt: "Guest Talk at IIT Patna",
+  },
+  {
+    src: "/Photos/gallery/mandaar.webp",
+    alt: "Delivering a guest talk in Mandaar Manthan at Nalanda University",
   },
   {
     src: "/Photos/gallery/dhiresh_iitp.webp",
@@ -291,7 +319,10 @@ export const galleryImages = [
     src: "/Photos/gallery/round table meet.webp",
     alt: "Round Table Meeting",
   },
-
+  {
+    src: "/Photos/gallery/Sustainable.webp",
+    alt: "at International Conference",
+  },
   {
     src: "/Photos/gallery/with_senior_faculty.webp",
     alt: "With Senior Faculty",
@@ -301,10 +332,6 @@ export const galleryImages = [
     alt: "Presenting at IHD Conference",
   },
 
-  {
-    src: "/Photos/gallery/nobel_laureate_vernon_smith.webp",
-    alt: "With Nobel Laureate Prof. Vernon L. Smith (Economics, 2002) at an academic conference.",
-  },
   {
     src: "/Photos/gallery/women seminar.webp",
     alt: "Women Seminar",

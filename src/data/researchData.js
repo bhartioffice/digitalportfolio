@@ -301,7 +301,7 @@ export const giOdyssey = [
     title: "Bawan Buti Art",
     location: "Basvanbigha",
     desc: "Reviving the 52-motif weaving tradition. Interaction with late Padma Shri Kapil Dev Prasad.",
-    img: "Photos/gallery/kapil_dev_prasad.jpeg", // Placeholder path
+    img: "Photos/gallery/kapil_dev_prasad.webp",
     status: "GI Applied",
   },
   {
@@ -310,7 +310,7 @@ export const giOdyssey = [
     title: "Silao Khaja",
     location: "Nalanda",
     desc: "Analyzing the market boost of the 52-layer delicacy post-GI registration.",
-    img: "Photos/gallery/silao_khaja.png", // Placeholder path
+    img: "Photos/gallery/silao_khaja.png",
     status: "GI Registered",
   },
   {
@@ -319,7 +319,7 @@ export const giOdyssey = [
     title: "Shahi Litchi",
     location: "Muzaffarpur",
     desc: "Collaborating with ICAR-NRCL to support farmers in the litchi heartland.",
-    img: "Photos/gallery/shahi_litchi.png", // Placeholder path
+    img: "Photos/gallery/shahi_litchi.png",
     status: "GI Registered",
   },
   {
@@ -328,7 +328,7 @@ export const giOdyssey = [
     title: "Silver Fish Craft",
     location: "Banka",
     desc: "Documenting the ancestral silver fish craft for potential future GI registration.",
-    img: "Photos/gallery/silver_fish.png", // Placeholder path
+    img: "Photos/gallery/silver_fish.png",
     status: "Potential GI",
   },
 ];
