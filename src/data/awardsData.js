@@ -170,60 +170,89 @@ export const mediaData = [
 // Preserving your extensive gallery list
 export const galleryImages = [
   {
-    src: "/Photos/gallery/16 th finance commision eastern regional conference .jpg",
-    alt: "16th Finance Commission Conference",
+    src: "/Photos/gallery/nalanda_univ_pangaria.webp",
+    alt: "With Finance Commission Chairman Arvind Panagariya at Nalanda University",
   },
   {
-    src: "/Photos/gallery/pangaraiya finance commision chairman 1.jpg",
-    alt: "With Finance Commission Chairman",
+    src: "/Photos/gallery/panagariya.webp",
+    alt: "Meeting at Rajgir with Finance Commission Chairman Arvind Panagariya",
   },
   {
-    src: "/Photos/gallery/pangaraiya finance commision chairman after 16th finance comm metting, held at rajgir.jpg",
-    alt: "Meeting at Rajgir",
+    src: "/Photos/gallery/Award_conference.webp",
+    alt: "Awarding Participant at the GI conference",
   },
   {
-    src: "/Photos/gallery/at HNLU Raipur.jpg",
-    alt: "Lecture at HNLU Raipur",
+    src: "/Photos/gallery/at HNLU Raipur.webp",
+    alt: "Group Photo at HNLU Raipur",
   },
   {
-    src: "/Photos/gallery/At Nalsar.jpg",
+    src: "/Photos/gallery/governor_group_photo.webp",
+    alt: "Group Photo with honorable Governor of Bihar",
+  },
+  {
+    src: "/Photos/gallery/eastern_regional_conference.webp",
+    alt: "16th Finance Commission eastern regional Conference",
+  },
+  {
+    src: "/Photos/gallery/At Nalsar.webp",
     alt: "At NALSAR University",
   },
   {
-    src: "/Photos/gallery/At NIT Patna as a speaker in FDP.jpg",
+    src: "/Photos/gallery/viva_kislay.webp",
+    alt: "Phd viva voce of Mr kislay kashyap with external prof. Arup Mitra",
+  },
+  {
+    src: "/Photos/gallery/At NIT Patna as a speaker in FDP.webp",
     alt: "Speaker at NIT Patna FDP",
   },
   {
-    src: "/Photos/gallery/award ceremony at NIFT PATNA.jpg",
+    src: "/Photos/gallery/award ceremony at NIFT PATNA.webp",
     alt: "Award Ceremony at NIFT Patna",
   },
   {
-    src: "/Photos/gallery/cnlu patna.jpg",
+    src: "/Photos/gallery/cnlu patna.webp",
     alt: "Event at CNLU Patna",
   },
   {
-    src: "/Photos/gallery/district agricultre officer begusarai May activity.jpeg",
-    alt: "With District Agriculture Officer",
+    src: "/Photos/gallery/arjun_medicinal plants.webp",
+    alt: "Documenting 200+ rare medicinal species with President Awardee Sri Arjun Mandal.",
   },
   {
-    src: "/Photos/gallery/GM dic begusarai 8th july.jpeg",
-    alt: "With GM DIC Begusarai",
+    src: "/Photos/gallery/special program.webp",
+    alt: "at CLH in a special student program",
   },
   {
-    src: "/Photos/gallery/fecilatated by then honorable governer, rajendra.jpg",
+    src: "/Photos/gallery/nalin_award_governer.webp",
     alt: "Felicitation by Hon. Governor",
   },
   {
-    src: "/Photos/gallery/grp photo with governer .jpg",
-    alt: "Group Photo with Governor",
+    src: "/Photos/gallery/john_taylor_stanford.webp",
+    alt: "With Prof. John B. Taylor, Stanford University, renowned for the Taylor Rule in monetary policy.",
   },
   {
-    src: "/Photos/gallery/IHD Conference at India International Centre New Delhi.jpg",
+    src: "/Photos/gallery/GI_workshop.webp",
+    alt: "Workshop on GI at IIT Patna",
+  },
+  {
+    src: "/Photos/gallery/GI_workshop1.webp",
+    alt: "Workshop on GI at IIT Patna",
+  },
+
+  {
+    src: "/Photos/gallery/IHD.webp",
     alt: "IHD Conference, New Delhi",
+  },
+  {
+    src: "/Photos/gallery/FDP at NIT Patna.webp",
+    alt: "FDP at NIT Patna",
   },
   {
     src: "/Photos/gallery/India LICS 2025.jpeg",
     alt: "India LICS 2025",
+  },
+  {
+    src: "/Photos/gallery/women_empowerment.webp",
+    alt: "CHCDS Women Empowerment program",
   },
   {
     src: "/Photos/gallery/mips 2024.jpg",
@@ -234,23 +263,28 @@ export const galleryImages = [
     alt: "National Statistics Day",
   },
   {
-    src: "/Photos/gallery/Phd viva voce of Mr kislay kashyap with external prof. Arup Mitra.jpg",
-    alt: "PhD Viva Voce",
+    src: "/Photos/gallery/dhiresh_iitp.webp",
+    alt: "with Prof. Dhiresh Kulshrestha, IIT Patna",
   },
   {
-    src: "/Photos/gallery/round table meet.jpg",
+    src: "/Photos/gallery/nlu.webp",
+    alt: "International Conference of Law and Economics, NLU",
+  },
+  {
+    src: "/Photos/gallery/round table meet.webp",
     alt: "Round Table Meeting",
   },
   {
-    src: "/Photos/gallery/with Prof. John B. Taylor.JPG",
-    alt: "With Prof. John B. Taylor",
+    src: "/Photos/gallery/with_senior_faculty.webp",
+    alt: "With Senior Faculty",
+  },
+
+  {
+    src: "/Photos/gallery/nobel_laureate_vernon_smith.webp",
+    alt: "With Nobel Laureate Prof. Vernon L. Smith (Economics, 2002) at an academic conference.",
   },
   {
-    src: "/Photos/gallery/with Prof. Vernon Lomax Smith.JPG",
-    alt: "With Prof. Vernon Lomax Smith",
-  },
-  {
-    src: "/Photos/gallery/women seminar.jpg",
+    src: "/Photos/gallery/women seminar.webp",
     alt: "Women Seminar",
   },
 ];
