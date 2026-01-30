@@ -283,7 +283,7 @@ export const giOdyssey = [
     title: "Medicinal Plants of Jamui",
     location: "Jamui",
     desc: "Documenting 200+ rare medicinal species with President Awardee Sri Arjun Mandal.",
-    img: "Photos/gallery/arjun_medicinal plants.jpeg",
+    img: "Photos/gallery/arjun_medicinal plants.webp",
     status: "Documentation Phase",
   },
   {
