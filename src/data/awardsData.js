@@ -174,6 +174,10 @@ export const galleryImages = [
     alt: "With Finance Commission Chairman Arvind Panagariya at Nalanda University",
   },
   {
+    src: "/Photos/gallery/arjun_mandal.webp",
+    alt: "Sri Arjun Mandal showcasing his President Award to Prof. Nalin Bharti",
+  },
+  {
     src: "/Photos/gallery/panagariya.webp",
     alt: "Meeting at Rajgir with Finance Commission Chairman Arvind Panagariya",
   },
@@ -255,12 +259,25 @@ export const galleryImages = [
     alt: "CHCDS Women Empowerment program",
   },
   {
+    src: "/Photos/gallery/lamp_gi.webp",
+    alt: "GI workshop at IIT Patna",
+  },
+  {
     src: "/Photos/gallery/mips 2024.jpg",
     alt: "MIPS 2024 Conference",
   },
+
   {
     src: "/Photos/gallery/national statisyics day .jpg",
     alt: "National Statistics Day",
+  },
+  {
+    src: "/Photos/gallery/rajesh_fieldvisit.webp",
+    alt: "With Prof. Rajesh Kumar, Professor of Linguistics and English Language, IIT Madras",
+  },
+  {
+    src: "/Photos/gallery/with guest.webp",
+    alt: "Guest Talk at IIT Patna",
   },
   {
     src: "/Photos/gallery/dhiresh_iitp.webp",
@@ -274,9 +291,14 @@ export const galleryImages = [
     src: "/Photos/gallery/round table meet.webp",
     alt: "Round Table Meeting",
   },
+
   {
     src: "/Photos/gallery/with_senior_faculty.webp",
     alt: "With Senior Faculty",
+  },
+  {
+    src: "/Photos/gallery/Ihd conference.webp",
+    alt: "Presenting at IHD Conference",
   },
 
   {
