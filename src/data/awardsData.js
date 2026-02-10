@@ -102,7 +102,7 @@ export const mediaData = [
   {
     id: "v1",
     type: "video",
-    featured: true, // Styling Flag
+    featured: true,
     date: "Oct 10, 2022",
     title: "Bihar Bihan: Exclusive Interview",
     outlet: "DD Bihar",

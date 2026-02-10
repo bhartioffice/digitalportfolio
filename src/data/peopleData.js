@@ -263,7 +263,7 @@ export const staffData = [
   },
   {
     id: "s3",
-    name: "Aman Raj",
+    name: "Mr. Aman Raj",
     role: "Secretarial Assistant",
     project: "DPIIT IPR Chair",
     tenure: "Jan 2025 - Present",
@@ -274,7 +274,7 @@ export const staffData = [
 export const previousStaffData = [
   {
     id: "ps1",
-    name: "Shivaditya",
+    name: "Mr. Shivaditya",
     role: "Research Assistant",
     project: "DPIIT IPR Chair",
     tenure: "Dec 2023 - Jan 2025",
@@ -283,7 +283,7 @@ export const previousStaffData = [
   },
   {
     id: "ps2",
-    name: "Sonali Rathor",
+    name: "Ms. Sonali Rathor",
     role: "Secretarial Assistant",
     project: "DPIIT IPR Chair",
     tenure: "Jan 2024 - Mar 2024",
