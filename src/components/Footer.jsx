@@ -101,7 +101,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="https://www.iitp.ac.in/hss/"
+                href="https://www.iitp.ac.in/departments/humanities-social-sciences"
                 target="_blank"
                 rel="noreferrer"
               >
